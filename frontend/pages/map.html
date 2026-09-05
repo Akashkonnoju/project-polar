@@ -1,0 +1,577 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Polar Map | PolarConnect</title>
+
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/map.css">
+</head>
+
+<body>
+
+<!-- =====================================================
+     NAVBAR
+===================================================== -->
+
+<nav class="navbar">
+
+    <div class="nav-container">
+
+        <a href="../index.html" class="logo">
+            <span class="logo-dot"></span>
+            Polar<span>Connect</span>
+        </a>
+
+        <div class="nav-links">
+
+            <a href="../index.html">
+                Home
+            </a>
+
+            <a href="knowledge.html">
+                Knowledge
+            </a>
+
+            <a href="research.html">
+                Research
+            </a>
+
+            <a href="media.html">
+                Media
+            </a>
+
+            <a href="map.html" class="active">
+                Polar Map
+            </a>
+
+        </div>
+
+        <a href="login.html" class="nav-login">
+            Login
+        </a>
+
+    </div>
+
+</nav>
+
+
+<!-- =====================================================
+     MAP HERO
+===================================================== -->
+
+<header class="map-hero">
+
+    <div class="map-grid"></div>
+
+    <div class="map-hero-content">
+
+        <div class="map-eyebrow">
+            <span></span>
+            POLAR EXPLORATION SYSTEM
+        </div>
+
+        <h1>
+            Explore the
+            <strong>frozen frontier.</strong>
+        </h1>
+
+        <p>
+            Discover polar regions, research stations and
+            important locations across the Arctic and Antarctic.
+        </p>
+
+    </div>
+
+    <div class="map-orbit-decoration">
+        <div></div>
+        <div></div>
+        <div></div>
+    </div>
+
+</header>
+
+
+<!-- =====================================================
+     MAP WORKSPACE
+===================================================== -->
+
+<main class="map-workspace">
+
+    <!-- SIDEBAR -->
+
+    <aside class="map-sidebar">
+
+        <div class="sidebar-heading">
+
+            <div class="section-label">
+                POLAR DIRECTORY
+            </div>
+
+            <h2>
+                Locations
+            </h2>
+
+        </div>
+
+
+        <!-- SEARCH -->
+
+        <div class="location-search">
+
+            <span>⌕</span>
+
+            <input
+                type="text"
+                placeholder="Search locations..."
+            >
+
+        </div>
+
+
+        <!-- REGION FILTERS -->
+
+        <div class="region-filters">
+
+            <button class="active">
+                Antarctica
+            </button>
+
+            <button>
+                Arctic
+            </button>
+
+            <button>
+                Indian Sector
+            </button>
+
+            <button>
+                Research Stations
+            </button>
+
+        </div>
+
+
+        <!-- LOCATION LIST -->
+
+        <div class="location-list">
+
+            <div class="location-item active">
+
+                <span class="location-number">
+                    01
+                </span>
+
+                <div>
+                    <strong>MAITRI</strong>
+                    <small>Antarctica • India</small>
+                </div>
+
+                <span class="location-arrow">
+                    →
+                </span>
+
+            </div>
+
+
+            <div class="location-item">
+
+                <span class="location-number">
+                    02
+                </span>
+
+                <div>
+                    <strong>BHARATI</strong>
+                    <small>Antarctica • India</small>
+                </div>
+
+                <span class="location-arrow">
+                    →
+                </span>
+
+            </div>
+
+
+            <div class="location-item">
+
+                <span class="location-number">
+                    03
+                </span>
+
+                <div>
+                    <strong>MCMURDO</strong>
+                    <small>Antarctica • USA</small>
+                </div>
+
+                <span class="location-arrow">
+                    →
+                </span>
+
+            </div>
+
+
+            <div class="location-item">
+
+                <span class="location-number">
+                    04
+                </span>
+
+                <div>
+                    <strong>AMUNDSEN</strong>
+                    <small>South Pole • USA</small>
+                </div>
+
+                <span class="location-arrow">
+                    →
+                </span>
+
+            </div>
+
+
+            <div class="location-item">
+
+                <span class="location-number">
+                    05
+                </span>
+
+                <div>
+                    <strong>SOUTH POLE</strong>
+                    <small>Antarctica • 90°S</small>
+                </div>
+
+                <span class="location-arrow">
+                    →
+                </span>
+
+            </div>
+
+        </div>
+
+    </aside>
+
+
+    <!-- MAP AREA -->
+
+    <section class="map-area">
+
+        <div class="map-toolbar">
+
+            <div>
+
+                <span class="map-status-dot"></span>
+
+                <span>
+                    LIVE POLAR MAP
+                </span>
+
+            </div>
+
+            <div class="map-coordinates">
+                78° 12' S • 45° 21' E
+            </div>
+
+        </div>
+
+
+        <!-- STYLIZED MAP -->
+
+        <div class="polar-map">
+
+            <!-- GRID -->
+
+            <div class="latitude latitude-1"></div>
+            <div class="latitude latitude-2"></div>
+            <div class="latitude latitude-3"></div>
+            <div class="latitude latitude-4"></div>
+
+            <div class="longitude longitude-1"></div>
+            <div class="longitude longitude-2"></div>
+            <div class="longitude longitude-3"></div>
+            <div class="longitude longitude-4"></div>
+
+
+            <!-- ICE LAND MASS -->
+
+            <div class="ice-land land-one"></div>
+            <div class="ice-land land-two"></div>
+            <div class="ice-land land-three"></div>
+            <div class="ice-land land-four"></div>
+
+
+            <!-- MARKERS -->
+
+            <div class="map-marker marker-maitri">
+                <span></span>
+                <label>MAITRI</label>
+            </div>
+
+            <div class="map-marker marker-bharati">
+                <span></span>
+                <label>BHARATI</label>
+            </div>
+
+            <div class="map-marker marker-mcmurdo">
+                <span></span>
+                <label>MCMURDO</label>
+            </div>
+
+            <div class="map-marker marker-amundsen">
+                <span></span>
+                <label>AMUNDSEN</label>
+            </div>
+
+            <div class="map-marker marker-pole">
+                <span></span>
+                <label>SOUTH POLE</label>
+            </div>
+
+
+            <!-- MAP CENTER -->
+
+            <div class="map-center-label">
+
+                <small>
+                    ANTARCTICA
+                </small>
+
+                <strong>
+                    90°S
+                </strong>
+
+            </div>
+
+        </div>
+
+
+        <!-- MAP CONTROLS -->
+
+        <div class="map-controls">
+
+            <button>
+                +
+            </button>
+
+            <button>
+                −
+            </button>
+
+            <button>
+                ⌖
+            </button>
+
+        </div>
+
+
+        <!-- SELECTED LOCATION -->
+
+        <div class="selected-location">
+
+            <div class="selected-index">
+                01
+            </div>
+
+            <div class="selected-info">
+
+                <span>
+                    SELECTED LOCATION
+                </span>
+
+                <h3>
+                    Maitri Research Station
+                </h3>
+
+                <p>
+                    Indian Antarctic research station
+                    located in the Schirmacher Oasis.
+                </p>
+
+            </div>
+
+            <div class="selected-coordinates">
+
+                <small>
+                    COORDINATES
+                </small>
+
+                <strong>
+                    70°46′S
+                </strong>
+
+                <strong>
+                    11°44′E
+                </strong>
+
+            </div>
+
+        </div>
+
+    </section>
+
+</main>
+
+
+<!-- =====================================================
+     POLAR REGIONS
+===================================================== -->
+
+<section class="map-regions">
+
+    <div class="regions-heading">
+
+        <div class="section-label">
+            POLAR REGIONS
+        </div>
+
+        <h2>
+            Two extremes.
+            <span>One planet.</span>
+        </h2>
+
+        <p>
+            Explore the unique environments, ecosystems and
+            research activity across Earth's polar regions.
+        </p>
+
+    </div>
+
+
+    <div class="region-grid">
+
+        <article class="region-feature">
+
+            <span>
+                01
+            </span>
+
+            <h3>
+                Antarctica
+            </h3>
+
+            <p>
+                The southernmost continent and one of
+                Earth's most important climate systems.
+            </p>
+
+            <a href="#">
+                Explore Antarctica →
+            </a>
+
+        </article>
+
+
+        <article class="region-feature">
+
+            <span>
+                02
+            </span>
+
+            <h3>
+                Arctic
+            </h3>
+
+            <p>
+                A rapidly changing northern environment
+                connecting oceans, ice and ecosystems.
+            </p>
+
+            <a href="#">
+                Explore Arctic →
+            </a>
+
+        </article>
+
+
+        <article class="region-feature">
+
+            <span>
+                03
+            </span>
+
+            <h3>
+                Indian Polar Research
+            </h3>
+
+            <p>
+                Discover India's scientific presence and
+                research activity across the polar regions.
+            </p>
+
+            <a href="#">
+                View Research →
+            </a>
+
+        </article>
+
+    </div>
+
+</section>
+
+
+<!-- =====================================================
+     FOOTER
+===================================================== -->
+
+<footer class="site-footer">
+
+    <div class="footer-container">
+
+        <div class="footer-brand">
+
+            <a href="../index.html" class="logo">
+                <span class="logo-dot"></span>
+                Polar<span>Connect</span>
+            </a>
+
+            <p>
+                One integrated gateway to polar science,
+                research, knowledge and discovery.
+            </p>
+
+        </div>
+
+
+        <div class="footer-links">
+
+            <div>
+
+                <h4>Explore</h4>
+
+                <a href="../index.html">Home</a>
+                <a href="knowledge.html">Knowledge</a>
+                <a href="research.html">Research</a>
+                <a href="media.html">Media</a>
+
+            </div>
+
+            <div>
+
+                <h4>Portal</h4>
+
+                <a href="map.html">Polar Map</a>
+                <a href="login.html">Login</a>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <div class="footer-bottom">
+
+        <span>
+            © 2026 PolarConnect
+        </span>
+
+        <span>
+            Polar Science • Research • Discovery
+        </span>
+
+    </div>
+
+</footer>
+
+</body>
+</html>
