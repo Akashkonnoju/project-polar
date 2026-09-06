@@ -4,156 +4,94 @@
 
 document.addEventListener("DOMContentLoaded", () => {
 
-    const searchInput =
-        document.getElementById("global-search");
+    const searchInput = document.getElementById("global-search");
+    const searchButton = document.getElementById("search-btn");
+    const resultsContainer = document.getElementById("search-results");
 
-    const searchButton =
-        document.getElementById("search-btn");
-
-    const resultsContainer =
-        document.getElementById("search-results");
+    if (!searchInput || !searchButton) {
+        console.error("Search elements not found.");
+        return;
+    }
 
 
     // ==========================================
-    // KNOWLEDGE PAGE
+    // SEARCH BUTTON
     // ==========================================
 
-    // Knowledge page has the search box,
-    // but does not have a results container.
+    searchButton.addEventListener("click", () => {
 
-    if (searchInput && searchButton && !resultsContainer) {
+        const query = searchInput.value.trim();
 
-        function goToSearchPage() {
+        if (!query) {
+            return;
+        }
 
-            const query =
-                searchInput.value.trim();
-
-
-            if (!query) {
-
-                alert("Please enter something to search.");
-
-                searchInput.focus();
-
-                return;
-            }
-
+        // If this is the Knowledge page,
+        // redirect to the search results page.
+        if (!resultsContainer) {
 
             window.location.href =
                 `search.html?q=${encodeURIComponent(query)}`;
-        }
-
-
-        // Search button
-
-        searchButton.addEventListener(
-            "click",
-            goToSearchPage
-        );
-
-
-        // Enter key
-
-        searchInput.addEventListener(
-            "keydown",
-            (event) => {
-
-                if (event.key === "Enter") {
-
-                    event.preventDefault();
-
-                    goToSearchPage();
-
-                }
-
-            }
-        );
-
-
-        return;
-    }
-
-
-    // ==========================================
-    // SEARCH RESULTS PAGE
-    // ==========================================
-
-    if (!searchInput || !searchButton || !resultsContainer) {
-
-        console.error("Search elements not found.");
-
-        return;
-    }
-
-
-    // ==========================================
-    // GET QUERY FROM URL
-    // ==========================================
-
-    const urlParams =
-        new URLSearchParams(window.location.search);
-
-    const urlQuery =
-        urlParams.get("q") || "";
-
-
-    if (urlQuery) {
-
-        searchInput.value = urlQuery;
-
-        performSearch(urlQuery);
-
-    }
-
-
-    // ==========================================
-    // PERFORM SEARCH
-    // ==========================================
-
-    async function performSearch(query) {
-
-        query = query.trim();
-
-
-        if (!query) {
-
-            resultsContainer.innerHTML = `
-                <p>Please enter something to search.</p>
-            `;
 
             return;
         }
 
+        // If already on search.html,
+        // perform the actual API search.
+        performSearch(query);
+    });
+
+
+    // ==========================================
+    // ENTER KEY
+    // ==========================================
+
+    searchInput.addEventListener("keydown", (event) => {
+
+        if (event.key !== "Enter") {
+            return;
+        }
+
+        event.preventDefault();
+
+        const query = searchInput.value.trim();
+
+        if (!query) {
+            return;
+        }
+
+        if (!resultsContainer) {
+
+            window.location.href =
+                `search.html?q=${encodeURIComponent(query)}`;
+
+            return;
+        }
+
+        performSearch(query);
+    });
+
+
+    // ==========================================
+    // PERFORM API SEARCH
+    // ==========================================
+
+    async function performSearch(query) {
 
         resultsContainer.innerHTML = `
             <p>Searching for "${query}"...</p>
         `;
 
-
         try {
 
-            const response =
-                await searchContent(query);
+            const response = await searchContent(query);
 
+            console.log("Search API response:", response);
 
-            console.log(
-                "Search API response:",
-                response
-            );
-
-
-            const knowledge =
-                response.knowledge || [];
-
-            const research =
-                response.research || [];
-
-            const media =
-                response.media || [];
-
-            const locations =
-                response.locations || [];
-
+            const knowledge = response.knowledge || [];
+            const research = response.research || [];
+            const media = response.media || [];
+            const locations = response.locations || [];
 
             const totalResults =
                 knowledge.length +
@@ -162,32 +100,22 @@ document.addEventListener("DOMContentLoaded", () => {
                 locations.length;
 
 
-            // ==========================================
-            // NO RESULTS
-            // ==========================================
-
             if (totalResults === 0) {
 
                 resultsContainer.innerHTML = `
                     <div class="search-no-results">
-
                         <h3>No results found</h3>
 
                         <p>
                             No polar science resources were found
                             for "${query}".
                         </p>
-
                     </div>
                 `;
 
                 return;
             }
 
-
-            // ==========================================
-            // RESULT HEADING
-            // ==========================================
 
             let html = `
 
@@ -211,20 +139,13 @@ document.addEventListener("DOMContentLoaded", () => {
             if (knowledge.length > 0) {
 
                 html += `
-
                     <div class="search-category">
-
-                        <h4>
-                            Knowledge
-                        </h4>
-
+                        <h4>Knowledge</h4>
                 `;
-
 
                 knowledge.forEach(item => {
 
                     html += `
-
                         <article class="search-result">
 
                             <span class="result-type">
@@ -241,18 +162,14 @@ document.addEventListener("DOMContentLoaded", () => {
 
                             ${
                                 item.author
-                                    ? `<small>
-                                        Author: ${item.author}
-                                       </small>`
+                                    ? `<small>Author: ${item.author}</small>`
                                     : ""
                             }
 
                         </article>
-
                     `;
 
                 });
-
 
                 html += `</div>`;
             }
@@ -265,20 +182,13 @@ document.addEventListener("DOMContentLoaded", () => {
             if (research.length > 0) {
 
                 html += `
-
                     <div class="search-category">
-
-                        <h4>
-                            Research
-                        </h4>
-
+                        <h4>Research</h4>
                 `;
-
 
                 research.forEach(item => {
 
                     html += `
-
                         <article class="search-result">
 
                             <span class="result-type">
@@ -295,18 +205,14 @@ document.addEventListener("DOMContentLoaded", () => {
 
                             ${
                                 item.authors
-                                    ? `<small>
-                                        Authors: ${item.authors}
-                                       </small>`
+                                    ? `<small>Authors: ${item.authors}</small>`
                                     : ""
                             }
 
                         </article>
-
                     `;
 
                 });
-
 
                 html += `</div>`;
             }
@@ -319,29 +225,17 @@ document.addEventListener("DOMContentLoaded", () => {
             if (media.length > 0) {
 
                 html += `
-
                     <div class="search-category">
-
-                        <h4>
-                            Media
-                        </h4>
-
+                        <h4>Media</h4>
                 `;
-
 
                 media.forEach(item => {
 
                     html += `
-
                         <article class="search-result">
 
                             <span class="result-type">
-                                ${
-                                    (
-                                        item.media_type ||
-                                        "MEDIA"
-                                    ).toUpperCase()
-                                }
+                                ${(item.media_type || "MEDIA").toUpperCase()}
                             </span>
 
                             <h3>
@@ -367,11 +261,9 @@ document.addEventListener("DOMContentLoaded", () => {
                             }
 
                         </article>
-
                     `;
 
                 });
-
 
                 html += `</div>`;
             }
@@ -384,20 +276,13 @@ document.addEventListener("DOMContentLoaded", () => {
             if (locations.length > 0) {
 
                 html += `
-
                     <div class="search-category">
-
-                        <h4>
-                            Polar Locations
-                        </h4>
-
+                        <h4>Polar Locations</h4>
                 `;
-
 
                 locations.forEach(item => {
 
                     html += `
-
                         <article class="search-result">
 
                             <span class="result-type">
@@ -414,61 +299,30 @@ document.addEventListener("DOMContentLoaded", () => {
 
                             ${
                                 item.region
-                                    ? `
-                                        <small>
-                                            Region: ${item.region}
-                                        </small>
-                                    `
-                                    : ""
-                            }
-
-                            ${
-                                item.latitude !== undefined &&
-                                item.longitude !== undefined
-                                    ? `
-                                        <small>
-                                            Coordinates:
-                                            ${item.latitude},
-                                            ${item.longitude}
-                                        </small>
-                                    `
+                                    ? `<small>Region: ${item.region}</small>`
                                     : ""
                             }
 
                         </article>
-
                     `;
 
                 });
-
 
                 html += `</div>`;
             }
 
 
-            // ==========================================
-            // DISPLAY RESULTS
-            // ==========================================
-
             resultsContainer.innerHTML = html;
-
 
             console.log(
                 `Search completed: ${totalResults} result(s)`
             );
 
-        }
+        } catch (error) {
 
-        catch (error) {
-
-            console.error(
-                "Search API error:",
-                error
-            );
-
+            console.error("Search API error:", error);
 
             resultsContainer.innerHTML = `
-
                 <div class="search-error">
 
                     <h3>
@@ -481,66 +335,27 @@ document.addEventListener("DOMContentLoaded", () => {
                     </p>
 
                 </div>
-
             `;
-
         }
-
     }
 
 
     // ==========================================
-    // SEARCH AGAIN ON RESULTS PAGE
+    // AUTO SEARCH FROM URL
     // ==========================================
 
-    searchButton.addEventListener(
-        "click",
-        () => {
+    if (resultsContainer) {
 
-            const query =
-                searchInput.value.trim();
+        const params = new URLSearchParams(window.location.search);
+        const query = params.get("q");
 
+        if (query) {
 
-            if (!query) {
-
-                resultsContainer.innerHTML = `
-                    <p>Please enter something to search.</p>
-                `;
-
-                return;
-            }
-
-
-            window.history.pushState(
-                {},
-                "",
-                `search.html?q=${encodeURIComponent(query)}`
-            );
-
-
+            searchInput.value = query;
             performSearch(query);
 
         }
-    );
 
-
-    // ==========================================
-    // ENTER KEY ON RESULTS PAGE
-    // ==========================================
-
-    searchInput.addEventListener(
-        "keydown",
-        (event) => {
-
-            if (event.key === "Enter") {
-
-                event.preventDefault();
-
-                searchButton.click();
-
-            }
-
-        }
-    );
+    }
 
 });
