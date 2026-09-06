@@ -1,5 +1,5 @@
 // ==========================================
-// POLAR SCIENCE PORTAL - GLOBAL SEARCH
+// POLARCONNECT - GLOBAL SEARCH
 // ==========================================
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -8,90 +8,504 @@ document.addEventListener("DOMContentLoaded", () => {
     const searchButton = document.getElementById("search-btn");
     const resultsContainer = document.getElementById("search-results");
 
-    if (!searchInput || !searchButton) {
+    if (!searchInput || !searchButton || !resultsContainer) {
         console.error("Search elements not found.");
         return;
     }
 
 
     // ==========================================
-    // SEARCH BUTTON
+    // ESCAPE HTML
     // ==========================================
 
-    searchButton.addEventListener("click", () => {
+    function escapeHTML(value) {
 
-        const query = searchInput.value.trim();
+        if (value === null || value === undefined) {
+            return "";
+        }
+
+        return String(value)
+            .replace(/&/g, "&amp;")
+            .replace(/</g, "&lt;")
+            .replace(/>/g, "&gt;")
+            .replace(/"/g, "&quot;")
+            .replace(/'/g, "&#039;");
+    }
+
+
+    // ==========================================
+    // REMOVE DUPLICATES
+    // ==========================================
+
+    function removeDuplicates(items, type) {
+
+        const seen = new Set();
+
+        return items.filter(item => {
+
+            const id = item.id
+                ? `${type}-id-${item.id}`
+                : `${type}-${(
+                    item.title ||
+                    item.name ||
+                    ""
+                ).toLowerCase()}-${(
+                    item.description ||
+                    item.abstract ||
+                    ""
+                ).toLowerCase()}`;
+
+            if (seen.has(id)) {
+                return false;
+            }
+
+            seen.add(id);
+
+            return true;
+        });
+    }
+
+
+    // ==========================================
+    // RENDER KNOWLEDGE
+    // ==========================================
+
+    function renderKnowledge(items) {
+
+        if (!items.length) {
+            return "";
+        }
+
+        let html = `
+            <section class="search-category">
+
+                <div class="category-heading">
+                    <span class="category-line"></span>
+                    <h4>Knowledge</h4>
+                </div>
+
+                <div class="search-results-grid">
+        `;
+
+        items.forEach(item => {
+
+            html += `
+                <article class="search-result">
+
+                    <span class="result-type">
+                        KNOWLEDGE
+                    </span>
+
+                    <h3>
+                        ${escapeHTML(
+                            item.title || "Untitled Knowledge"
+                        )}
+                    </h3>
+
+                    <p>
+                        ${escapeHTML(
+                            item.description ||
+                            "No description available."
+                        )}
+                    </p>
+
+                    ${
+                        item.author
+                            ? `
+                                <div class="result-meta">
+                                    Author: ${escapeHTML(item.author)}
+                                </div>
+                              `
+                            : ""
+                    }
+
+                    ${
+                        item.category
+                            ? `
+                                <div class="result-meta">
+                                    Category: ${escapeHTML(item.category)}
+                                </div>
+                              `
+                            : ""
+                    }
+
+                </article>
+            `;
+        });
+
+        html += `
+                </div>
+            </section>
+        `;
+
+        return html;
+    }
+
+
+    // ==========================================
+    // RENDER RESEARCH
+    // ==========================================
+
+    function renderResearch(items) {
+
+        if (!items.length) {
+            return "";
+        }
+
+        let html = `
+            <section class="search-category">
+
+                <div class="category-heading">
+                    <span class="category-line"></span>
+                    <h4>Research</h4>
+                </div>
+
+                <div class="search-results-grid">
+        `;
+
+        items.forEach(item => {
+
+            html += `
+                <article class="search-result">
+
+                    <span class="result-type">
+                        RESEARCH
+                    </span>
+
+                    <h3>
+                        ${escapeHTML(
+                            item.title || "Untitled Research"
+                        )}
+                    </h3>
+
+                    <p>
+                        ${escapeHTML(
+                            item.abstract ||
+                            "No abstract available."
+                        )}
+                    </p>
+
+                    ${
+                        item.authors
+                            ? `
+                                <div class="result-meta">
+                                    Authors: ${escapeHTML(item.authors)}
+                                </div>
+                              `
+                            : ""
+                    }
+
+                    ${
+                        item.year
+                            ? `
+                                <div class="result-meta">
+                                    Year: ${escapeHTML(item.year)}
+                                </div>
+                              `
+                            : ""
+                    }
+
+                    ${
+                        item.journal
+                            ? `
+                                <div class="result-meta">
+                                    Journal: ${escapeHTML(item.journal)}
+                                </div>
+                              `
+                            : ""
+                    }
+
+                    ${
+                        item.pdf_url
+                            ? `
+                                <a
+                                    class="result-link"
+                                    href="${escapeHTML(item.pdf_url)}"
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                >
+                                    View Research →
+                                </a>
+                              `
+                            : ""
+                    }
+
+                </article>
+            `;
+        });
+
+        html += `
+                </div>
+            </section>
+        `;
+
+        return html;
+    }
+
+
+    // ==========================================
+    // RENDER MEDIA
+    // ==========================================
+
+    function renderMedia(items) {
+
+        if (!items.length) {
+            return "";
+        }
+
+        let html = `
+            <section class="search-category">
+
+                <div class="category-heading">
+                    <span class="category-line"></span>
+                    <h4>Media</h4>
+                </div>
+
+                <div class="search-results-grid">
+        `;
+
+        items.forEach(item => {
+
+            html += `
+                <article class="search-result">
+
+                    <span class="result-type">
+                        ${escapeHTML(
+                            (
+                                item.media_type ||
+                                "MEDIA"
+                            ).toUpperCase()
+                        )}
+                    </span>
+
+                    <h3>
+                        ${escapeHTML(
+                            item.title || "Untitled Media"
+                        )}
+                    </h3>
+
+                    <p>
+                        ${escapeHTML(
+                            item.description ||
+                            "No description available."
+                        )}
+                    </p>
+
+                    ${
+                        item.date
+                            ? `
+                                <div class="result-meta">
+                                    Date: ${escapeHTML(item.date)}
+                                </div>
+                              `
+                            : ""
+                    }
+
+                    ${
+                        item.media_url
+                            ? `
+                                <a
+                                    class="result-link"
+                                    href="${escapeHTML(item.media_url)}"
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                >
+                                    View Media →
+                                </a>
+                              `
+                            : ""
+                    }
+
+                </article>
+            `;
+        });
+
+        html += `
+                </div>
+            </section>
+        `;
+
+        return html;
+    }
+
+
+    // ==========================================
+    // RENDER LOCATIONS
+    // ==========================================
+
+    function renderLocations(items) {
+
+        if (!items.length) {
+            return "";
+        }
+
+        let html = `
+            <section class="search-category">
+
+                <div class="category-heading">
+                    <span class="category-line"></span>
+                    <h4>Polar Locations</h4>
+                </div>
+
+                <div class="search-results-grid">
+        `;
+
+        items.forEach(item => {
+
+            html += `
+                <article class="search-result">
+
+                    <span class="result-type">
+                        LOCATION
+                    </span>
+
+                    <h3>
+                        ${escapeHTML(
+                            item.name ||
+                            "Unnamed Location"
+                        )}
+                    </h3>
+
+                    <p>
+                        ${escapeHTML(
+                            item.description ||
+                            "No description available."
+                        )}
+                    </p>
+
+                    ${
+                        item.region
+                            ? `
+                                <div class="result-meta">
+                                    Region: ${escapeHTML(item.region)}
+                                </div>
+                              `
+                            : ""
+                    }
+
+                    ${
+                        item.latitude !== undefined &&
+                        item.longitude !== undefined
+                            ? `
+                                <div class="result-meta">
+                                    Coordinates:
+                                    ${escapeHTML(item.latitude)},
+                                    ${escapeHTML(item.longitude)}
+                                </div>
+                              `
+                            : ""
+                    }
+
+                </article>
+            `;
+        });
+
+        html += `
+                </div>
+            </section>
+        `;
+
+        return html;
+    }
+
+
+    // ==========================================
+    // PERFORM SEARCH
+    // ==========================================
+
+    async function performSearch(queryFromURL = null) {
+
+        const query = (
+            queryFromURL !== null
+                ? queryFromURL
+                : searchInput.value
+        ).trim();
+
 
         if (!query) {
-            return;
-        }
 
-        // If this is the Knowledge page,
-        // redirect to the search results page.
-        if (!resultsContainer) {
+            resultsContainer.innerHTML = `
+                <div class="search-no-results">
 
-            window.location.href =
-                `search.html?q=${encodeURIComponent(query)}`;
+                    <div class="no-results-icon">
+                        ⌕
+                    </div>
 
-            return;
-        }
+                    <h3>
+                        Start your search
+                    </h3>
 
-        // If already on search.html,
-        // perform the actual API search.
-        performSearch(query);
-    });
+                    <p>
+                        Enter a keyword to explore
+                        polar science resources.
+                    </p>
 
-
-    // ==========================================
-    // ENTER KEY
-    // ==========================================
-
-    searchInput.addEventListener("keydown", (event) => {
-
-        if (event.key !== "Enter") {
-            return;
-        }
-
-        event.preventDefault();
-
-        const query = searchInput.value.trim();
-
-        if (!query) {
-            return;
-        }
-
-        if (!resultsContainer) {
-
-            window.location.href =
-                `search.html?q=${encodeURIComponent(query)}`;
+                </div>
+            `;
 
             return;
         }
 
-        performSearch(query);
-    });
 
+        searchInput.value = query;
 
-    // ==========================================
-    // PERFORM API SEARCH
-    // ==========================================
-
-    async function performSearch(query) {
 
         resultsContainer.innerHTML = `
-            <p>Searching for "${query}"...</p>
+            <div class="search-loading">
+                Searching the polar repository...
+            </div>
         `;
+
 
         try {
 
             const response = await searchContent(query);
 
-            console.log("Search API response:", response);
+            console.log(
+                "Search API response:",
+                response
+            );
 
-            const knowledge = response.knowledge || [];
-            const research = response.research || [];
-            const media = response.media || [];
-            const locations = response.locations || [];
+
+            let knowledge = Array.isArray(response.knowledge)
+                ? response.knowledge
+                : [];
+
+            let research = Array.isArray(response.research)
+                ? response.research
+                : [];
+
+            let media = Array.isArray(response.media)
+                ? response.media
+                : [];
+
+            let locations = Array.isArray(response.locations)
+                ? response.locations
+                : [];
+
+
+            // Remove duplicate records
+
+            knowledge = removeDuplicates(
+                knowledge,
+                "knowledge"
+            );
+
+            research = removeDuplicates(
+                research,
+                "research"
+            );
+
+            media = removeDuplicates(
+                media,
+                "media"
+            );
+
+            locations = removeDuplicates(
+                locations,
+                "locations"
+            );
+
 
             const totalResults =
                 knowledge.length +
@@ -100,16 +514,36 @@ document.addEventListener("DOMContentLoaded", () => {
                 locations.length;
 
 
+            // ==========================================
+            // NO RESULTS
+            // ==========================================
+
             if (totalResults === 0) {
 
                 resultsContainer.innerHTML = `
                     <div class="search-no-results">
-                        <h3>No results found</h3>
+
+                        <div class="no-results-icon">
+                            ⌕
+                        </div>
+
+                        <h3>
+                            No results found
+                        </h3>
 
                         <p>
-                            No polar science resources were found
-                            for "${query}".
+                            We couldn't find anything
+                            matching
+                            <strong>
+                                "${escapeHTML(query)}"
+                            </strong>.
                         </p>
+
+                        <span>
+                            Try another keyword such as
+                            climate, ice, ocean or Antarctica.
+                        </span>
+
                     </div>
                 `;
 
@@ -117,15 +551,28 @@ document.addEventListener("DOMContentLoaded", () => {
             }
 
 
+            // ==========================================
+            // RESULTS HEADER
+            // ==========================================
+
             let html = `
 
                 <div class="search-result-heading">
 
-                    <span>SEARCH RESULTS</span>
+                    <span class="heading-small">
+                        SEARCH RESULTS
+                    </span>
 
                     <h3>
-                        Results for "${query}"
+                        Results for
+                        <span>"${escapeHTML(query)}"</span>
                     </h3>
+
+                    <p class="result-count">
+                        ${totalResults}
+                        result${totalResults !== 1 ? "s" : ""}
+                        found
+                    </p>
 
                 </div>
 
@@ -133,194 +580,31 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
             // ==========================================
-            // KNOWLEDGE
+            // ADD SECTIONS
             // ==========================================
 
-            if (knowledge.length > 0) {
+            html += renderKnowledge(knowledge);
 
-                html += `
-                    <div class="search-category">
-                        <h4>Knowledge</h4>
-                `;
+            html += renderResearch(research);
 
-                knowledge.forEach(item => {
+            html += renderMedia(media);
 
-                    html += `
-                        <article class="search-result">
-
-                            <span class="result-type">
-                                KNOWLEDGE
-                            </span>
-
-                            <h3>
-                                ${item.title || "Untitled Knowledge"}
-                            </h3>
-
-                            <p>
-                                ${item.description || "No description available."}
-                            </p>
-
-                            ${
-                                item.author
-                                    ? `<small>Author: ${item.author}</small>`
-                                    : ""
-                            }
-
-                        </article>
-                    `;
-
-                });
-
-                html += `</div>`;
-            }
-
-
-            // ==========================================
-            // RESEARCH
-            // ==========================================
-
-            if (research.length > 0) {
-
-                html += `
-                    <div class="search-category">
-                        <h4>Research</h4>
-                `;
-
-                research.forEach(item => {
-
-                    html += `
-                        <article class="search-result">
-
-                            <span class="result-type">
-                                RESEARCH
-                            </span>
-
-                            <h3>
-                                ${item.title || "Untitled Research"}
-                            </h3>
-
-                            <p>
-                                ${item.abstract || "No abstract available."}
-                            </p>
-
-                            ${
-                                item.authors
-                                    ? `<small>Authors: ${item.authors}</small>`
-                                    : ""
-                            }
-
-                        </article>
-                    `;
-
-                });
-
-                html += `</div>`;
-            }
-
-
-            // ==========================================
-            // MEDIA
-            // ==========================================
-
-            if (media.length > 0) {
-
-                html += `
-                    <div class="search-category">
-                        <h4>Media</h4>
-                `;
-
-                media.forEach(item => {
-
-                    html += `
-                        <article class="search-result">
-
-                            <span class="result-type">
-                                ${(item.media_type || "MEDIA").toUpperCase()}
-                            </span>
-
-                            <h3>
-                                ${item.title || "Untitled Media"}
-                            </h3>
-
-                            <p>
-                                ${item.description || "No description available."}
-                            </p>
-
-                            ${
-                                item.media_url
-                                    ? `
-                                        <a
-                                            href="${item.media_url}"
-                                            target="_blank"
-                                            rel="noopener noreferrer"
-                                        >
-                                            View Media →
-                                        </a>
-                                    `
-                                    : ""
-                            }
-
-                        </article>
-                    `;
-
-                });
-
-                html += `</div>`;
-            }
-
-
-            // ==========================================
-            // LOCATIONS
-            // ==========================================
-
-            if (locations.length > 0) {
-
-                html += `
-                    <div class="search-category">
-                        <h4>Polar Locations</h4>
-                `;
-
-                locations.forEach(item => {
-
-                    html += `
-                        <article class="search-result">
-
-                            <span class="result-type">
-                                LOCATION
-                            </span>
-
-                            <h3>
-                                ${item.name || "Unnamed Location"}
-                            </h3>
-
-                            <p>
-                                ${item.description || "No description available."}
-                            </p>
-
-                            ${
-                                item.region
-                                    ? `<small>Region: ${item.region}</small>`
-                                    : ""
-                            }
-
-                        </article>
-                    `;
-
-                });
-
-                html += `</div>`;
-            }
+            html += renderLocations(locations);
 
 
             resultsContainer.innerHTML = html;
 
+
             console.log(
-                `Search completed: ${totalResults} result(s)`
+                `Search completed: ${totalResults} unique result(s)`
             );
 
         } catch (error) {
 
-            console.error("Search API error:", error);
+            console.error(
+                "Search API error:",
+                error
+            );
 
             resultsContainer.innerHTML = `
                 <div class="search-error">
@@ -330,9 +614,14 @@ document.addEventListener("DOMContentLoaded", () => {
                     </h3>
 
                     <p>
-                        Unable to connect to the polar
-                        science search service.
+                        Unable to connect to the
+                        polar science search service.
                     </p>
+
+                    <span>
+                        Please make sure the Django
+                        backend is running.
+                    </span>
 
                 </div>
             `;
@@ -341,21 +630,73 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
     // ==========================================
-    // AUTO SEARCH FROM URL
+    // SEARCH BUTTON
     // ==========================================
 
-    if (resultsContainer) {
+    searchButton.addEventListener(
+        "click",
+        () => {
+            performSearch();
+        }
+    );
 
-        const params = new URLSearchParams(window.location.search);
-        const query = params.get("q");
 
-        if (query) {
+    // ==========================================
+    // ENTER KEY
+    // ==========================================
 
-            searchInput.value = query;
-            performSearch(query);
+    searchInput.addEventListener(
+        "keydown",
+        event => {
+
+            if (event.key === "Enter") {
+
+                event.preventDefault();
+
+                performSearch();
+            }
 
         }
+    );
 
+
+    // ==========================================
+    // LOAD QUERY FROM URL
+    // ==========================================
+
+    const urlParams =
+        new URLSearchParams(
+            window.location.search
+        );
+
+    const urlQuery =
+        urlParams.get("q");
+
+
+    if (urlQuery) {
+
+        performSearch(urlQuery);
+
+    } else {
+
+        resultsContainer.innerHTML = `
+            <div class="search-no-results">
+
+                <div class="no-results-icon">
+                    ⌕
+                </div>
+
+                <h3>
+                    Search the Polar Repository
+                </h3>
+
+                <p>
+                    Search across Knowledge,
+                    Research, Media and Polar Locations.
+                </p>
+
+            </div>
+        `;
     }
 
 });
