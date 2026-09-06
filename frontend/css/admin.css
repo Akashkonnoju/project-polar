@@ -1201,3 +1201,160 @@
     }
 
 }
+/* ==========================================
+   ADMIN CONTENT FORM
+========================================== */
+
+.admin-form-overlay {
+    position: fixed;
+    inset: 0;
+    z-index: 9999;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 30px;
+
+    background: rgba(3, 12, 24, 0.78);
+}
+
+
+.admin-form-card {
+    width: min(650px, 100%);
+    max-height: 90vh;
+
+    overflow-y: auto;
+
+    padding: 32px;
+
+    background: #ffffff;
+
+    border-radius: 16px;
+
+    box-shadow:
+        0 25px 80px rgba(0, 0, 0, 0.35);
+}
+
+
+.admin-form-header {
+    display: flex;
+
+    justify-content: space-between;
+    align-items: flex-start;
+
+    margin-bottom: 28px;
+}
+
+
+.admin-form-header h2 {
+    margin-top: 6px;
+}
+
+
+.admin-form-close {
+    width: 38px;
+    height: 38px;
+
+    border: none;
+
+    border-radius: 50%;
+
+    font-size: 24px;
+
+    cursor: pointer;
+
+    background: #eef3f7;
+}
+
+
+.admin-form-group {
+    margin-bottom: 18px;
+}
+
+
+.admin-form-group label {
+    display: block;
+
+    margin-bottom: 7px;
+
+    font-weight: 600;
+}
+
+
+.admin-form-group input,
+.admin-form-group textarea {
+    width: 100%;
+
+    padding: 12px 14px;
+
+    border: 1px solid #d6dfe7;
+
+    border-radius: 8px;
+
+    font-family: inherit;
+
+    font-size: 14px;
+
+    box-sizing: border-box;
+}
+
+
+.admin-form-group textarea {
+    resize: vertical;
+}
+
+
+.admin-form-group input:focus,
+.admin-form-group textarea:focus {
+    outline: none;
+
+    border-color: #5d8ca8;
+
+    box-shadow:
+        0 0 0 3px rgba(93, 140, 168, 0.12);
+}
+
+
+.admin-form-actions {
+    display: flex;
+
+    justify-content: flex-end;
+
+    gap: 12px;
+
+    margin-top: 25px;
+}
+
+
+.admin-cancel-button,
+.admin-submit-button {
+    padding: 12px 20px;
+
+    border-radius: 8px;
+
+    border: none;
+
+    cursor: pointer;
+
+    font-weight: 600;
+}
+
+
+.admin-cancel-button {
+    background: #eef3f7;
+}
+
+
+.admin-submit-button {
+    background: #102d44;
+
+    color: white;
+}
+
+
+.admin-submit-button:disabled {
+    opacity: 0.6;
+
+    cursor: not-allowed;
+}
