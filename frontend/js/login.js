@@ -1,10 +1,11 @@
 // ==========================================
-// POLAR SCIENCE PORTAL - LOGIN
+// POLARCONNECT - LOGIN
 // ==========================================
 
 document.addEventListener("DOMContentLoaded", () => {
 
-    const loginForm = document.querySelector(".login-form");
+    const loginForm =
+        document.querySelector(".login-form");
 
     if (!loginForm) {
         console.error("Login form not found.");
@@ -12,102 +13,181 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
 
-    // ==========================================
-    // LOGIN
-    // ==========================================
+    loginForm.addEventListener(
+        "submit",
+        async (event) => {
 
-    loginForm.addEventListener("submit", async (event) => {
-
-        event.preventDefault();
-
-        const emailInput = document.getElementById("email");
-        const passwordInput = document.getElementById("password");
-        const loginButton = loginForm.querySelector(".login-button");
-
-        const email = emailInput.value.trim();
-        const password = passwordInput.value;
+            event.preventDefault();
 
 
-        if (!email || !password) {
-            alert("Please enter your email and password.");
-            return;
-        }
+            const emailInput =
+                document.getElementById("email");
 
+            const passwordInput =
+                document.getElementById("password");
 
-        // Disable button while logging in
-        loginButton.disabled = true;
-
-        loginButton.querySelector("span").textContent =
-            "Signing in...";
-
-
-        try {
-
-            // Django currently expects username
-            // We are sending the email value as username.
-            const result = await loginUser({
-                username: email,
-                password: password
-            });
-
-
-            console.log("Login API response:", result);
-
-
-            // ==========================================
-            // SUCCESS
-            // ==========================================
-
-            if (result.message === "Login successful") {
-
-                // Store logged-in user information
-                localStorage.setItem(
-                    "polarUser",
-                    JSON.stringify(result.user)
+            const loginButton =
+                loginForm.querySelector(
+                    ".login-button"
                 );
 
+
+            const email =
+                emailInput.value.trim();
+
+            const password =
+                passwordInput.value;
+
+
+            // ======================================
+            // VALIDATION
+            // ======================================
+
+            if (!email || !password) {
 
                 alert(
-                    `Welcome back, ${result.user.username}!`
+                    "Please enter your email and password."
                 );
-
-
-                // Return to Home page
-                window.location.href = "../index.html";
 
                 return;
             }
 
 
-            // ==========================================
-            // LOGIN FAILED
-            // ==========================================
+            if (!emailInput.checkValidity()) {
 
-            alert(
-                result.message ||
-                "Invalid username or password."
-            );
+                alert(
+                    "Please enter a valid email address."
+                );
+
+                emailInput.focus();
+
+                return;
+            }
 
 
-        } catch (error) {
+            // ======================================
+            // LOADING STATE
+            // ======================================
 
-            console.error(
-                "Login API error:",
-                error
-            );
+            loginButton.disabled = true;
 
-            alert(
-                "Unable to connect to the login service."
-            );
 
-        } finally {
+            const buttonText =
+                loginButton.querySelector(
+                    "span:first-child"
+                );
 
-            loginButton.disabled = false;
 
-            loginButton.querySelector("span").textContent =
-                "Sign In";
+            if (buttonText) {
+                buttonText.textContent =
+                    "Signing in...";
+            }
+
+
+            try {
+
+                // Backend expects username.
+                // Email is sent as username.
+
+                const result =
+                    await loginUser({
+
+                        username: email,
+                        password: password
+
+                    });
+
+
+                console.log(
+                    "Login API response:",
+                    result
+                );
+
+
+                // ==================================
+                // SUCCESS
+                // ==================================
+
+                if (
+                    result &&
+                    (
+                        result.message ===
+                        "Login successful"
+                    )
+                ) {
+
+                    if (result.user) {
+
+                        localStorage.setItem(
+                            "polarUser",
+                            JSON.stringify(
+                                result.user
+                            )
+                        );
+
+                    }
+
+
+                    const username =
+                        result.user &&
+                        result.user.username
+                            ? result.user.username
+                            : email;
+
+
+                    alert(
+                        `Welcome back, ${username}!`
+                    );
+
+
+                    window.location.href =
+                        "../index.html";
+
+
+                    return;
+                }
+
+
+                // ==================================
+                // FAILED LOGIN
+                // ==================================
+
+                alert(
+                    result &&
+                    result.message
+                        ? result.message
+                        : "Invalid username or password."
+                );
+
+
+            } catch (error) {
+
+                console.error(
+                    "Login API error:",
+                    error
+                );
+
+
+                alert(
+                    "Unable to connect to the login service."
+                );
+
+
+            } finally {
+
+                loginButton.disabled = false;
+
+
+                if (buttonText) {
+
+                    buttonText.textContent =
+                        "Sign In";
+
+                }
+
+            }
+
         }
-
-    });
+    );
 
 });

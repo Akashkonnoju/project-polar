@@ -1,5 +1,5 @@
 // ==========================================
-// POLAR SCIENCE PORTAL - LOCATIONS
+// POLARCONNECT - POLAR MAP LOCATIONS
 // ==========================================
 
 let allLocations = [];
@@ -12,34 +12,54 @@ let currentLocations = [];
 
 async function loadLocations() {
 
-    const locationList = document.querySelector(".location-list");
-    const polarMap = document.querySelector(".polar-map");
+    const locationList =
+        document.querySelector(".location-list");
+
+    const polarMap =
+        document.querySelector(".polar-map");
 
     if (!locationList || !polarMap) {
+
         console.error("Map elements not found.");
+
         return;
     }
 
+
     try {
 
-        const response = await getLocations();
+        const response =
+            await getLocations();
 
-        allLocations = Array.isArray(response)
-            ? response
-            : response.results || [];
 
-        currentLocations = [...allLocations];
+        allLocations =
+            Array.isArray(response)
+                ? response
+                : response.results || [];
+
+
+        currentLocations =
+            [...allLocations];
+
 
         console.log(
             "Locations loaded successfully:",
             allLocations
         );
 
-        renderLocations(currentLocations);
+
+        renderLocations(
+            currentLocations
+        );
+
 
     } catch (error) {
 
-        console.error("Locations API error:", error);
+        console.error(
+            "Locations API error:",
+            error
+        );
+
 
         locationList.innerHTML = `
             <p>Unable to load locations.</p>
@@ -55,153 +75,225 @@ async function loadLocations() {
 function renderLocations(locations) {
 
     const locationList =
-        document.querySelector(".location-list");
+        document.querySelector(
+            ".location-list"
+        );
 
     const polarMap =
-        document.querySelector(".polar-map");
+        document.querySelector(
+            ".polar-map"
+        );
 
-    if (!locationList || !polarMap) return;
 
-    // Remove API/static markers
+    if (!locationList || !polarMap) {
+        return;
+    }
+
+
+    // Remove existing markers
     polarMap
         .querySelectorAll(".map-marker")
         .forEach(marker => marker.remove());
 
-    // Clear location list
+
+    // Clear list
     locationList.innerHTML = "";
 
 
     if (locations.length === 0) {
 
         locationList.innerHTML = `
-            <p>No locations found.</p>
+            <div class="no-results">
+                <p>No locations found.</p>
+            </div>
         `;
 
         return;
     }
 
 
-    locations.forEach((location, index) => {
-
-        // ==========================================
-        // LOCATION LIST ITEM
-        // ==========================================
-
-        const locationItem =
-            document.createElement("div");
-
-        locationItem.className = "location-item";
-
-        if (index === 0) {
-            locationItem.classList.add("active");
-        }
-
-        locationItem.innerHTML = `
-            <span class="location-number">
-                ${String(index + 1).padStart(2, "0")}
-            </span>
-
-            <div>
-                <strong>${location.name}</strong>
-
-                <small>
-                    ${location.region || "Polar Region"}
-                </small>
-            </div>
-
-            <span class="location-arrow">
-                →
-            </span>
-        `;
-
-        locationList.appendChild(locationItem);
+    locations.forEach(
+        (location, index) => {
 
 
-        // ==========================================
-        // MAP MARKER
-        // ==========================================
+            // ======================================
+            // LOCATION LIST ITEM
+            // ======================================
 
-        const marker =
-            document.createElement("div");
-
-        marker.className = "map-marker";
-
-        marker.innerHTML = `
-            <span></span>
-            <label>${location.name}</label>
-        `;
+            const locationItem =
+                document.createElement("div");
 
 
-        const longitude =
-            parseFloat(location.longitude);
-
-        const latitude =
-            parseFloat(location.latitude);
+            locationItem.className =
+                "location-item";
 
 
-        if (!isNaN(longitude) && !isNaN(latitude)) {
+            if (index === 0) {
 
-            const x =
-                ((longitude + 180) / 360) * 100;
-
-            const y =
-                ((-latitude - 60) / 30) * 100;
-
-            marker.style.left =
-                `${Math.max(5, Math.min(95, x))}%`;
-
-            marker.style.top =
-                `${Math.max(10, Math.min(90, y))}%`;
-        }
-
-
-        polarMap.appendChild(marker);
-
-
-        // ==========================================
-        // LOCATION SELECTION
-        // ==========================================
-
-        locationItem.addEventListener(
-            "click",
-            () => {
-
-                selectLocation(
-                    location,
-                    index,
-                    locationItem,
-                    marker
+                locationItem.classList.add(
+                    "active"
                 );
 
             }
-        );
 
 
-        marker.addEventListener(
-            "click",
-            () => {
+            locationItem.innerHTML = `
 
-                selectLocation(
-                    location,
-                    index,
-                    locationItem,
-                    marker
+                <span class="location-number">
+                    ${String(index + 1).padStart(2, "0")}
+                </span>
+
+                <div>
+
+                    <strong>
+                        ${location.name || "Unnamed Location"}
+                    </strong>
+
+                    <small>
+                        ${location.region || "Polar Region"}
+                    </small>
+
+                </div>
+
+                <span class="location-arrow">
+                    →
+                </span>
+
+            `;
+
+
+            locationList.appendChild(
+                locationItem
+            );
+
+
+            // ======================================
+            // MAP MARKER
+            // ======================================
+
+            const marker =
+                document.createElement("div");
+
+
+            marker.className =
+                "map-marker";
+
+
+            marker.innerHTML = `
+
+                <span></span>
+
+                <label>
+                    ${location.name || "Location"}
+                </label>
+
+            `;
+
+
+            // ======================================
+            // COORDINATES
+            // ======================================
+
+            const longitude =
+                parseFloat(
+                    location.longitude
                 );
 
+
+            const latitude =
+                parseFloat(
+                    location.latitude
+                );
+
+
+            if (
+                !isNaN(longitude) &&
+                !isNaN(latitude)
+            ) {
+
+                const x =
+                    ((longitude + 180) / 360) * 100;
+
+
+                const y =
+                    ((-latitude - 60) / 30) * 100;
+
+
+                marker.style.left =
+                    `${Math.max(
+                        5,
+                        Math.min(95, x)
+                    )}%`;
+
+
+                marker.style.top =
+                    `${Math.max(
+                        10,
+                        Math.min(90, y)
+                    )}%`;
+
             }
-        );
-
-    });
 
 
-    // Select first location
+            polarMap.appendChild(
+                marker
+            );
+
+
+            // ======================================
+            // LOCATION CLICK
+            // ======================================
+
+            locationItem.addEventListener(
+                "click",
+                () => {
+
+                    selectLocation(
+                        location,
+                        index,
+                        locationItem,
+                        marker
+                    );
+
+                }
+            );
+
+
+            marker.addEventListener(
+                "click",
+                () => {
+
+                    selectLocation(
+                        location,
+                        index,
+                        locationItem,
+                        marker
+                    );
+
+                }
+            );
+
+        }
+    );
+
+
+    // ==========================================
+    // SELECT FIRST LOCATION
+    // ==========================================
+
     if (locations.length > 0) {
 
         const firstItem =
-            locationList.querySelector(".location-item");
+            locationList.querySelector(
+                ".location-item"
+            );
+
 
         const firstMarker =
-            polarMap.querySelector(".map-marker");
+            polarMap.querySelector(
+                ".map-marker"
+            );
+
 
         selectLocation(
             locations[0],
@@ -209,7 +301,9 @@ function renderLocations(locations) {
             firstItem,
             firstMarker
         );
+
     }
+
 }
 
 
@@ -227,22 +321,40 @@ function selectLocation(
     document
         .querySelectorAll(".location-item")
         .forEach(item => {
-            item.classList.remove("active");
+
+            item.classList.remove(
+                "active"
+            );
+
         });
+
 
     document
         .querySelectorAll(".map-marker")
         .forEach(item => {
-            item.classList.remove("selected");
+
+            item.classList.remove(
+                "selected"
+            );
+
         });
 
 
     if (locationItem) {
-        locationItem.classList.add("active");
+
+        locationItem.classList.add(
+            "active"
+        );
+
     }
 
+
     if (marker) {
-        marker.classList.add("selected");
+
+        marker.classList.add(
+            "selected"
+        );
+
     }
 
 
@@ -250,11 +362,12 @@ function selectLocation(
         location,
         index
     );
+
 }
 
 
 // ==========================================
-// SELECTED LOCATION DETAILS
+// SHOW SELECTED LOCATION
 // ==========================================
 
 function showSelectedLocation(
@@ -263,15 +376,34 @@ function showSelectedLocation(
 ) {
 
     const selectedLocation =
-        document.querySelector(".selected-location");
+        document.querySelector(
+            ".selected-location"
+        );
 
-    if (!selectedLocation) return;
+
+    if (!selectedLocation) {
+        return;
+    }
+
+
+    const latitude =
+        location.latitude !== undefined
+            ? `${location.latitude}°`
+            : "N/A";
+
+
+    const longitude =
+        location.longitude !== undefined
+            ? `${location.longitude}°`
+            : "N/A";
+
 
     selectedLocation.innerHTML = `
 
         <div class="selected-index">
             ${String(index + 1).padStart(2, "0")}
         </div>
+
 
         <div class="selected-info">
 
@@ -280,15 +412,18 @@ function showSelectedLocation(
             </span>
 
             <h3>
-                ${location.name}
+                ${location.name || "Unnamed Location"}
             </h3>
 
             <p>
-                ${location.description ||
-                "No description available."}
+                ${
+                    location.description ||
+                    "No description available."
+                }
             </p>
 
         </div>
+
 
         <div class="selected-coordinates">
 
@@ -297,11 +432,11 @@ function showSelectedLocation(
             </small>
 
             <strong>
-                ${location.latitude}°
+                ${latitude}
             </strong>
 
             <strong>
-                ${location.longitude}°
+                ${longitude}
             </strong>
 
         </div>
@@ -321,7 +456,10 @@ function setupLocationSearch() {
             ".location-search input"
         );
 
-    if (!searchInput) return;
+
+    if (!searchInput) {
+        return;
+    }
 
 
     searchInput.addEventListener(
@@ -335,19 +473,31 @@ function setupLocationSearch() {
 
 
             const filtered =
-                allLocations.filter(location => {
+                allLocations.filter(
+                    location => {
 
-                    const text = `
-                        ${location.name || ""}
-                        ${location.region || ""}
-                        ${location.description || ""}
-                    `.toLowerCase();
+                        const text = `
 
-                    return text.includes(searchTerm);
-                });
+                            ${location.name || ""}
+
+                            ${location.region || ""}
+
+                            ${location.description || ""}
+
+                        `.toLowerCase();
 
 
-            currentLocations = filtered;
+                        return text.includes(
+                            searchTerm
+                        );
+
+                    }
+                );
+
+
+            currentLocations =
+                filtered;
+
 
             renderLocations(
                 currentLocations
@@ -355,6 +505,7 @@ function setupLocationSearch() {
 
         }
     );
+
 }
 
 
@@ -369,7 +520,10 @@ function setupRegionFilters() {
             ".region-filters button"
         );
 
-    if (!filterButtons.length) return;
+
+    if (!filterButtons.length) {
+        return;
+    }
 
 
     filterButtons.forEach(button => {
@@ -378,12 +532,23 @@ function setupRegionFilters() {
             "click",
             () => {
 
-                // Active filter
-                filterButtons.forEach(btn => {
-                    btn.classList.remove("active");
-                });
 
-                button.classList.add("active");
+                // Remove active state
+                filterButtons.forEach(
+                    btn => {
+
+                        btn.classList.remove(
+                            "active"
+                        );
+
+                    }
+                );
+
+
+                // Add active state
+                button.classList.add(
+                    "active"
+                );
 
 
                 const filter =
@@ -400,25 +565,33 @@ function setupRegionFilters() {
                 // ANTARCTICA
                 // ==================================
 
-                if (filter === "antarctica") {
+                if (
+                    filter === "antarctica"
+                ) {
 
                     filtered =
-                        allLocations.filter(location => {
+                        allLocations.filter(
+                            location => {
 
-                            const region =
-                                (location.region || "")
-                                    .toLowerCase();
+                                const region =
+                                    String(
+                                        location.region || ""
+                                    ).toLowerCase();
 
-                            const name =
-                                (location.name || "")
-                                    .toLowerCase();
 
-                            return (
-                                region.includes("antarctica") ||
-                                name.includes("antarctica")
-                            );
+                                const name =
+                                    String(
+                                        location.name || ""
+                                    ).toLowerCase();
 
-                        });
+
+                                return (
+                                    region.includes("antarctica") ||
+                                    name.includes("antarctica")
+                                );
+
+                            }
+                        );
 
                 }
 
@@ -427,30 +600,31 @@ function setupRegionFilters() {
                 // ARCTIC
                 // ==================================
 
-                else if (filter === "arctic") {
+                else if (
+                    filter === "arctic"
+                ) {
 
                     filtered =
-                        allLocations.filter(location => {
+                        allLocations.filter(
+                            location => {
 
-                            const region =
-                                (location.region || "")
-                                    .toLowerCase();
+                                const text = `
 
-                            const name =
-                                (location.name || "")
-                                    .toLowerCase();
+                                    ${location.name || ""}
 
-                            const description =
-                                (location.description || "")
-                                    .toLowerCase();
+                                    ${location.region || ""}
 
-                            return (
-                                region.includes("arctic") ||
-                                name.includes("arctic") ||
-                                description.includes("arctic")
-                            );
+                                    ${location.description || ""}
 
-                        });
+                                `.toLowerCase();
+
+
+                                return text.includes(
+                                    "arctic"
+                                );
+
+                            }
+                        );
 
                 }
 
@@ -459,25 +633,34 @@ function setupRegionFilters() {
                 // INDIAN SECTOR
                 // ==================================
 
-                else if (filter === "indian sector") {
+                else if (
+                    filter === "indian sector"
+                ) {
 
                     filtered =
-                        allLocations.filter(location => {
+                        allLocations.filter(
+                            location => {
 
-                            const text = `
-                                ${location.name || ""}
-                                ${location.region || ""}
-                                ${location.description || ""}
-                            `.toLowerCase();
+                                const text = `
 
-                            return (
-                                text.includes("india") ||
-                                text.includes("indian") ||
-                                text.includes("maitri") ||
-                                text.includes("bharati")
-                            );
+                                    ${location.name || ""}
 
-                        });
+                                    ${location.region || ""}
+
+                                    ${location.description || ""}
+
+                                `.toLowerCase();
+
+
+                                return (
+                                    text.includes("india") ||
+                                    text.includes("indian") ||
+                                    text.includes("maitri") ||
+                                    text.includes("bharati")
+                                );
+
+                            }
+                        );
 
                 }
 
@@ -491,24 +674,32 @@ function setupRegionFilters() {
                 ) {
 
                     filtered =
-                        allLocations.filter(location => {
+                        allLocations.filter(
+                            location => {
 
-                            const text = `
-                                ${location.name || ""}
-                                ${location.description || ""}
-                            `.toLowerCase();
+                                const text = `
 
-                            return (
-                                text.includes("station") ||
-                                text.includes("research")
-                            );
+                                    ${location.name || ""}
 
-                        });
+                                    ${location.description || ""}
+
+                                `.toLowerCase();
+
+
+                                return (
+                                    text.includes("station") ||
+                                    text.includes("research")
+                                );
+
+                            }
+                        );
 
                 }
 
 
-                currentLocations = filtered;
+                currentLocations =
+                    filtered;
+
 
                 renderLocations(
                     currentLocations
@@ -518,6 +709,7 @@ function setupRegionFilters() {
         );
 
     });
+
 }
 
 
