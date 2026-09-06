@@ -4,14 +4,105 @@
 
 document.addEventListener("DOMContentLoaded", () => {
 
-    const searchInput = document.getElementById("global-search");
-    const searchButton = document.getElementById("search-btn");
-    const resultsContainer = document.getElementById("search-results");
+    const searchInput =
+        document.getElementById("global-search");
 
-    // Check whether search elements exist
-    if (!searchInput || !searchButton || !resultsContainer) {
-        console.error("Search elements not found.");
+    const searchButton =
+        document.getElementById("search-btn");
+
+    const resultsContainer =
+        document.getElementById("search-results");
+
+
+    // ==========================================
+    // KNOWLEDGE PAGE
+    // ==========================================
+
+    // Knowledge page has the search box,
+    // but does not have a results container.
+
+    if (searchInput && searchButton && !resultsContainer) {
+
+        function goToSearchPage() {
+
+            const query =
+                searchInput.value.trim();
+
+
+            if (!query) {
+
+                alert("Please enter something to search.");
+
+                searchInput.focus();
+
+                return;
+            }
+
+
+            window.location.href =
+                `search.html?q=${encodeURIComponent(query)}`;
+        }
+
+
+        // Search button
+
+        searchButton.addEventListener(
+            "click",
+            goToSearchPage
+        );
+
+
+        // Enter key
+
+        searchInput.addEventListener(
+            "keydown",
+            (event) => {
+
+                if (event.key === "Enter") {
+
+                    event.preventDefault();
+
+                    goToSearchPage();
+
+                }
+
+            }
+        );
+
+
         return;
+    }
+
+
+    // ==========================================
+    // SEARCH RESULTS PAGE
+    // ==========================================
+
+    if (!searchInput || !searchButton || !resultsContainer) {
+
+        console.error("Search elements not found.");
+
+        return;
+    }
+
+
+    // ==========================================
+    // GET QUERY FROM URL
+    // ==========================================
+
+    const urlParams =
+        new URLSearchParams(window.location.search);
+
+    const urlQuery =
+        urlParams.get("q") || "";
+
+
+    if (urlQuery) {
+
+        searchInput.value = urlQuery;
+
+        performSearch(urlQuery);
+
     }
 
 
@@ -19,11 +110,11 @@ document.addEventListener("DOMContentLoaded", () => {
     // PERFORM SEARCH
     // ==========================================
 
-    async function performSearch() {
+    async function performSearch(query) {
 
-        const query = searchInput.value.trim();
+        query = query.trim();
 
-        // Empty search
+
         if (!query) {
 
             resultsContainer.innerHTML = `
@@ -34,7 +125,6 @@ document.addEventListener("DOMContentLoaded", () => {
         }
 
 
-        // Show loading message
         resultsContainer.innerHTML = `
             <p>Searching for "${query}"...</p>
         `;
@@ -42,19 +132,27 @@ document.addEventListener("DOMContentLoaded", () => {
 
         try {
 
-            const response = await searchContent(query);
+            const response =
+                await searchContent(query);
 
-            console.log("Search API response:", response);
+
+            console.log(
+                "Search API response:",
+                response
+            );
 
 
-            // ==========================================
-            // GET RESULTS FROM API
-            // ==========================================
+            const knowledge =
+                response.knowledge || [];
 
-            const knowledge = response.knowledge || [];
-            const research = response.research || [];
-            const media = response.media || [];
-            const locations = response.locations || [];
+            const research =
+                response.research || [];
+
+            const media =
+                response.media || [];
+
+            const locations =
+                response.locations || [];
 
 
             const totalResults =
@@ -88,7 +186,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
             // ==========================================
-            // BUILD RESULTS
+            // RESULT HEADING
             // ==========================================
 
             let html = `
@@ -107,7 +205,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
             // ==========================================
-            // KNOWLEDGE RESULTS
+            // KNOWLEDGE
             // ==========================================
 
             if (knowledge.length > 0) {
@@ -143,7 +241,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
                             ${
                                 item.author
-                                    ? `<small>Author: ${item.author}</small>`
+                                    ? `<small>
+                                        Author: ${item.author}
+                                       </small>`
                                     : ""
                             }
 
@@ -159,7 +259,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
             // ==========================================
-            // RESEARCH RESULTS
+            // RESEARCH
             // ==========================================
 
             if (research.length > 0) {
@@ -195,7 +295,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
                             ${
                                 item.authors
-                                    ? `<small>Authors: ${item.authors}</small>`
+                                    ? `<small>
+                                        Authors: ${item.authors}
+                                       </small>`
                                     : ""
                             }
 
@@ -211,7 +313,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
             // ==========================================
-            // MEDIA RESULTS
+            // MEDIA
             // ==========================================
 
             if (media.length > 0) {
@@ -234,10 +336,12 @@ document.addEventListener("DOMContentLoaded", () => {
                         <article class="search-result">
 
                             <span class="result-type">
-                                ${(
-                                    item.media_type ||
-                                    "MEDIA"
-                                ).toUpperCase()}
+                                ${
+                                    (
+                                        item.media_type ||
+                                        "MEDIA"
+                                    ).toUpperCase()
+                                }
                             </span>
 
                             <h3>
@@ -274,7 +378,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
             // ==========================================
-            // LOCATION RESULTS
+            // LOCATIONS
             // ==========================================
 
             if (locations.length > 0) {
@@ -348,13 +452,20 @@ document.addEventListener("DOMContentLoaded", () => {
 
             resultsContainer.innerHTML = html;
 
+
             console.log(
                 `Search completed: ${totalResults} result(s)`
             );
 
-        } catch (error) {
+        }
 
-            console.error("Search API error:", error);
+        catch (error) {
+
+            console.error(
+                "Search API error:",
+                error
+            );
+
 
             resultsContainer.innerHTML = `
 
@@ -372,23 +483,49 @@ document.addEventListener("DOMContentLoaded", () => {
                 </div>
 
             `;
+
         }
 
     }
 
 
     // ==========================================
-    // SEARCH BUTTON
+    // SEARCH AGAIN ON RESULTS PAGE
     // ==========================================
 
     searchButton.addEventListener(
         "click",
-        performSearch
+        () => {
+
+            const query =
+                searchInput.value.trim();
+
+
+            if (!query) {
+
+                resultsContainer.innerHTML = `
+                    <p>Please enter something to search.</p>
+                `;
+
+                return;
+            }
+
+
+            window.history.pushState(
+                {},
+                "",
+                `search.html?q=${encodeURIComponent(query)}`
+            );
+
+
+            performSearch(query);
+
+        }
     );
 
 
     // ==========================================
-    // ENTER KEY
+    // ENTER KEY ON RESULTS PAGE
     // ==========================================
 
     searchInput.addEventListener(
@@ -396,7 +533,11 @@ document.addEventListener("DOMContentLoaded", () => {
         (event) => {
 
             if (event.key === "Enter") {
-                performSearch();
+
+                event.preventDefault();
+
+                searchButton.click();
+
             }
 
         }
