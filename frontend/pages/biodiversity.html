@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Biodiversity information and resources from PolarConnect.">
+    <title>Biodiversity | PolarConnect</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/responsive.css">
+</head>
+<body>
+<header>
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="../index.html" class="logo">
+                <span class="logo-dot"></span>
+                Polar<span>Connect</span>
+            </a>
+            <ul class="nav-links">
+                <li><a href="../index.html">Home</a></li>
+                <li><a href="climate.html" >Climate</a></li>
+                <li><a href="ice-glaciers.html" >Ice &amp; Glaciers</a></li>
+                <li><a href="polar-oceans.html" >Polar Oceans</a></li>
+                <li><a href="biodiversity.html" class="active">Biodiversity</a></li>
+                <li><a href="research.html">Research</a></li>
+                <li><a href="resources.html">All Resources</a></li>
+                <li><a href="data-maps.html">Data &amp; Maps</a></li>
+            </ul>
+            <a href="login.html" class="login-btn">Login</a>
+        </div>
+    </nav>
+</header>
+
+<main>
+    <section class="hero" id="top">
+        <div class="hero-content">
+            <p class="hero-tag">POLAR LIFE • ECOSYSTEMS • DISCOVERY</p>
+            <h1>Explore the<br><span>Biodiversity</span></h1>
+            <p class="hero-description">Discover Arctic and Antarctic species, adaptations, ecosystems and the ecological importance of polar regions.</p>
+            <div class="hero-buttons">
+                <a href="#topic-information" class="primary-btn">Explore Biodiversity <span aria-hidden="true">→</span></a>
+                <a href="map.html" class="secondary-btn">Explore Polar Map <span aria-hidden="true">↗</span></a>
+            </div>
+            <div class="hero-meta" aria-label="Topic highlights">
+                <div><strong>01</strong><span>Arctic</span></div>
+                <div><strong>02</strong><span>Antarctic</span></div>
+                <div><strong>03</strong><span>Verified sources</span></div>
+            </div>
+        </div>
+        <div class="hero-visual" aria-hidden="true">
+            <div class="orbital-line"></div>
+            <div class="polar-globe">
+                <span class="globe-pin globe-pin-one"></span>
+                <span class="globe-pin globe-pin-two"></span>
+                <span class="globe-marker">POLAR</span>
+            </div>
+            <div class="science-card">
+                <div class="science-card-top"><span class="status-pulse"></span><span>POLAR SCIENCE SIGNAL</span></div>
+                <strong>Biodiversity</strong>
+                <small>Connecting evidence from Earth's extremes.</small>
+            </div>
+        </div>
+    </section>
+
+    <section class="regions-section" id="topic-information">
+        <div class="section-heading">
+            <p>POLAR SCIENCE</p>
+            <h2>Biodiversity</h2>
+            <span>Discover Arctic and Antarctic species, adaptations, ecosystems and the ecological importance of polar regions.</span>
+        </div>
+        <div id="topic-status" class="section-label">Loading verified portal information...</div>
+        <div id="topic-grid" class="regions-grid"></div>
+    </section>
+
+    <section class="explore-section">
+        <div class="section-heading">
+            <p>EXPLORE FURTHER</p>
+            <h2>Continue your polar discovery</h2>
+            <span>Connect this topic with trusted resources, research and locations across PolarConnect.</span>
+        </div>
+        <div class="feature-grid">
+            <div class="feature-card"><span class="card-index">01</span><div class="feature-icon" aria-hidden="true">⌕</div><h3>All Resources</h3><p>Search and filter knowledge, research, datasets and reports.</p><a href="resources.html">Open Resources →</a></div>
+            <div class="feature-card"><span class="card-index">02</span><div class="feature-icon" aria-hidden="true">⌖</div><h3>Data &amp; Maps</h3><p>Explore polar locations and trusted scientific data gateways.</p><a href="data-maps.html">Open Data &amp; Maps →</a></div>
+            <div class="feature-card"><span class="card-index">03</span><div class="feature-icon" aria-hidden="true">◈</div><h3>Research</h3><p>Discover scientific studies and research connected to the polar regions.</p><a href="research.html">Explore Research →</a></div>
+        </div>
+    </section>
+</main>
+
+<script>window.POLAR_TOPIC = "biodiversity";</script>
+<script src="../js/api.js"></script>
+<script src="../js/topic.js"></script>
+</body>
+</html>

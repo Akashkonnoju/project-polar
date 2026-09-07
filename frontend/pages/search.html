@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Search | PolarConnect</title>
+
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/search.css">
+</head>
+
+<body class="search-page">
+
+    <!-- NAVBAR -->
+    <header class="navbar">
+        <div class="nav-container">
+
+            <div class="logo">
+                <span>••</span> Polar<span>Connect</span>
+            </div>
+
+            <nav class="nav-links">
+                <a href="../index.html">Home</a>
+                <a href="knowledge.html">Knowledge</a>
+                <a href="research.html">Research</a>
+                <a href="media.html">Media</a>
+                <a href="map.html">Polar Map</a>
+            </nav>
+
+            <a href="login.html" class="login-btn">Login</a>
+
+            <a href="climate.html">Climate</a>
+            <a href="ice-glaciers.html">Ice &amp; Glaciers</a>
+            <a href="polar-oceans.html">Polar Oceans</a>
+            <a href="biodiversity.html">Biodiversity</a>
+            <a href="resources.html">All Resources</a>
+            <a href="data-maps.html">Data &amp; Maps</a>
+            <a href="about.html">About</a>
+            <a href="assistant.html">Assistant</a>
+
+        </div>
+    </header>
+
+
+    <!-- HERO -->
+    <section class="search-hero">
+
+        <div class="search-hero-content">
+
+            <div class="eyebrow">
+                <span></span>
+                POLAR SCIENCE REPOSITORY
+            </div>
+
+            <h1>
+                Search the
+                <span>polar knowledge.</span>
+            </h1>
+
+            <p>
+                Explore knowledge, research, media and polar locations
+                from the repository.
+            </p>
+
+        </div>
+
+    </section>
+
+
+    <!-- SEARCH AREA -->
+    <main class="search-main">
+
+        <div class="search-box">
+
+            <div class="search-input-wrapper">
+
+                <span class="search-icon">⌕</span>
+
+                <input
+                    type="text"
+                    id="global-search"
+                    placeholder="Search polar science, climate, ice, oceans..."
+                    autocomplete="off"
+                >
+
+            </div>
+
+            <button
+                type="button"
+                id="search-btn"
+                class="search-button"
+            >
+                Search
+            </button>
+
+        </div>
+
+
+        <!-- RESULTS -->
+        <section class="results-section">
+
+            <div class="section-label">
+                <span></span>
+                SEARCH RESULTS
+            </div>
+
+            <h2>Results</h2>
+
+            <div id="search-results">
+
+                <div class="search-loading">
+                    Searching the polar repository...
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <!-- FOOTER -->
+    <footer class="search-footer">
+
+        <div class="footer-inner">
+
+            <div class="footer-logo">
+                <span>••</span> Polar<span>Connect</span>
+            </div>
+
+            <p>
+                Integrated Polar Science Outreach & Knowledge Repository
+            </p>
+
+        </div>
+
+    </footer>
+
+
+    <script src="../js/api.js"></script>
+    <script src="../js/search.js"></script>
+
+</body>
+</html>

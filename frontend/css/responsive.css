@@ -1,0 +1,272 @@
+/* =====================================================
+   POLARCONNECT RESPONSIVE DESIGN
+===================================================== */
+
+
+/* =========================================
+   TABLET
+========================================= */
+
+@media (max-width: 1000px) {
+
+    .nav-links {
+        gap: 18px;
+    }
+
+    .hero {
+        min-height: 700px;
+    }
+
+    .hero h1 {
+        font-size: 60px;
+    }
+
+    .feature-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .feature-card:last-child {
+        grid-column: span 2;
+    }
+
+    .regions-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .snapshot-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .intelligence-container {
+        grid-template-columns: 1fr;
+
+        gap: 60px;
+    }
+
+    .intelligence-visual {
+        width: 450px;
+        height: 450px;
+    }
+
+    .footer-content {
+        grid-template-columns: 1.5fr 1fr 1fr;
+    }
+}
+
+
+/* =========================================
+   MOBILE
+========================================= */
+
+@media (max-width: 700px) {
+
+    /* Navbar */
+
+    .navbar {
+        padding: 18px 0;
+
+        flex-wrap: wrap;
+    }
+
+    .logo {
+        font-size: 22px;
+    }
+
+    .nav-links {
+        order: 3;
+
+        width: 100%;
+
+        justify-content: center;
+
+        gap: 15px;
+
+        overflow-x: auto;
+
+        padding-top: 12px;
+    }
+
+    .nav-links a {
+        font-size: 12px;
+
+        white-space: nowrap;
+    }
+
+    .login-btn {
+        padding: 8px 15px;
+
+        font-size: 12px;
+    }
+
+
+    /* Hero */
+
+    .hero {
+        min-height: 720px;
+
+        background-position: 62% center;
+    }
+
+    .hero-content {
+        padding-top: 130px;
+    }
+
+    .hero-tag {
+        font-size: 9px;
+
+        letter-spacing: 1.5px;
+    }
+
+    .hero h1 {
+        font-size: clamp(44px, 13vw, 60px);
+
+        letter-spacing: -2.5px;
+    }
+
+    .hero-description {
+        font-size: 14px;
+
+        max-width: 450px;
+    }
+
+    .hero-buttons {
+        flex-direction: column;
+
+        align-items: stretch;
+
+        max-width: 300px;
+    }
+
+    .primary-btn,
+    .secondary-btn {
+        width: 100%;
+    }
+
+
+    /* Explore */
+
+    .explore,
+    .regions {
+        padding: 75px 0;
+    }
+
+    .section-heading {
+        text-align: left;
+
+        margin-bottom: 35px;
+    }
+
+    .section-heading h2 {
+        font-size: 38px;
+
+        letter-spacing: -2px;
+    }
+
+    .feature-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .feature-card:last-child {
+        grid-column: auto;
+    }
+
+
+    /* Regions */
+
+    .regions-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .region-card {
+        min-height: 400px;
+    }
+
+
+    /* Intelligence */
+
+    .polar-intelligence {
+        padding: 80px 0;
+    }
+
+    .intelligence-content h2 {
+        font-size: 43px;
+
+        letter-spacing: -2px;
+    }
+
+    .intelligence-visual {
+        width: 330px;
+        height: 330px;
+    }
+
+    .orbit-one {
+        width: 190px;
+        height: 190px;
+    }
+
+    .orbit-two {
+        width: 270px;
+        height: 125px;
+    }
+
+    .orbit-three {
+        width: 300px;
+        height: 210px;
+    }
+
+    .visual-core {
+        width: 115px;
+        height: 115px;
+    }
+
+    .visual-core h3 {
+        font-size: 12px;
+    }
+
+    .signal-top {
+        top: 25px;
+        left: 35px;
+    }
+
+    .signal-right {
+        right: -10px;
+        top: 145px;
+    }
+
+    .signal-bottom {
+        bottom: 25px;
+        left: 45px;
+    }
+
+
+    /* Data Snapshot */
+
+    .data-snapshot {
+        padding: 80px 0;
+    }
+
+    .snapshot-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .snapshot-heading h2 {
+        font-size: 42px;
+
+        letter-spacing: -2px;
+    }
+
+
+    /* Footer */
+
+    .footer-content {
+        grid-template-columns: 1fr;
+
+        gap: 35px;
+
+        padding: 55px 0;
+    }
+
+    .footer-bottom {
+        padding: 18px 0;
+    }
+}

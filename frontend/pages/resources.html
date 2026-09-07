@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>All Resources | PolarConnect</title>
+<link rel="stylesheet" href="../css/style.css">
+<link rel="stylesheet" href="../css/search.css">
+</head>
+<body class="search-page">
+<header class="navbar"><div class="nav-container">
+<a href="../index.html" class="logo">Polar<span>Connect</span></a>
+<nav class="nav-links">
+<a href="../index.html">Home</a><a href="climate.html">Climate</a><a href="ice-glaciers.html">Ice &amp; Glaciers</a><a href="polar-oceans.html">Polar Oceans</a><a href="biodiversity.html">Biodiversity</a><a href="research.html">Research</a><a href="resources.html" class="active">All Resources</a><a href="map.html">Data &amp; Maps</a>
+</nav><a href="login.html" class="login-btn">Login</a>
+</div></header>
+<section class="search-hero"><div class="search-hero-content">
+<div class="eyebrow"><span></span>POLAR RESOURCE LIBRARY</div>
+<h1>All <span>resources.</span></h1>
+<p>Search, filter and open knowledge, research, datasets, reports and maps from the Polar Science Portal.</p>
+</div></section>
+<main class="search-main">
+<div class="search-box">
+<div class="search-input-wrapper"><span class="search-icon">⌕</span><input id="resource-search" placeholder="Search glacier, climate, Arctic..." autocomplete="off"></div>
+<button id="resource-search-btn" class="search-button">Search</button>
+</div>
+<div class="feature-grid">
+<div class="feature-card"><h3>Category</h3><select id="category-filter"><option value="">All</option><option>Climate</option><option>Ice & Glaciers</option><option>Polar Oceans</option><option>Biodiversity</option><option>Research</option><option>Maps</option></select></div>
+<div class="feature-card"><h3>Region</h3><select id="region-filter"><option value="">All</option><option>Arctic</option><option>Antarctic</option><option>Arctic & Antarctic</option></select></div>
+<div class="feature-card"><h3>Type</h3><select id="type-filter"><option value="">All</option><option value="dataset">Dataset</option><option value="research">Research</option><option value="knowledge">Knowledge</option><option value="report">Report</option><option value="map">Map</option></select></div>
+</div>
+<div id="resource-status" class="section-label">Loading resources...</div>
+<div id="resource-grid" class="search-results-grid"></div>
+</main>
+<script src="../js/api.js"></script><script src="../js/resources.js"></script>
+</body></html>
