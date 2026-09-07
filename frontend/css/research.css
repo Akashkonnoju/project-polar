@@ -184,12 +184,10 @@ body {
         );
 }
 
-.research-grid {
+.research-hero .research-grid {
     position: absolute;
     inset: 0;
-
     opacity: .35;
-
     background-image:
         linear-gradient(
             rgba(100,220,245,.035) 1px,
@@ -829,10 +827,7 @@ body {
 ========================================================= */
 
 .research-grid {
-    display: grid;
-
-    grid-template-columns:
-        repeat(2, 1fr);
+    .research-results .research-grid {
 
     gap: 20px;
 }
