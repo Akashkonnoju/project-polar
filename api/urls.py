@@ -9,6 +9,8 @@ from .views import (
     search,
     register,
     login,
+    topics,
+    resources,
 )
 
 router = DefaultRouter()
@@ -24,4 +26,6 @@ urlpatterns = [
     path('search/', search, name='search'),
     path('register/', register, name='register'),
     path('login/', login, name='login'),
+    path('topics/', topics, name='topics'),
+    path('resources/', resources, name='resources'),
 ]

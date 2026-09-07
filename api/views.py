@@ -117,3 +117,28 @@ def login(request):
     return Response({
         'message': 'Invalid username or password'
     }, status=status.HTTP_401_UNAUTHORIZED)
+    
+@api_view(['GET'])
+def topics(request):
+    topic = request.GET.get('topic', '').strip().lower()
+
+    if not topic:
+        return Response([])
+
+    knowledge = Knowledge.objects.filter(
+        models.Q(category__icontains=topic) |
+        models.Q(title__icontains=topic) |
+        models.Q(description__icontains=topic)
+    )
+
+    return Response(
+        KnowledgeSerializer(knowledge, many=True).data
+    )
+    
+@api_view(['GET'])
+def resources(request):
+    knowledge = Knowledge.objects.all()
+
+    return Response(
+        KnowledgeSerializer(knowledge, many=True).data
+    )
