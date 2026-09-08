@@ -562,72 +562,29 @@ function setupRegionFilters() {
 
 
                 // ==================================
-                // ANTARCTICA
                 // ==================================
+// ANTARCTICA
+// ==================================
 
-                if (
-                    filter === "antarctica"
-                ) {
+if (filter === "antarctica") {
 
-                    filtered =
-                        allLocations.filter(
-                            location => {
+    filtered = allLocations.filter(
+        location => location.region === "Antarctica"
+    );
 
-                                const region =
-                                    String(
-                                        location.region || ""
-                                    ).toLowerCase();
+}
 
+// ==================================
+// ARCTIC
+// ==================================
 
-                                const name =
-                                    String(
-                                        location.name || ""
-                                    ).toLowerCase();
+else if (filter === "arctic") {
 
+    filtered = allLocations.filter(
+        location => location.region === "Arctic"
+    );
 
-                                return (
-                                    region.includes("antarctica") ||
-                                    name.includes("antarctica")
-                                );
-
-                            }
-                        );
-
-                }
-
-
-                // ==================================
-                // ARCTIC
-                // ==================================
-
-                else if (
-                    filter === "arctic"
-                ) {
-
-                    filtered =
-                        allLocations.filter(
-                            location => {
-
-                                const text = `
-
-                                    ${location.name || ""}
-
-                                    ${location.region || ""}
-
-                                    ${location.description || ""}
-
-                                `.toLowerCase();
-
-
-                                return text.includes(
-                                    "arctic"
-                                );
-
-                            }
-                        );
-
-                }
-
+}
 
                 // ==================================
                 // INDIAN SECTOR
