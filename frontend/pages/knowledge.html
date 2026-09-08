@@ -1,555 +1,1159 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Knowledge Repository | PolarConnect</title>
+    <title>Knowledge | PolarConnect</title>
 
+    <!-- Existing project CSS -->
     <link rel="stylesheet" href="../css/style.css">
-    <link rel="stylesheet" href="../css/knowledge.css">
+    <link rel="stylesheet" href="../css/responsive.css">
+
+    <style>
+
+        /* =====================================================
+           KNOWLEDGE HERO
+        ===================================================== */
+
+        .knowledge-hero {
+            min-height: 720px;
+            height: 100vh;
+            max-height: 900px;
+
+            position: relative;
+
+            display: flex;
+            align-items: center;
+
+            overflow: hidden;
+
+            color: #ffffff;
+
+            background-image:
+                linear-gradient(
+                    90deg,
+                    rgba(3, 15, 29, 0.94) 0%,
+                    rgba(3, 15, 29, 0.82) 35%,
+                    rgba(3, 15, 29, 0.52) 65%,
+                    rgba(3, 15, 29, 0.22) 100%
+                ),
+                url("../assets/images/polar-hero-v2.png");
+
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+        }
+
+
+        /* =====================================================
+           HERO CONTENT
+        ===================================================== */
+
+        .knowledge-hero .hero-content {
+
+            position: relative;
+
+            z-index: 2;
+
+            width: min(900px, 90%);
+
+            /* MOVED SLIGHTLY LEFT */
+            margin-left: 3%;
+
+            padding-left: 20px;
+        }
+
+
+        /* =====================================================
+           HERO TAG
+        ===================================================== */
+
+        .knowledge-hero .hero-tag {
+
+            display: inline-flex;
+
+            align-items: center;
+
+            margin-bottom: 28px;
+        }
+
+
+        /* =====================================================
+           HERO TITLE
+           SAME SIZE / STYLE
+        ===================================================== */
+
+        .knowledge-hero h1 {
+
+            margin: 0 0 26px;
+
+            max-width: 1000px;
+
+            font-family: inherit;
+
+            font-size: clamp(58px, 7vw, 104px);
+
+            font-weight: 800;
+
+            letter-spacing: -4px;
+
+            line-height: 0.92;
+
+            color: #ffffff;
+        }
+
+
+        .knowledge-hero h1 span {
+
+            display: block;
+
+            color: #79ddff;
+        }
+
+
+        /* =====================================================
+           DESCRIPTION
+        ===================================================== */
+
+        .knowledge-hero .hero-description {
+
+            max-width: 720px;
+
+            margin-bottom: 30px;
+        }
+
+
+        /* =====================================================
+           SEARCH
+        ===================================================== */
+
+        .knowledge-search {
+
+            width: min(680px, 100%);
+
+            display: flex;
+
+            align-items: center;
+
+            gap: 5px;
+
+            padding: 5px;
+
+            background: rgba(255, 255, 255, 0.97);
+
+            border-radius: 13px;
+
+            box-shadow:
+                0 18px 45px rgba(0, 0, 0, 0.28);
+        }
+
+
+        .knowledge-search input {
+
+            flex: 1;
+
+            min-width: 0;
+
+            border: 0;
+
+            outline: 0;
+
+            background: transparent;
+
+            padding: 17px 20px;
+
+            color: #17324a;
+
+            font-family: inherit;
+
+            font-size: 16px;
+        }
+
+
+        .knowledge-search input::placeholder {
+
+            color: #718096;
+        }
+
+
+        .knowledge-search button {
+
+            border: 0;
+
+            border-radius: 9px;
+
+            padding: 14px 24px;
+
+            background: #78ddff;
+
+            color: #08263b;
+
+            font-family: inherit;
+
+            font-size: 15px;
+
+            font-weight: 700;
+
+            cursor: pointer;
+
+            transition: 0.2s ease;
+        }
+
+
+        .knowledge-search button:hover {
+
+            transform: translateY(-1px);
+
+            background: #91e5ff;
+        }
+
+
+        .knowledge-search button:active {
+
+            transform: translateY(0);
+        }
+
+
+        /* =====================================================
+           CATEGORY FILTERS
+        ===================================================== */
+
+        .knowledge-filters {
+
+            display: flex;
+
+            align-items: center;
+
+            gap: 0;
+
+            margin-top: 36px;
+
+            flex-wrap: wrap;
+        }
+
+
+        .knowledge-filter {
+
+            background: transparent;
+
+            border: 0;
+
+            border-right: 1px solid
+                rgba(121, 221, 255, 0.4);
+
+            padding: 0 22px;
+
+            color: rgba(255, 255, 255, 0.72);
+
+            font-family: inherit;
+
+            font-size: 14px;
+
+            font-weight: 700;
+
+            letter-spacing: 0.5px;
+
+            cursor: pointer;
+
+            transition: 0.2s ease;
+        }
+
+
+        .knowledge-filter:first-child {
+
+            padding-left: 0;
+        }
+
+
+        .knowledge-filter:last-child {
+
+            border-right: 0;
+        }
+
+
+        .knowledge-filter:hover {
+
+            color: #79ddff;
+        }
+
+
+        .knowledge-filter.active {
+
+            color: #79ddff;
+        }
+
+
+        .knowledge-filter span {
+
+            color: #79ddff;
+
+            margin-right: 7px;
+        }
+
+
+        /* =====================================================
+           RESOURCES SECTION
+        ===================================================== */
+
+        #knowledge-resources {
+
+            position: relative;
+
+            padding: 90px 5%;
+
+            background: #071523;
+
+            color: #ffffff;
+        }
+
+
+        .knowledge-section-heading {
+
+            max-width: 850px;
+
+            margin-bottom: 45px;
+        }
+
+
+        .knowledge-section-heading .section-tag {
+
+            color: #79ddff;
+
+            font-size: 13px;
+
+            font-weight: 700;
+
+            letter-spacing: 2px;
+
+            margin-bottom: 12px;
+        }
+
+
+        .knowledge-section-heading h2 {
+
+            margin: 0 0 15px;
+
+            font-size: clamp(38px, 5vw, 64px);
+
+            line-height: 1;
+
+            letter-spacing: -2px;
+        }
+
+
+        .knowledge-section-heading p {
+
+            margin: 0;
+
+            max-width: 700px;
+
+            color: rgba(255, 255, 255, 0.65);
+
+            line-height: 1.7;
+        }
+
+
+        /* =====================================================
+           RESOURCE GRID
+        ===================================================== */
+
+        #knowledge-resource-grid {
+
+            display: grid;
+
+            grid-template-columns:
+                repeat(3, minmax(0, 1fr));
+
+            gap: 25px;
+
+            max-width: 1400px;
+
+            margin: 0 auto;
+        }
+
+
+        /* =====================================================
+           RESOURCE CARD
+        ===================================================== */
+
+        .knowledge-card {
+
+            overflow: hidden;
+
+            background:
+                rgba(255, 255, 255, 0.06);
+
+            border:
+                1px solid
+                rgba(255, 255, 255, 0.09);
+
+            border-radius: 18px;
+
+            transition:
+                transform 0.25s ease,
+                border-color 0.25s ease,
+                box-shadow 0.25s ease;
+        }
+
+
+        .knowledge-card:hover {
+
+            transform: translateY(-6px);
+
+            border-color:
+                rgba(121, 221, 255, 0.45);
+
+            box-shadow:
+                0 20px 50px
+                rgba(0, 0, 0, 0.3);
+        }
+
+
+        /* =====================================================
+           CARD IMAGE
+        ===================================================== */
+
+        .knowledge-card-image {
+
+            position: relative;
+
+            width: 100%;
+
+            height: 230px;
+
+            overflow: hidden;
+
+            background: #10283d;
+        }
+
+
+        .knowledge-card-image img {
+
+            width: 100%;
+
+            height: 100%;
+
+            display: block;
+
+            object-fit: cover;
+
+            transition:
+                transform 0.4s ease;
+        }
+
+
+        .knowledge-card:hover
+        .knowledge-card-image img {
+
+            transform: scale(1.05);
+        }
+
+
+        .knowledge-card-category {
+
+            position: absolute;
+
+            left: 15px;
+
+            top: 15px;
+
+            padding: 7px 11px;
+
+            border-radius: 20px;
+
+            background:
+                rgba(3, 15, 29, 0.82);
+
+            border:
+                1px solid
+                rgba(121, 221, 255, 0.35);
+
+            color: #79ddff;
+
+            font-size: 11px;
+
+            font-weight: 700;
+
+            letter-spacing: 0.5px;
+        }
+
+
+        /* =====================================================
+           CARD BODY
+        ===================================================== */
+
+        .knowledge-card-body {
+
+            padding: 25px;
+        }
+
+
+        .knowledge-card-body h3 {
+
+            margin: 0 0 12px;
+
+            color: #ffffff;
+
+            font-size: 22px;
+
+            line-height: 1.2;
+        }
+
+
+        .knowledge-card-body p {
+
+            min-height: 72px;
+
+            margin: 0 0 20px;
+
+            color:
+                rgba(255, 255, 255, 0.65);
+
+            font-size: 14px;
+
+            line-height: 1.6;
+        }
+
+
+        .knowledge-card-meta {
+
+            display: flex;
+
+            justify-content: space-between;
+
+            gap: 15px;
+
+            padding-top: 15px;
+
+            margin-bottom: 20px;
+
+            border-top:
+                1px solid
+                rgba(255, 255, 255, 0.08);
+
+            color:
+                rgba(255, 255, 255, 0.45);
+
+            font-size: 12px;
+        }
+
+
+        .knowledge-view-btn {
+
+            width: 100%;
+
+            padding: 12px 15px;
+
+            border:
+                1px solid
+                rgba(121, 221, 255, 0.35);
+
+            border-radius: 9px;
+
+            background:
+                rgba(121, 221, 255, 0.08);
+
+            color: #79ddff;
+
+            font-family: inherit;
+
+            font-weight: 700;
+
+            cursor: pointer;
+
+            transition: 0.2s ease;
+        }
+
+
+        .knowledge-view-btn:hover {
+
+            background: #79ddff;
+
+            color: #08263b;
+        }
+
+
+        /* =====================================================
+           NO RESULTS
+        ===================================================== */
+
+        .knowledge-no-results {
+
+            grid-column: 1 / -1;
+
+            text-align: center;
+
+            padding: 80px 20px;
+        }
+
+
+        .knowledge-no-results h3 {
+
+            margin-bottom: 10px;
+
+            font-size: 28px;
+        }
+
+
+        .knowledge-no-results p {
+
+            color:
+                rgba(255, 255, 255, 0.6);
+        }
+
+
+        .knowledge-no-results button {
+
+            margin-top: 20px;
+
+            padding: 12px 22px;
+
+            border: 0;
+
+            border-radius: 8px;
+
+            background: #79ddff;
+
+            color: #08263b;
+
+            font-weight: 700;
+
+            cursor: pointer;
+        }
+
+
+        /* =====================================================
+           MODAL
+        ===================================================== */
+
+        #knowledge-modal {
+
+            position: fixed;
+
+            inset: 0;
+
+            z-index: 9999;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            padding: 20px;
+
+            background:
+                rgba(0, 7, 15, 0.82);
+
+            backdrop-filter:
+                blur(8px);
+
+            opacity: 0;
+
+            visibility: hidden;
+
+            transition: 0.25s ease;
+        }
+
+
+        #knowledge-modal.show {
+
+            opacity: 1;
+
+            visibility: visible;
+        }
+
+
+        .knowledge-modal-box {
+
+            position: relative;
+
+            width: min(700px, 100%);
+
+            max-height: 85vh;
+
+            overflow-y: auto;
+
+            padding: 40px;
+
+            border-radius: 20px;
+
+            background: #10283d;
+
+            border:
+                1px solid
+                rgba(121, 221, 255, 0.25);
+
+            box-shadow:
+                0 30px 80px
+                rgba(0, 0, 0, 0.5);
+
+            transform: translateY(20px);
+
+            transition: 0.25s ease;
+        }
+
+
+        #knowledge-modal.show
+        .knowledge-modal-box {
+
+            transform: translateY(0);
+        }
+
+
+        .knowledge-modal-close {
+
+            position: absolute;
+
+            right: 20px;
+
+            top: 18px;
+
+            width: 40px;
+
+            height: 40px;
+
+            border: 0;
+
+            border-radius: 50%;
+
+            background:
+                rgba(255, 255, 255, 0.08);
+
+            color: #ffffff;
+
+            font-size: 22px;
+
+            cursor: pointer;
+        }
+
+
+        .knowledge-modal-close:hover {
+
+            background: #79ddff;
+
+            color: #08263b;
+        }
+
+
+        #modal-category {
+
+            display: inline-block;
+
+            margin-bottom: 15px;
+
+            color: #79ddff;
+
+            font-size: 12px;
+
+            font-weight: 700;
+
+            letter-spacing: 1.5px;
+        }
+
+
+        #modal-title {
+
+            margin: 0 0 20px;
+
+            color: #ffffff;
+
+            font-size: 36px;
+
+            line-height: 1.1;
+        }
+
+
+        #modal-description {
+
+            color:
+                rgba(255, 255, 255, 0.72);
+
+            line-height: 1.7;
+
+            margin-bottom: 30px;
+        }
+
+
+        .knowledge-modal-details {
+
+            display: grid;
+
+            grid-template-columns:
+                repeat(3, 1fr);
+
+            gap: 15px;
+        }
+
+
+        .knowledge-modal-detail {
+
+            padding: 18px;
+
+            border-radius: 12px;
+
+            background:
+                rgba(255, 255, 255, 0.05);
+        }
+
+
+        .knowledge-modal-detail small {
+
+            display: block;
+
+            margin-bottom: 6px;
+
+            color:
+                rgba(255, 255, 255, 0.4);
+
+            font-size: 11px;
+
+            text-transform: uppercase;
+
+            letter-spacing: 1px;
+        }
+
+
+        .knowledge-modal-detail strong {
+
+            color: #ffffff;
+
+            font-size: 14px;
+        }
+
+
+        /* =====================================================
+           MOBILE
+        ===================================================== */
+
+        @media (max-width: 900px) {
+
+            #knowledge-resource-grid {
+
+                grid-template-columns:
+                    repeat(2, minmax(0, 1fr));
+            }
+
+        }
+
+
+        @media (max-width: 768px) {
+
+            .knowledge-hero {
+
+                min-height: 700px;
+
+                height: auto;
+
+                padding:
+                    100px 0 70px;
+            }
+
+
+            .knowledge-hero .hero-content {
+
+                width: 90%;
+
+                margin-left: 5%;
+
+                padding-left: 0;
+            }
+
+
+            .knowledge-hero h1 {
+
+                font-size:
+                    clamp(48px, 12vw, 72px);
+
+                letter-spacing: -3px;
+            }
+
+
+            .knowledge-search {
+
+                width: 100%;
+            }
+
+
+            .knowledge-filters {
+
+                gap: 15px;
+            }
+
+
+            .knowledge-filter {
+
+                padding: 0 12px;
+            }
+
+
+            .knowledge-filter:first-child {
+
+                padding-left: 0;
+            }
+
+
+            #knowledge-resource-grid {
+
+                grid-template-columns: 1fr;
+            }
+
+
+            #knowledge-resources {
+
+                padding: 70px 5%;
+            }
+
+
+            .knowledge-modal-details {
+
+                grid-template-columns: 1fr;
+            }
+
+
+            .knowledge-modal-box {
+
+                padding: 30px 22px;
+            }
+
+
+            #modal-title {
+
+                font-size: 28px;
+            }
+
+        }
+
+    </style>
 </head>
+
 
 <body>
 
-<!-- =====================================================
-     NAVBAR
-===================================================== -->
+
+    <!-- =====================================================
+         HERO
+    ====================================================== -->
+
+    <section class="knowledge-hero" id="top">
+
+        <div class="hero-content">
+
+            <p class="hero-tag">
+                POLAR SCIENCE • RESEARCH • DISCOVERY
+            </p>
 
 
-
-<!-- =====================================================
-     KNOWLEDGE HERO
-===================================================== -->
-
-<header class="knowledge-hero">
-
-    <div class="knowledge-hero-grid"></div>
-
-    <div class="knowledge-hero-content">
-
-        <div class="eyebrow">
-            <span></span>
-            POLAR KNOWLEDGE REPOSITORY
-        </div>
-
-        <h1>
-            Discover the
-            <strong>Polar World.</strong>
-        </h1>
-
-        <p>
-            Explore a growing collection of scientific knowledge,
-            discoveries, observations and resources from the
-            Arctic and Antarctic.
-        </p>
-
-        <!-- SEARCH -->
-        <div class="knowledge-search">
-
-            <span class="search-icon">⌕</span>
-<input
-    type="text"
-    id="global-search"
-    placeholder="Search polar science, climate, ice, oceans..."
->
-
-<button type="button" id="search-btn">
-    Search
-</button>
-
-        </div>
-
-    </div>
+            <h1>
+                Explore the
+                <span>Polar Knowledge</span>
+            </h1>
 
 
-    <!-- ORBIT VISUAL -->
-
-    <div class="knowledge-orbit">
-
-        <div class="orbit orbit-one"></div>
-        <div class="orbit orbit-two"></div>
-        <div class="orbit orbit-three"></div>
-
-        <div class="orbit-core">
-            <small>POLAR</small>
-            <strong>01</strong>
-        </div>
-
-    </div>
-
-</header>
+            <p class="hero-description">
+                Explore Arctic and Antarctic science, research,
+                knowledge and discoveries through one integrated
+                platform.
+            </p>
 
 
-<!-- =====================================================
-     KNOWLEDGE CONTENT
-===================================================== -->
+            <!-- SEARCH -->
+            <form
+                class="knowledge-search"
+                id="knowledge-search-form"
+            >
 
-<main class="knowledge-content">
+                <input
+                    type="search"
+                    id="knowledge-search"
+                    placeholder="Search polar resources..."
+                    autocomplete="off"
+                >
+
+                <button
+                    type="submit"
+                    id="knowledge-search-button"
+                >
+                    Search
+                </button>
+
+            </form>
 
 
-    <!-- CATEGORY FILTERS -->
+            <!-- FILTERS -->
+            <div class="knowledge-filters">
 
-    <section class="knowledge-filter-section">
+                <button
+                    type="button"
+                    class="knowledge-filter active"
+                    data-category="all"
+                >
+                    <span>00</span>
+                    ALL RESOURCES
+                </button>
 
-        <div class="section-heading">
 
-            <div class="section-label">
-                EXPLORE KNOWLEDGE
+                <button
+                    type="button"
+                    class="knowledge-filter"
+                    data-category="climate"
+                >
+                    <span>01</span>
+                    CLIMATE
+                </button>
+
+
+                <button
+                    type="button"
+                    class="knowledge-filter"
+                    data-category="ice"
+                >
+                    <span>02</span>
+                    ICE &amp; GLACIERS
+                </button>
+
+
+                <button
+                    type="button"
+                    class="knowledge-filter"
+                    data-category="oceans"
+                >
+                    <span>03</span>
+                    POLAR OCEANS
+                </button>
+
+
+                <button
+                    type="button"
+                    class="knowledge-filter"
+                    data-category="wildlife"
+                >
+                    <span>04</span>
+                    POLAR WILDLIFE
+                </button>
+
             </div>
 
+        </div>
+
+    </section>
+
+
+
+    <!-- =====================================================
+         KNOWLEDGE RESOURCES
+    ====================================================== -->
+
+    <section
+        id="knowledge-resources"
+    >
+
+        <div class="knowledge-section-heading">
+
+            <p class="section-tag">
+                POLAR KNOWLEDGE LIBRARY
+            </p>
+
             <h2>
-                Understand the
-                <span>frozen world.</span>
+                Discover Polar Science
             </h2>
 
             <p>
-                Browse scientific resources covering climate,
-                glaciers, oceans, wildlife and polar ecosystems.
+                Explore scientific resources covering polar
+                climate, ice and glaciers, oceans, wildlife
+                and environmental research.
             </p>
 
         </div>
 
 
-        <div class="category-tabs">
+        <div id="knowledge-resource-grid">
 
-            <button type="button" class="active" data-category="all">
-                All Resources
-            </button>
-
-            <button type="button" data-category="climate">
-                Climate
-            </button>
-
-            <button type="button" data-category="ice">
-                Ice & Glaciers
-            </button>
-
-            <button type="button" data-category="oceans">
-                Polar Oceans
-            </button>
-
-            <button type="button" data-category="wildlife">
-                Wildlife
-            </button>
+            <!-- JavaScript loads resources here -->
 
         </div>
 
     </section>
 
 
-    <!-- =================================================
-         FEATURED RESOURCE
-    ================================================== -->
 
-    <section class="featured-resource-section">
+    <!-- =====================================================
+         RESOURCE MODAL
+    ====================================================== -->
 
-        <div class="featured-resource">
+    <div
+        id="knowledge-modal"
+        aria-hidden="true"
+    >
 
-            <div class="featured-image">
+        <div class="knowledge-modal-box">
 
-                <img
-                    src="../assets/images/polar-hero-v2.png"
-                    alt="Polar landscape"
-                >
+            <button
+                type="button"
+                class="knowledge-modal-close"
+                id="knowledge-modal-close"
+                aria-label="Close"
+            >
+                ×
+            </button>
 
-                <div class="image-badge">
-                    FEATURED KNOWLEDGE
-                </div>
 
-            </div>
+            <span id="modal-category">
+                POLAR SCIENCE
+            </span>
 
 
-            <div class="featured-content">
+            <h2 id="modal-title">
+                Resource Title
+            </h2>
 
-                <div class="resource-meta">
-                    POLAR SCIENCE • CLIMATE
-                </div>
 
-                <h2>
-                    Understanding a Changing
-                    Polar Environment
-                </h2>
-
-                <p>
-                    Explore how changes in temperature, sea ice,
-                    glaciers and ocean systems are transforming
-                    Earth's polar regions.
-                </p>
-
-                <div class="resource-info">
-
-                    <span>
-                        Scientific Resource
-                    </span>
-
-                    <span>
-                        •
-                    </span>
-
-                    <span>
-                        Updated 2026
-                    </span>
-
-                </div>
-
-                <a href="#" class="resource-link">
-                    Explore Resource
-                    <span>→</span>
-                </a>
-
-            </div>
-
-        </div>
-
-    </section>
-
-
-    <!-- =================================================
-         RESOURCE LIBRARY
-    ================================================== -->
-
-    <section class="resource-library">
-
-        <div class="library-heading">
-
-            <div>
-
-                <div class="section-label">
-                    KNOWLEDGE LIBRARY
-                </div>
-
-                <h2>
-                    Explore polar science.
-                </h2>
-
-            </div>
-
-            <div class="library-count">
-                <strong>250+</strong>
-                resources
-            </div>
-
-        </div>
-
-
-        <div class="resource-grid">
-
-
-            <!-- CARD 1 -->
-
-            <article class="resource-card">
-
-                <div class="card-image">
-
-                    <img
-                        src="../assets/images/polar-hero-v2.png"
-                        alt="Polar climate"
-                    >
-
-                    <span class="card-category">
-                        CLIMATE
-                    </span>
-
-                </div>
-
-                <div class="card-body">
-
-                    <div class="meta">
-                        CLIMATE SCIENCE
-                    </div>
-
-                    <h3>
-                        Polar Climate Systems
-                    </h3>
-
-                    <p>
-                        Discover how atmospheric and ocean
-                        processes influence polar climate.
-                    </p>
-
-                    <a href="#" class="read-more">
-                        Read more →
-                    </a>
-
-                </div>
-
-            </article>
-
-
-            <!-- CARD 2 -->
-
-            <article class="resource-card">
-
-                <div class="card-image">
-
-                    <img
-                        src="../assets/images/polar-hero-v2.png"
-                        alt="Ice and glaciers"
-                    >
-
-                    <span class="card-category">
-                        GLACIERS
-                    </span>
-
-                </div>
-
-                <div class="card-body">
-
-                    <div class="meta">
-                        ICE SCIENCE
-                    </div>
-
-                    <h3>
-                        Ice Sheets & Glaciers
-                    </h3>
-
-                    <p>
-                        Learn about glacier dynamics, ice sheets
-                        and changing polar landscapes.
-                    </p>
-
-                    <a href="#" class="read-more">
-                        Read more →
-                    </a>
-
-                </div>
-
-            </article>
-
-
-            <!-- CARD 3 -->
-
-            <article class="resource-card">
-
-                <div class="card-image">
-
-                    <img
-                        src="../assets/images/polar-hero-v2.png"
-                        alt="Polar ocean"
-                    >
-
-                    <span class="card-category">
-                        OCEANS
-                    </span>
-
-                </div>
-
-                <div class="card-body">
-
-                    <div class="meta">
-                        OCEAN SCIENCE
-                    </div>
-
-                    <h3>
-                        Polar Ocean Systems
-                    </h3>
-
-                    <p>
-                        Explore the role of polar oceans in
-                        global circulation and climate.
-                    </p>
-
-                    <a href="#" class="read-more">
-                        Read more →
-                    </a>
-
-                </div>
-
-            </article>
-
-
-            <!-- CARD 4 -->
-
-            <article class="resource-card">
-
-                <div class="card-image">
-
-                    <img
-                        src="../assets/images/polar-hero-v2.png"
-                        alt="Polar wildlife"
-                    >
-
-                    <span class="card-category">
-                        WILDLIFE
-                    </span>
-
-                </div>
-
-                <div class="card-body">
-
-                    <div class="meta">
-                        ECOSYSTEMS
-                    </div>
-
-                    <h3>
-                        Life at the Poles
-                    </h3>
-
-                    <p>
-                        Understand polar biodiversity and the
-                        species adapted to extreme environments.
-                    </p>
-
-                    <a href="#" class="read-more">
-                        Read more →
-                    </a>
-
-                </div>
-
-            </article>
-
-
-            <!-- CARD 5 -->
-
-            <article class="resource-card">
-
-                <div class="card-image">
-
-                    <img
-                        src="../assets/images/polar-hero-v2.png"
-                        alt="Antarctic research"
-                    >
-
-                    <span class="card-category">
-                        RESEARCH
-                    </span>
-
-                </div>
-
-                <div class="card-body">
-
-                    <div class="meta">
-                        FIELD SCIENCE
-                    </div>
-
-                    <h3>
-                        Polar Field Research
-                    </h3>
-
-                    <p>
-                        Explore how scientists collect observations
-                        from Earth's most remote regions.
-                    </p>
-
-                    <a href="#" class="read-more">
-                        Read more →
-                    </a>
-
-                </div>
-
-            </article>
-
-
-            <!-- CARD 6 -->
-
-            <article class="resource-card">
-
-                <div class="card-image">
-
-                    <img
-                        src="../assets/images/polar-hero-v2.png"
-                        alt="Polar observations"
-                    >
-
-                    <span class="card-category">
-                        OBSERVATIONS
-                    </span>
-
-                </div>
-
-                <div class="card-body">
-
-                    <div class="meta">
-                        POLAR DATA
-                    </div>
-
-                    <h3>
-                        Observing the Poles
-                    </h3>
-
-                    <p>
-                        Discover satellite observations,
-                        measurements and long-term polar datasets.
-                    </p>
-
-                    <a href="#" class="read-more">
-                        Read more →
-                    </a>
-
-                </div>
-
-            </article>
-
-        </div>
-
-    </section>
-
-</main>
-
-
-<!-- =====================================================
-     FOOTER
-===================================================== -->
-
-<footer class="site-footer">
-
-    <div class="footer-container">
-
-        <div class="footer-brand">
-
-            <a href="../index.html" class="logo">
-                <span class="logo-dot"></span>
-                Polar<span>Connect</span>
-            </a>
-
-            <p>
-                One integrated gateway to polar science,
-                research, knowledge and discovery.
+            <p id="modal-description">
+                Resource description.
             </p>
 
-        </div>
+
+            <div class="knowledge-modal-details">
+
+                <div class="knowledge-modal-detail">
+
+                    <small>
+                        Author
+                    </small>
+
+                    <strong id="modal-author">
+                        -
+                    </strong>
+
+                </div>
 
 
-        <div class="footer-links">
+                <div class="knowledge-modal-detail">
 
-            <div>
+                    <small>
+                        Category
+                    </small>
 
-                <h4>
-                    Explore
-                </h4>
+                    <strong id="modal-category-detail">
+                        -
+                    </strong>
 
-                <a href="../index.html">
-                    Home
-                </a>
+                </div>
 
-                <a href="knowledge.html">
-                    Knowledge
-                </a>
 
-                <a href="research.html">
-                    Research
-                </a>
+                <div class="knowledge-modal-detail">
 
-                <a href="media.html">
-                    Media
-                </a>
+                    <small>
+                        Published
+                    </small>
 
-            </div>
+                    <strong id="modal-date">
+                        -
+                    </strong>
 
-            <div>
-
-                <h4>
-                    Portal
-                </h4>
-
-                <a href="map.html">
-                    Polar Map
-                </a>
-
-                <a href="login.html">
-                    Login
-                </a>
+                </div>
 
             </div>
 
@@ -558,28 +1162,16 @@
     </div>
 
 
-    <div class="footer-bottom">
 
-        <span>
-            © 2026 PolarConnect
-        </span>
+    <!-- =====================================================
+         JAVASCRIPT
+    ====================================================== -->
 
-        <span>
-            Polar Science • Research • Discovery
-        </span>
+    <script src="../js/api.js"></script>
 
-    </div>
+    <script src="../js/knowledge.js"></script>
 
-</footer>
-
-
-<!-- =====================================================
-     JAVASCRIPT
-===================================================== -->
-
-<script src="../js/api.js"></script>
-<script src="../js/knowledge.js"></script>
-<script src="../js/search.js"></script>
 
 </body>
+
 </html>
