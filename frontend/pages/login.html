@@ -5,22 +5,155 @@
 
     <meta charset="UTF-8">
 
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
 
     <title>Login | PolarConnect</title>
 
-    <link rel="stylesheet" href="../css/style.css">
-    <link rel="stylesheet" href="../css/login.css">
+
+    <!-- EXISTING CSS -->
+
+    <link
+        rel="stylesheet"
+        href="../css/style.css"
+    >
+
+    <link
+        rel="stylesheet"
+        href="../css/login.css"
+    >
+
+
+    <!-- =====================================================
+         NAVBAR VISIBILITY FIX
+         Does NOT modify style.css
+    ====================================================== -->
+
+    <style>
+
+        .login-page .navbar {
+
+            position: relative;
+
+            z-index: 10000;
+
+            opacity: 1;
+
+            visibility: visible;
+
+        }
+
+
+        .login-page .navbar .container {
+
+            position: relative;
+
+            z-index: 10001;
+
+        }
+
+
+        .login-page .navbar .logo {
+
+            text-decoration: none;
+
+            cursor: pointer;
+
+        }
+
+
+        .login-page .navbar .nav-links {
+
+            list-style: none;
+
+        }
+
+
+        .login-page .navbar .nav-links a {
+
+            text-decoration: none;
+
+            cursor: pointer;
+
+        }
+
+
+        .login-page .navbar .nav-actions {
+
+            position: relative;
+
+            z-index: 10002;
+
+        }
+
+
+        .login-page .navbar .nav-login {
+
+            text-decoration: none;
+
+            cursor: pointer;
+
+        }
+
+
+        /* MOBILE NAVIGATION */
+
+        @media (max-width: 900px) {
+
+            .login-page .navbar .nav-links {
+
+                gap: 14px;
+
+                flex-wrap: wrap;
+
+            }
+
+        }
+
+    </style>
 
 </head>
+
 
 
 <body class="login-page">
 
 
     <!-- =====================================================
+         NAVBAR
+    ====================================================== -->
+
+    <header>
+
+        <nav class="navbar">
+
+            <div class="container">
+
+
+                <!-- LOGO -->
+
+                <a
+                    href="../index.html"
+                    class="logo"
+                >
+                    Polar<span>Connect</span>
+                </a>
+
+
+
+                <!-- NAVIGATION -->
+            </nav>
+                
+
+    </header>
+
+
+
+    <!-- =====================================================
          LOGIN MAIN
-    ===================================================== -->
+    ====================================================== -->
 
     <main class="login-main">
 
@@ -113,6 +246,7 @@
             </div>
 
 
+
             <!-- SCIENCE DECORATION -->
 
             <div class="orbit orbit-one"></div>
@@ -175,7 +309,10 @@
                      LOGIN FORM
                 ================================================= -->
 
-                <form class="login-form">
+                <form
+                    class="login-form"
+                    id="login-form"
+                >
 
 
                     <!-- USERNAME -->
@@ -203,7 +340,7 @@
                             <input
                                 type="text"
                                 id="email"
-                                name="email"
+                                name="username"
                                 placeholder="Enter username"
                                 autocomplete="username"
                                 required
@@ -285,6 +422,7 @@
                             <input
                                 type="checkbox"
                                 name="remember"
+                                id="remember"
                             >
 
 
@@ -314,6 +452,7 @@
                     <button
                         type="submit"
                         class="login-button"
+                        id="login-button"
                     >
 
                         <span>
@@ -346,7 +485,7 @@
 
 
                 <!-- =================================================
-                     REGISTER
+                     CREATE ACCOUNT
                 ================================================== -->
 
                 <div class="register-box">

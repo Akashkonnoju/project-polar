@@ -5,12 +5,18 @@
 document.addEventListener("DOMContentLoaded", () => {
 
     const loginForm =
-        document.querySelector(".login-form");
+        document.querySelector("#login-form");
+
 
     if (!loginForm) {
-        console.error("Login form not found.");
+
+        console.error(
+            "Login form not found."
+        );
+
         return;
     }
+
 
 
     loginForm.addEventListener(
@@ -20,48 +26,67 @@ document.addEventListener("DOMContentLoaded", () => {
             event.preventDefault();
 
 
-            const emailInput =
+
+            // ======================================
+            // GET INPUTS
+            // ======================================
+
+            const usernameInput =
                 document.getElementById("email");
 
             const passwordInput =
                 document.getElementById("password");
 
+            const rememberInput =
+                document.getElementById("remember");
+
+
             const loginButton =
-                loginForm.querySelector(
-                    ".login-button"
+                document.getElementById(
+                    "login-button"
                 );
 
 
-            const email =
-                emailInput.value.trim();
+
+            // ======================================
+            // VALUES
+            // ======================================
+
+            const username =
+                usernameInput.value.trim();
 
             const password =
                 passwordInput.value;
 
 
+
             // ======================================
             // VALIDATION
             // ======================================
-if (!email || !password) {
 
-    alert(
-        "Please enter your email and password."
-    );
+            if (!username) {
 
-    return;
-}
+                alert(
+                    "Please enter your username."
+                );
+
+                usernameInput.focus();
+
+                return;
+            }
 
 
-if (!emailInput.checkValidity()) {
+            if (!password) {
 
-    alert(
-        "Please enter a valid email address."
-    );
+                alert(
+                    "Please enter your password."
+                );
 
-    emailInput.focus();
+                passwordInput.focus();
 
-    return;
-}
+                return;
+            }
+
 
 
             // ======================================
@@ -78,32 +103,62 @@ if (!emailInput.checkValidity()) {
 
 
             if (buttonText) {
+
                 buttonText.textContent =
                     "Signing in...";
+
             }
+
 
 
             try {
 
-                // Backend expects username.
-                // Email is sent as username.
-console.log("Sending login:", {
-    username: email,
-    password: password
-});
+
+                // ==================================
+                // CHECK API FUNCTION
+                // ==================================
+
+                if (
+                    typeof loginUser !==
+                    "function"
+                ) {
+
+                    throw new Error(
+                        "loginUser() function not found. Check api.js."
+                    );
+
+                }
+
+
+
+                // ==================================
+                // SEND LOGIN REQUEST
+                // ==================================
+
+                console.log(
+                    "Sending login request:",
+                    {
+                        username: username
+                    }
+                );
+
+
                 const result =
                     await loginUser({
 
-                        username: email,
+                        username: username,
+
                         password: password
 
                     });
+
 
 
                 console.log(
                     "Login API response:",
                     result
                 );
+
 
 
                 // ==================================
@@ -118,51 +173,112 @@ console.log("Sending login:", {
                     )
                 ) {
 
+
+                    // --------------------------------
+                    // SAVE USER
+                    // --------------------------------
+
                     if (result.user) {
 
                         localStorage.setItem(
+
                             "polarUser",
+
                             JSON.stringify(
                                 result.user
                             )
+
                         );
 
                     }
 
 
-                    const username =
+
+                    // --------------------------------
+                    // REMEMBER LOGIN
+                    // --------------------------------
+
+                    if (
+                        rememberInput &&
+                        rememberInput.checked
+                    ) {
+
+                        localStorage.setItem(
+                            "polarRememberMe",
+                            "true"
+                        );
+
+                    }
+
+                    else {
+
+                        localStorage.removeItem(
+                            "polarRememberMe"
+                        );
+
+                    }
+
+
+
+                    // --------------------------------
+                    // USERNAME FOR MESSAGE
+                    // --------------------------------
+
+                    const loggedUsername =
                         result.user &&
                         result.user.username
-                            ? result.user.username
-                            : email;
 
+                            ? result.user.username
+
+                            : username;
+
+
+
+                    // --------------------------------
+                    // SUCCESS MESSAGE
+                    // --------------------------------
 
                     alert(
-                        `Welcome back, ${username}!`
+                        `Welcome back, ${loggedUsername}!`
                     );
 
+
+
+                    // --------------------------------
+                    // GO HOME
+                    // --------------------------------
 
                     window.location.href =
                         "../index.html";
 
 
                     return;
+
                 }
 
 
+
                 // ==================================
-                // FAILED LOGIN
+                // LOGIN FAILED
                 // ==================================
 
                 alert(
+
                     result &&
                     result.message
+
                         ? result.message
+
                         : "Invalid username or password."
+
                 );
 
 
-            } catch (error) {
+            }
+
+
+            catch (error) {
+
 
                 console.error(
                     "Login API error:",
@@ -171,11 +287,18 @@ console.log("Sending login:", {
 
 
                 alert(
-                    "Unable to connect to the login service."
+                    "Unable to connect to the login service. Please make sure the backend server is running."
                 );
 
+            }
 
-            } finally {
+
+            finally {
+
+
+                // ==================================
+                // RESTORE BUTTON
+                // ==================================
 
                 loginButton.disabled = false;
 
@@ -190,6 +313,7 @@ console.log("Sending login:", {
             }
 
         }
+
     );
 
 });
