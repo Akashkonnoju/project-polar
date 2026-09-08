@@ -26,88 +26,70 @@
     >
 
 
-    <!-- =====================================================
-         NAVBAR VISIBILITY FIX
-         Does NOT modify style.css
-    ====================================================== -->
+    <!-- =========================================
+         LOGIN PAGE CUSTOM FIX
+    ========================================== -->
 
     <style>
 
+        /* =========================================
+           REMOVE NAVIGATION LINKS
+        ========================================== */
+
+        .login-page .navbar .nav-links,
+        .login-page .navbar .nav-actions {
+            display: none !important;
+        }
+
+
+        /* =========================================
+           KEEP LOGO CLICKABLE
+        ========================================== */
+
+        .login-page .navbar .logo {
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+
+        /* =========================================
+           NAVBAR
+        ========================================== */
+
         .login-page .navbar {
-
             position: relative;
-
             z-index: 10000;
-
-            opacity: 1;
-
-            visibility: visible;
-
         }
 
 
         .login-page .navbar .container {
-
             position: relative;
-
             z-index: 10001;
 
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
         }
 
 
-        .login-page .navbar .logo {
+        /* =========================================
+           USERNAME INPUT
+        ========================================== */
 
-            text-decoration: none;
-
-            cursor: pointer;
-
+        .login-page #email {
+            width: 100%;
         }
 
 
-        .login-page .navbar .nav-links {
-
-            list-style: none;
-
-        }
-
-
-        .login-page .navbar .nav-links a {
-
-            text-decoration: none;
-
-            cursor: pointer;
-
-        }
-
-
-        .login-page .navbar .nav-actions {
-
-            position: relative;
-
-            z-index: 10002;
-
-        }
-
-
-        .login-page .navbar .nav-login {
-
-            text-decoration: none;
-
-            cursor: pointer;
-
-        }
-
-
-        /* MOBILE NAVIGATION */
+        /* =========================================
+           MOBILE
+        ========================================== */
 
         @media (max-width: 900px) {
 
-            .login-page .navbar .nav-links {
-
-                gap: 14px;
-
-                flex-wrap: wrap;
-
+            .login-page .navbar .nav-links,
+            .login-page .navbar .nav-actions {
+                display: none !important;
             }
 
         }
@@ -121,9 +103,9 @@
 <body class="login-page">
 
 
-    <!-- =====================================================
+    <!-- =========================================
          NAVBAR
-    ====================================================== -->
+    ========================================== -->
 
     <header>
 
@@ -132,7 +114,7 @@
             <div class="container">
 
 
-                <!-- LOGO -->
+                <!-- LOGO ONLY -->
 
                 <a
                     href="../index.html"
@@ -142,25 +124,24 @@
                 </a>
 
 
+            </div>
 
-                <!-- NAVIGATION -->
-            </nav>
-                
+        </nav>
 
     </header>
 
 
 
-    <!-- =====================================================
+    <!-- =========================================
          LOGIN MAIN
-    ====================================================== -->
+    ========================================== -->
 
     <main class="login-main">
 
 
-        <!-- =================================================
+        <!-- =====================================
              LEFT VISUAL
-        ================================================= -->
+        ====================================== -->
 
         <section class="login-visual">
 
@@ -214,6 +195,7 @@
                     </div>
 
 
+
                     <div class="visual-stat">
 
                         <strong>
@@ -225,6 +207,7 @@
                         </span>
 
                     </div>
+
 
 
                     <div class="visual-stat">
@@ -264,9 +247,9 @@
 
 
 
-        <!-- =================================================
+        <!-- =====================================
              RIGHT LOGIN PANEL
-        ================================================= -->
+        ====================================== -->
 
         <section class="login-panel">
 
@@ -305,9 +288,9 @@
 
 
 
-                <!-- =================================================
+                <!-- =================================
                      LOGIN FORM
-                ================================================= -->
+                ================================== -->
 
                 <form
                     class="login-form"
@@ -320,7 +303,7 @@
                     <div class="form-group">
 
 
-                        <label for="email">
+                        <label for="username">
 
                             Username
 
@@ -339,7 +322,7 @@
 
                             <input
                                 type="text"
-                                id="email"
+                                id="username"
                                 name="username"
                                 placeholder="Enter username"
                                 autocomplete="username"
@@ -456,11 +439,16 @@
                     >
 
                         <span>
+
                             Sign In
+
                         </span>
 
+
                         <span class="button-arrow">
+
                             →
+
                         </span>
 
                     </button>
@@ -470,23 +458,25 @@
 
 
 
-                <!-- =================================================
+                <!-- =================================
                      DIVIDER
-                ================================================== -->
+                ================================== -->
 
                 <div class="login-divider">
 
                     <span>
+
                         OR
+
                     </span>
 
                 </div>
 
 
 
-                <!-- =================================================
+                <!-- =================================
                      CREATE ACCOUNT
-                ================================================== -->
+                ================================== -->
 
                 <div class="register-box">
 
@@ -503,7 +493,9 @@
                         Create an account
 
                         <span>
+
                             →
+
                         </span>
 
                     </a>
@@ -513,9 +505,9 @@
 
 
 
-                <!-- =================================================
+                <!-- =================================
                      SECURITY NOTE
-                ================================================== -->
+                ================================== -->
 
                 <div class="security-note">
 
@@ -561,9 +553,9 @@
 
 
 
-    <!-- =====================================================
+    <!-- =========================================
          FOOTER
-    ===================================================== -->
+    ========================================== -->
 
     <footer class="login-footer">
 
@@ -586,9 +578,9 @@
 
 
 
-    <!-- =====================================================
+    <!-- =========================================
          JAVASCRIPT
-    ===================================================== -->
+    ========================================== -->
 
     <script src="../js/api.js"></script>
 

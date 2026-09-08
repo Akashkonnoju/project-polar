@@ -4,77 +4,133 @@
 <head>
 
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Create Account | PolarConnect</title>
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
 
-    <link rel="stylesheet" href="../css/style.css">
-    <link rel="stylesheet" href="../css/login.css">
+    <title>Register | PolarConnect</title>
+
+
+    <!-- EXISTING CSS -->
+
+    <link
+        rel="stylesheet"
+        href="../css/style.css"
+    >
+
+    <link
+        rel="stylesheet"
+        href="../css/login.css"
+    >
+
+
+    <style>
+.register-page .visual-content h1 {
+    color: #ffffff !important;
+}
+
+.register-page .visual-content h1 span {
+    color: #8edfff !important;
+}
+
+.register-page .login-heading h2 {
+    color: #ffffff !important;
+}
+        /* =========================================
+           REGISTER PAGE NAVBAR
+        ========================================== */
+
+        .register-page .navbar .nav-links,
+        .register-page .navbar .nav-actions {
+            display: none !important;
+        }
+
+
+        .register-page .navbar .logo {
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+
+        .register-page .navbar {
+            position: relative;
+            z-index: 10000;
+        }
+
+
+        .register-page .navbar .container {
+            position: relative;
+            z-index: 10001;
+
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+        }
+
+
+        @media (max-width: 900px) {
+
+            .register-page .navbar .nav-links,
+            .register-page .navbar .nav-actions {
+                display: none !important;
+            }
+
+        }
+
+    </style>
 
 </head>
 
 
-<body class="login-page">
+<body class="register-page">
 
 
-    <!-- ================= NAVBAR ================= -->
+    <!-- =========================================
+         NAVBAR
+    ========================================== -->
 
-    <nav class="navbar">
+    <header>
 
-        <div class="nav-container">
+        <nav class="navbar">
 
-            <a href="../index.html" class="logo">
-                <span class="logo-dot"></span>
-                Polar<span>Connect</span>
-            </a>
+            <div class="container">
 
 
-            <div class="nav-links">
+                <!-- LOGO ONLY -->
 
-                <a href="../index.html">
-                    Home
+                <a
+                    href="../index.html"
+                    class="logo"
+                >
+                    Polar<span>Connect</span>
                 </a>
 
-                <a href="knowledge.html">
-                    Knowledge
-                </a>
-
-                <a href="research.html">
-                    Research
-                </a>
-
-                <a href="media.html">
-                    Media
-                </a>
-
-                <a href="map.html">
-                    Polar Map
-                </a>
 
             </div>
 
+        </nav>
 
-            <a href="login.html" class="nav-login">
-                Login
-            </a>
-
-        </div>
-
-    </nav>
+    </header>
 
 
 
-    <!-- ================= REGISTER MAIN ================= -->
+    <!-- =========================================
+         REGISTER CONTENT
+    ========================================== -->
+
+    <!--
+         KEEP YOUR EXISTING REGISTER FORM
+         EXACTLY AS IT IS BELOW THIS POINT.
+    -->
+
 
     <main class="login-main">
-
-
-        <!-- LEFT VISUAL -->
 
         <section class="login-visual">
 
             <div class="visual-overlay"></div>
-
 
             <div class="visual-content">
 
@@ -82,79 +138,25 @@
                     POLAR SCIENCE PORTAL
                 </span>
 
-
                 <h1>
-
                     Join the
-                    <span>Discovery.</span>
-
+                    <span>
+                        Exploration.
+                    </span>
                 </h1>
 
-
                 <p>
-
                     Create your PolarConnect account and
-                    explore polar research, scientific knowledge,
-                    expedition media and discoveries.
-
+                    explore polar research, scientific
+                    knowledge, expedition media and
+                    discoveries.
                 </p>
 
-
-                <div class="visual-stats">
-
-                    <div class="visual-stat">
-
-                        <strong>250+</strong>
-
-                        <span>
-                            Knowledge
-                        </span>
-
-                    </div>
-
-
-                    <div class="visual-stat">
-
-                        <strong>150+</strong>
-
-                        <span>
-                            Research
-                        </span>
-
-                    </div>
-
-
-                    <div class="visual-stat">
-
-                        <strong>20+</strong>
-
-                        <span>
-                            Locations
-                        </span>
-
-                    </div>
-
-                </div>
-
             </div>
-
-
-            <div class="orbit orbit-one"></div>
-
-            <div class="orbit orbit-two"></div>
-
-
-            <div class="science-node node-one"></div>
-
-            <div class="science-node node-two"></div>
-
-            <div class="science-node node-three"></div>
 
         </section>
 
 
-
-        <!-- ================= REGISTER PANEL ================= -->
 
         <section class="login-panel">
 
@@ -167,22 +169,18 @@
                         CREATE ACCOUNT
                     </span>
 
-
                     <h2>
                         Join PolarConnect
                     </h2>
 
-
                     <p>
-                        Create an account to explore
-                        the polar science portal.
+                        Create your account to continue
+                        exploring PolarConnect.
                     </p>
 
                 </div>
 
 
-
-                <!-- ================= REGISTER FORM ================= -->
 
                 <form
                     class="login-form"
@@ -190,27 +188,24 @@
                 >
 
 
-                    <!-- USERNAME -->
-
                     <div class="form-group">
 
                         <label for="username">
                             Username
                         </label>
 
-
                         <div class="input-wrapper">
 
                             <span class="input-icon">
                                 @
                             </span>
-
 
                             <input
                                 type="text"
                                 id="username"
                                 name="username"
-                                placeholder="Choose a username"
+                                placeholder="Enter username"
+                                autocomplete="username"
                                 required
                             >
 
@@ -220,14 +215,11 @@
 
 
 
-                    <!-- EMAIL -->
-
                     <div class="form-group">
 
                         <label for="email">
-                            Email Address
+                            Email
                         </label>
-
 
                         <div class="input-wrapper">
 
@@ -235,12 +227,12 @@
                                 @
                             </span>
 
-
                             <input
                                 type="email"
                                 id="email"
                                 name="email"
-                                placeholder="you@example.com"
+                                placeholder="Enter your email"
+                                autocomplete="email"
                                 required
                             >
 
@@ -250,14 +242,11 @@
 
 
 
-                    <!-- PASSWORD -->
-
                     <div class="form-group">
 
-                        <label for="register-password">
+                        <label for="password">
                             Password
                         </label>
-
 
                         <div class="input-wrapper">
 
@@ -265,12 +254,12 @@
                                 •
                             </span>
 
-
                             <input
                                 type="password"
-                                id="register-password"
+                                id="password"
                                 name="password"
-                                placeholder="Create a password"
+                                placeholder="Enter your password"
+                                autocomplete="new-password"
                                 required
                             >
 
@@ -279,8 +268,6 @@
                     </div>
 
 
-
-                    <!-- CONFIRM PASSWORD -->
 
                     <div class="form-group">
 
@@ -288,19 +275,18 @@
                             Confirm Password
                         </label>
 
-
                         <div class="input-wrapper">
 
                             <span class="input-icon">
                                 •
                             </span>
 
-
                             <input
                                 type="password"
                                 id="confirm-password"
                                 name="confirm_password"
                                 placeholder="Confirm your password"
+                                autocomplete="new-password"
                                 required
                             >
 
@@ -309,8 +295,6 @@
                     </div>
 
 
-
-                    <!-- REGISTER BUTTON -->
 
                     <button
                         type="submit"
@@ -329,11 +313,15 @@
                     </button>
 
 
+                    <div
+                        id="register-message"
+                        class="forgot-message"
+                    ></div>
+
+
                 </form>
 
 
-
-                <!-- ================= DIVIDER ================= -->
 
                 <div class="login-divider">
 
@@ -345,14 +333,11 @@
 
 
 
-                <!-- ================= LOGIN LINK ================= -->
-
                 <div class="register-box">
 
                     <p>
                         Already have an account?
                     </p>
-
 
                     <a href="login.html">
 
@@ -367,35 +352,6 @@
                 </div>
 
 
-
-                <!-- ================= SECURITY NOTE ================= -->
-
-                <div class="security-note">
-
-                    <div class="security-icon">
-                        ✓
-                    </div>
-
-
-                    <div>
-
-                        <strong>
-                            Protected access
-                        </strong>
-
-
-                        <p>
-
-                            Your account information is
-                            securely protected by PolarConnect.
-
-                        </p>
-
-                    </div>
-
-                </div>
-
-
             </div>
 
         </section>
@@ -404,27 +360,14 @@
 
 
 
-    <!-- ================= FOOTER ================= -->
-
-    <footer class="login-footer">
-
-        <span>
-            © 2026 PolarConnect
-        </span>
-
-
-        <span>
-            Integrated Polar Science Portal
-        </span>
-
-    </footer>
-
-
-
-    <!-- ================= JAVASCRIPT ================= -->
+    <!-- =========================================
+         JAVASCRIPT
+    ========================================== -->
 
     <script src="../js/api.js"></script>
+
     <script src="../js/register.js"></script>
+
 
 </body>
 
