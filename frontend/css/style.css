@@ -1743,6 +1743,7 @@ footer::before {
 }
 /* =========================================================
    FINAL POLAR NAVBAR FIX
+   Supports both .container and .nav-container
    ========================================================= */
 
 .navbar {
@@ -1754,16 +1755,15 @@ footer::before {
     z-index: 1000;
 }
 
-.navbar > .container {
+/* Supports both old and new navbar HTML */
+.navbar > .container,
+.navbar > .nav-container {
     width: min(1200px, 92%);
     height: 100%;
-
     margin: 0 auto;
-
     display: flex;
     align-items: center;
     justify-content: space-between;
-
     gap: 30px;
 }
 
@@ -1773,11 +1773,8 @@ footer::before {
 .navbar-logo {
     display: flex;
     align-items: center;
-
     flex-shrink: 0;
-
     white-space: nowrap;
-
     text-decoration: none;
 }
 
@@ -1787,44 +1784,29 @@ footer::before {
     display: flex;
     align-items: center;
     justify-content: center;
-
     gap: 30px;
-
     flex: 1;
-
     margin: 0;
     padding: 0;
-
     list-style: none;
 }
 
 .navbar .nav-links a {
     display: inline-flex;
     align-items: center;
-
     height: 78px;
-
     white-space: nowrap;
-
     text-decoration: none;
 }
 
 /* RIGHT SIDE */
 
-.navbar .nav-actions {
-    display: flex;
-    align-items: center;
-
-    flex-shrink: 0;
-
-    gap: 14px;
-}
-
-.navbar .nav-login {
+.navbar .nav-actions,
+.navbar .login-btn {
     display: inline-flex;
     align-items: center;
     justify-content: center;
-
+    flex-shrink: 0;
     white-space: nowrap;
 }
 
@@ -1836,26 +1818,21 @@ footer::before {
 
 .navbar .nav-links a.active::after {
     content: "";
-
     position: absolute;
-
     left: 0;
     right: 0;
     bottom: 16px;
-
     height: 2px;
-
     background: #4fdcff;
-
-    box-shadow:
-        0 0 12px rgba(79, 220, 255, 0.6);
+    box-shadow: 0 0 12px rgba(79, 220, 255, 0.6);
 }
 
 /* PREVENT FLEX ITEMS FROM COLLAPSING */
 
 .navbar .logo,
 .navbar .nav-links,
-.navbar .nav-actions {
+.navbar .nav-actions,
+.navbar .login-btn {
     min-width: 0;
 }
 
@@ -1865,7 +1842,8 @@ footer::before {
 
 @media (max-width: 900px) {
 
-    .navbar > .container {
+    .navbar > .container,
+    .navbar > .nav-container {
         gap: 15px;
     }
 
@@ -1885,20 +1863,17 @@ footer::before {
         min-height: 70px;
     }
 
-    .navbar > .container {
+    .navbar > .container,
+    .navbar > .nav-container {
         flex-wrap: wrap;
         padding: 15px 0;
     }
 
     .navbar .nav-links {
         order: 3;
-
         flex-basis: 100%;
-
         justify-content: flex-start;
-
         overflow-x: auto;
-
         padding-bottom: 5px;
     }
 
