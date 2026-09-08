@@ -10,158 +10,91 @@
     <link rel="stylesheet" href="../css/style.css">
     <link rel="stylesheet" href="../css/research.css">
 
-    <!-- =====================================================
-         RESEARCH NAVBAR VISIBILITY FIX
-         No changes made to style.css or research.css
-    ====================================================== -->
     <style>
 
-        header:first-of-type {
-            position: relative;
-            z-index: 1000;
-        }
+        /* =====================================================
+           HERO IMAGE
+        ===================================================== */
 
-        header:first-of-type .navbar {
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-
-            z-index: 10000;
-
-            visibility: visible;
-            opacity: 1;
-        }
-
-        header:first-of-type .navbar .container {
-            width: min(1320px, 92%);
-            min-height: 120px;
-
-            margin: 0 auto;
-
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-
-            gap: 28px;
-
-            position: relative;
-            z-index: 10001;
-        }
-
-        header:first-of-type .logo {
-            display: inline-block;
-
-            color: #ffffff;
-            text-decoration: none;
-            white-space: nowrap;
-
-            flex-shrink: 0;
-
-            position: relative;
-            z-index: 10002;
-        }
-
-        header:first-of-type .logo span {
-            color: #54dcff;
-        }
-
-        header:first-of-type .nav-links {
-            display: flex;
-            align-items: center;
-            justify-content: flex-end;
-
-            gap: 28px;
-
-            list-style: none;
-
-            margin: 0;
-            padding: 0;
-
-            flex: 1;
-
-            position: relative;
-            z-index: 10002;
-        }
-
-        header:first-of-type .nav-links li {
-            list-style: none;
-        }
-
-        header:first-of-type .nav-links a {
-            display: inline-block;
-
-            color: #dce7ed;
-            text-decoration: none;
-            white-space: nowrap;
-
-            position: relative;
-            z-index: 10003;
-        }
-
-        header:first-of-type .nav-links a:hover {
-            color: #ffffff;
-        }
-
-        header:first-of-type .nav-links a.active {
-            color: #ffffff;
-        }
-
-        header:first-of-type .nav-actions {
-            flex-shrink: 0;
-
-            position: relative;
-            z-index: 10002;
-        }
-
-        header:first-of-type .nav-login {
-            display: inline-flex;
-
-            align-items: center;
-            justify-content: center;
-
-            color: #ffffff;
-            text-decoration: none;
-            white-space: nowrap;
-
-            position: relative;
-            z-index: 10003;
-        }
-
-        header:first-of-type .nav-login:hover {
-            color: #54dcff;
-        }
-
-        /* Keep the research hero and orbit behind the navbar */
         .research-hero {
             position: relative;
-            z-index: 1;
-        }
+            overflow: hidden;
 
-        .research-hero-content {
-            position: relative;
-            z-index: 5;
-        }
-
-        .research-orbit {
-            z-index: 3;
-        }
-
-        /* ONLY: use the same hero image as biodiversity.html */
-        .research-hero {
             background-image:
-                linear-gradient(90deg, rgba(3, 18, 31, 0.92) 0%, rgba(3, 18, 31, 0.68) 45%, rgba(3, 18, 31, 0.28) 100%),
+                linear-gradient(
+                    90deg,
+                    rgba(3, 18, 31, .94) 0%,
+                    rgba(3, 18, 31, .76) 38%,
+                    rgba(3, 18, 31, .42) 68%,
+                    rgba(3, 18, 31, .32) 100%
+                ),
                 url("../assets/images/polar-hero-v2.png");
+
             background-size: cover;
             background-position: center;
             background-repeat: no-repeat;
         }
 
-        .research-grid {
+        .research-hero > .research-grid {
             background: transparent !important;
         }
 
-        /* ONLY: same polar globe / ball logo used by biodiversity.html */
+
+        /* =====================================================
+           NAVBAR
+        ===================================================== */
+
+        body > header {
+            position: absolute !important;
+            top: 0 !important;
+            left: 0 !important;
+            width: 100% !important;
+            z-index: 9999 !important;
+            background: transparent !important;
+        }
+
+        .navbar {
+            background: transparent !important;
+            background-color: transparent !important;
+            box-shadow: none !important;
+        }
+
+        .navbar .container {
+            background: transparent !important;
+        }
+
+        .navbar .logo {
+            color: #ffffff !important;
+        }
+
+        .navbar .logo span {
+            color: #70d8ff !important;
+        }
+
+        .navbar .nav-links a {
+            color: #ffffff !important;
+        }
+
+        .navbar .nav-links a:hover,
+        .navbar .nav-links a.active {
+            color: #70d8ff !important;
+        }
+
+        .navbar .nav-login {
+            color: #ffffff !important;
+            border-color: rgba(255,255,255,.45) !important;
+        }
+
+        .navbar .nav-login:hover {
+            color: #70d8ff !important;
+            border-color: #70d8ff !important;
+        }
+
+
+        /* =====================================================
+           POLAR BALL
+        ===================================================== */
+
         .research-hero .hero-visual {
             bottom: 6.5%;
             height: min(490px, 49vw);
@@ -169,16 +102,31 @@
             position: absolute;
             right: max(3vw, calc((100vw - 1240px) / 2));
             width: min(520px, 47vw);
-            z-index: 3;
+            z-index: 4;
         }
 
         .research-hero .polar-globe {
-            background: radial-gradient(circle at 37% 33%, rgba(226,253,255,.6), rgba(96,200,228,.23) 25%, rgba(10,77,108,.68) 61%, rgba(5,28,47,.78) 100%);
+            background:
+                radial-gradient(
+                    circle at 37% 33%,
+                    rgba(226,253,255,.6),
+                    rgba(96,200,228,.23) 25%,
+                    rgba(10,77,108,.68) 61%,
+                    rgba(5,28,47,.78) 100%
+                );
+
             border: 1px solid rgba(168,239,255,.55);
             border-radius: 50%;
-            box-shadow: inset -34px -28px 46px rgba(1,18,30,.66), inset 12px 12px 45px rgba(208,250,255,.24), 0 0 0 18px rgba(129,227,248,.045), 0 0 85px rgba(66,185,220,.35);
+
+            box-shadow:
+                inset -34px -28px 46px rgba(1,18,30,.66),
+                inset 12px 12px 45px rgba(208,250,255,.24),
+                0 0 0 18px rgba(129,227,248,.045),
+                0 0 85px rgba(66,185,220,.35);
+
             height: 75%;
             overflow: hidden;
+
             position: absolute;
             right: 2%;
             top: 2%;
@@ -186,9 +134,22 @@
         }
 
         .research-hero .polar-globe::before {
-            background-image: repeating-linear-gradient(0deg, transparent 0 14%, rgba(208,250,255,.29) 14.5% 15%, transparent 15.5% 29%), repeating-linear-gradient(90deg, transparent 0 15%, rgba(208,250,255,.2) 15.4% 16%, transparent 16.5% 31%);
+            background-image:
+                repeating-linear-gradient(
+                    0deg,
+                    transparent 0 14%,
+                    rgba(208,250,255,.29) 14.5% 15%,
+                    transparent 15.5% 29%
+                ),
+                repeating-linear-gradient(
+                    90deg,
+                    transparent 0 15%,
+                    rgba(208,250,255,.2) 15.4% 16%,
+                    transparent 16.5% 31%
+                );
+
             border-radius: inherit;
-            content: '';
+            content: "";
             inset: 0;
             opacity: .6;
             position: absolute;
@@ -198,16 +159,20 @@
         .research-hero .polar-globe::after {
             border: 1px solid rgba(190,247,255,.35);
             border-radius: 50%;
-            content: '';
+            content: "";
             inset: 15%;
             position: absolute;
         }
 
         .research-hero .globe-pin {
-            background: var(--cyan);
+            background: #83e6fb;
             border: 3px solid rgba(7,45,64,.82);
             border-radius: 50%;
-            box-shadow: 0 0 0 7px rgba(131,230,251,.14), 0 0 20px rgba(131,230,251,.95);
+
+            box-shadow:
+                0 0 0 7px rgba(131,230,251,.14),
+                0 0 20px rgba(131,230,251,.95);
+
             height: 11px;
             position: absolute;
             width: 11px;
@@ -227,7 +192,7 @@
         .research-hero .globe-marker {
             bottom: 18%;
             color: rgba(233,253,255,.7);
-            font-family: 'DM Mono', monospace;
+            font-family: "DM Mono", monospace;
             font-size: .55rem;
             left: 24%;
             letter-spacing: .18em;
@@ -247,10 +212,10 @@
         }
 
         .research-hero .orbital-line::before {
-            background: var(--cyan);
+            background: #83e6fb;
             border-radius: 50%;
-            box-shadow: 0 0 15px var(--cyan);
-            content: '';
+            box-shadow: 0 0 15px #83e6fb;
+            content: "";
             height: 8px;
             left: 13%;
             position: absolute;
@@ -260,12 +225,24 @@
 
         .research-hero .science-card {
             backdrop-filter: blur(13px);
-            background: linear-gradient(135deg, rgba(6,31,48,.82), rgba(13,90,120,.54));
+
+            background:
+                linear-gradient(
+                    135deg,
+                    rgba(6,31,48,.82),
+                    rgba(13,90,120,.54)
+                );
+
             border: 1px solid rgba(161,236,250,.32);
             border-radius: 10px;
+
             bottom: 3%;
-            box-shadow: 0 20px 45px rgba(0,14,25,.26);
-            color: var(--white);
+
+            box-shadow:
+                0 20px 45px rgba(0,14,25,.26);
+
+            color: #fff;
+
             left: 0;
             padding: 1rem 1.05rem;
             position: absolute;
@@ -275,9 +252,9 @@
 
         .research-hero .science-card-top {
             align-items: center;
-            color: var(--cyan);
+            color: #83e6fb;
             display: flex;
-            font-family: 'DM Mono', monospace;
+            font-family: "DM Mono", monospace;
             font-size: .55rem;
             gap: .45rem;
             letter-spacing: .12em;
@@ -287,14 +264,17 @@
             animation: research-pulse 2s ease-in-out infinite;
             background: #8cf8c4;
             border-radius: 50%;
-            box-shadow: 0 0 0 4px rgba(140,248,196,.12);
+
+            box-shadow:
+                0 0 0 4px rgba(140,248,196,.12);
+
             height: 6px;
             width: 6px;
         }
 
         .research-hero .science-card strong {
             display: block;
-            font-family: 'Manrope', sans-serif;
+            font-family: "Manrope", sans-serif;
             font-size: .92rem;
             letter-spacing: -.03em;
             line-height: 1.25;
@@ -314,15 +294,210 @@
             }
         }
 
+
+        /* =====================================================
+           LATEST RESEARCH GRID
+        ===================================================== */
+
+        .latest-research-grid {
+            display: grid !important;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 24px;
+            width: 100%;
+            margin-top: 30px;
+            visibility: visible !important;
+            opacity: 1 !important;
+        }
+
+
+        /* =====================================================
+           IMAGE CARDS
+        ===================================================== */
+
+        .latest-research-card {
+            display: block !important;
+            overflow: hidden;
+            background: #ffffff;
+            border-radius: 18px;
+            border: 1px solid rgba(20,70,90,.12);
+
+            box-shadow:
+                0 10px 30px rgba(0,25,45,.10);
+
+            visibility: visible !important;
+            opacity: 1 !important;
+
+            transition:
+                transform .3s ease,
+                box-shadow .3s ease;
+        }
+
+        .latest-research-card:hover {
+            transform: translateY(-6px);
+
+            box-shadow:
+                0 18px 40px rgba(0,25,45,.16);
+        }
+
+
+        /* =====================================================
+           IMAGE
+        ===================================================== */
+
+        .latest-research-image {
+            display: block;
+            width: 100%;
+            height: 220px;
+            overflow: hidden;
+            background: #dceef4;
+        }
+
+        .latest-research-image img {
+            display: block !important;
+            width: 100% !important;
+            height: 100% !important;
+            object-fit: cover !important;
+            object-position: center !important;
+            visibility: visible !important;
+            opacity: 1 !important;
+
+            transition:
+                transform .45s ease;
+        }
+
+        .latest-research-card:hover
+        .latest-research-image img {
+            transform: scale(1.06);
+        }
+
+
+        /* =====================================================
+           CONTENT
+        ===================================================== */
+
+        .latest-research-content {
+            padding: 22px;
+        }
+
+        .latest-research-meta {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 12px;
+            margin-bottom: 12px;
+        }
+
+        .latest-research-category {
+            display: inline-block;
+            color: #168caf;
+            font-size: .65rem;
+            font-weight: 700;
+            letter-spacing: .12em;
+        }
+
+        .latest-research-year {
+            color: #78909c;
+            font-size: .72rem;
+            font-weight: 600;
+        }
+
+        .latest-research-content h3 {
+            margin: 0 0 10px;
+            color: #102b3c;
+            font-size: 1.2rem;
+            line-height: 1.25;
+        }
+
+        .latest-research-content p {
+            margin: 0 0 18px;
+            color: #607986;
+            font-size: .86rem;
+            line-height: 1.65;
+        }
+
+        .latest-research-footer {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+
+            padding-top: 15px;
+
+            border-top:
+                1px solid rgba(20,70,90,.10);
+        }
+
+        .latest-research-footer span {
+            color: #78909c;
+            font-size: .72rem;
+        }
+
+        .latest-research-footer a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            width: 34px;
+            height: 34px;
+
+            border-radius: 50%;
+
+            background: #e8f8fc;
+            color: #168caf;
+
+            text-decoration: none;
+            font-size: 1rem;
+        }
+
+
+        /* =====================================================
+           RESPONSIVE
+        ===================================================== */
+
+        @media (max-width: 800px) {
+
+            .latest-research-grid {
+                grid-template-columns: 1fr !important;
+            }
+
+        }
+
+        @media (max-width: 900px) {
+
+            .research-hero .hero-visual {
+                opacity: .55;
+                right: -10%;
+                width: 55vw;
+            }
+
+        }
+
+        @media (max-width: 700px) {
+
+            .research-hero .hero-visual {
+                bottom: 2%;
+                height: 330px;
+                opacity: .35;
+                right: -18%;
+                width: 430px;
+            }
+
+            .latest-research-image {
+                height: 190px;
+            }
+
+        }
+
     </style>
 
 </head>
 
+
 <body>
+
 
 <!-- =====================================================
      NAVBAR
-====================================================== -->
+===================================================== -->
 
 <header>
 
@@ -339,6 +514,12 @@
                 <li>
                     <a href="../index.html">
                         Home
+                    </a>
+                </li>
+
+                <li>
+                    <a href="media.html">
+                        Media
                     </a>
                 </li>
 
@@ -386,13 +567,7 @@
 
             </ul>
 
-            <div class="nav-actions">
-
-                <a href="login.html" class="nav-login">
-                    Login
-                </a>
-
-            </div>
+            <div class="nav-actions"></div>
 
         </div>
 
@@ -401,11 +576,12 @@
 </header>
 
 
-<!-- =====================================================
-     RESEARCH HERO
-====================================================== -->
 
-<header class="research-hero">
+<!-- =====================================================
+     HERO
+===================================================== -->
+
+<section class="research-hero">
 
     <div class="research-grid"></div>
 
@@ -419,7 +595,6 @@
 
         </div>
 
-
         <h1>
 
             Science at the
@@ -430,7 +605,6 @@
 
         </h1>
 
-
         <p>
 
             Explore scientific studies, field research and
@@ -439,33 +613,25 @@
 
         </p>
 
-
         <div class="research-actions">
 
             <a
                 href="#research-library"
-                class="research-primary"
-            >
+                class="research-primary">
 
                 Explore Research
 
-                <span>
-                    →
-                </span>
+                <span>→</span>
 
             </a>
 
-
             <a
                 href="map.html"
-                class="research-secondary"
-            >
+                class="research-secondary">
 
                 Explore Polar Map
 
-                <span>
-                    ↗
-                </span>
+                <span>↗</span>
 
             </a>
 
@@ -474,9 +640,7 @@
     </div>
 
 
-    <!-- =================================================
-         SAME POLAR GLOBE / BALL LOGO AS BIODIVERSITY
-    ================================================== -->
+    <!-- POLAR BALL -->
 
     <div class="hero-visual" aria-hidden="true">
 
@@ -518,15 +682,15 @@
 
     </div>
 
-</header>
+</section>
+
 
 
 <!-- =====================================================
-     RESEARCH STATS
-====================================================== -->
+     STATS
+===================================================== -->
 
 <section class="research-stats">
-
 
     <div class="research-stat">
 
@@ -598,19 +762,15 @@
 </section>
 
 
+
 <!-- =====================================================
      RESEARCH LIBRARY
-====================================================== -->
+===================================================== -->
 
 <main
     id="research-library"
-    class="research-library"
->
+    class="research-library">
 
-
-    <!-- =================================================
-         RESEARCH HEADING
-    ================================================== -->
 
     <div class="research-heading">
 
@@ -619,7 +779,6 @@
             <div class="section-label">
                 RESEARCH LIBRARY
             </div>
-
 
             <h2>
 
@@ -630,7 +789,6 @@
                 </span>
 
             </h2>
-
 
             <p>
 
@@ -656,76 +814,73 @@
     </div>
 
 
-    <!-- =================================================
-         FILTERS
-    ================================================== -->
+
+    <!-- FILTERS -->
 
     <div class="research-filters">
 
         <button
             type="button"
             class="active"
-            data-category="all"
-        >
+            data-category="all">
+
             All Research
-        </button>
 
+        </button>
 
         <button
             type="button"
-            data-category="climate"
-        >
+            data-category="climate">
+
             Climate
-        </button>
 
+        </button>
 
         <button
             type="button"
-            data-category="ice"
-        >
+            data-category="ice">
+
             Ice &amp; Glaciers
-        </button>
 
+        </button>
 
         <button
             type="button"
-            data-category="oceans"
-        >
+            data-category="oceans">
+
             Oceans
-        </button>
 
+        </button>
 
         <button
             type="button"
-            data-category="ecosystems"
-        >
+            data-category="ecosystems">
+
             Ecosystems
+
         </button>
 
     </div>
 
 
-    <!-- =================================================
+
+    <!-- =====================================================
          FEATURED PAPER
-    ================================================== -->
+    ===================================================== -->
 
     <section class="featured-paper">
-
 
         <div class="paper-visual">
 
             <img
                 src="../assets/images/polar-hero-v2.png"
-                alt="Polar research landscape"
-            >
+                alt="Polar research landscape">
 
             <div class="paper-visual-overlay"></div>
-
 
             <div class="paper-number">
                 01
             </div>
-
 
             <div class="paper-status">
                 FEATURED STUDY
@@ -736,28 +891,20 @@
 
         <div class="paper-content">
 
-
             <div class="paper-meta">
                 CLIMATE • ANTARCTICA • 2026
             </div>
 
-
             <h2>
-
                 Understanding Change
                 Across the Antarctic Ice Sheet
-
             </h2>
 
-
             <p>
-
                 A research overview examining ice-sheet
                 behaviour, climate signals and observations
                 across Antarctica.
-
             </p>
-
 
             <div class="paper-authors">
 
@@ -765,9 +912,7 @@
                     Research Network
                 </span>
 
-                <span>
-                    •
-                </span>
+                <span>•</span>
 
                 <span>
                     Polar Science
@@ -775,17 +920,13 @@
 
             </div>
 
-
             <a
-                href="#research-library"
-                class="paper-link"
-            >
+                href="#latest-research"
+                class="paper-link">
 
                 View Research
 
-                <span>
-                    →
-                </span>
+                <span>→</span>
 
             </a>
 
@@ -794,12 +935,12 @@
     </section>
 
 
-    <!-- =================================================
-         RESEARCH CARDS
-    ================================================== -->
+
+    <!-- =====================================================
+         ORIGINAL RESEARCH CARDS
+    ===================================================== -->
 
     <section class="research-results">
-
 
         <div class="results-heading">
 
@@ -817,14 +958,9 @@
         <div class="research-grid">
 
 
-            <!-- =================================================
-                 CARD 1
-            ================================================== -->
+            <!-- ORIGINAL CARD 1 -->
 
-            <article
-                class="research-card"
-                data-category="climate"
-            >
+            <article class="research-card">
 
                 <div class="research-card-top">
 
@@ -838,40 +974,15 @@
 
                 </div>
 
-
-                <div
-                    style="
-                        width:100%;
-                        height:180px;
-                        overflow:hidden;
-                        border-radius:12px;
-                        margin-bottom:18px;
-                    "
-                >
-                    <img
-                        src="https://images.unsplash.com/photo-1529730705273-7f8ab24844e8?auto=format&fit=crop&w=900&q=85"
-                        alt="Polar climate and snowy mountain research"
-                        style="
-                            width:100%;
-                            height:100%;
-                            object-fit:cover;
-                            display:block;
-                        "
-                    >
-                </div>
-
-
                 <h3>
                     Polar Climate Signals
                 </h3>
-
 
                 <p>
                     Investigating temperature trends and
                     atmospheric changes across polar regions.
                 </p>
 
-
                 <div class="research-card-footer">
 
                     <span>
@@ -887,14 +998,10 @@
             </article>
 
 
-            <!-- =================================================
-                 CARD 2
-            ================================================== -->
 
-            <article
-                class="research-card"
-                data-category="ice"
-            >
+            <!-- ORIGINAL CARD 2 -->
+
+            <article class="research-card">
 
                 <div class="research-card-top">
 
@@ -908,40 +1015,15 @@
 
                 </div>
 
-
-                <div
-                    style="
-                        width:100%;
-                        height:180px;
-                        overflow:hidden;
-                        border-radius:12px;
-                        margin-bottom:18px;
-                    "
-                >
-                    <img
-                        src="https://images.unsplash.com/photo-1780589613719-5642667970ec?auto=format&fit=crop&w=900&q=85"
-                        alt="Blue polar ice and glacier research"
-                        style="
-                            width:100%;
-                            height:100%;
-                            object-fit:cover;
-                            display:block;
-                        "
-                    >
-                </div>
-
-
                 <h3>
                     Glacier Dynamics
                 </h3>
-
 
                 <p>
                     Exploring glacier movement, ice loss and
                     changing polar landscapes.
                 </p>
 
-
                 <div class="research-card-footer">
 
                     <span>
@@ -957,14 +1039,10 @@
             </article>
 
 
-            <!-- =================================================
-                 CARD 3
-            ================================================== -->
 
-            <article
-                class="research-card"
-                data-category="oceans"
-            >
+            <!-- ORIGINAL CARD 3 -->
+
+            <article class="research-card">
 
                 <div class="research-card-top">
 
@@ -978,40 +1056,15 @@
 
                 </div>
 
-
-                <div
-                    style="
-                        width:100%;
-                        height:180px;
-                        overflow:hidden;
-                        border-radius:12px;
-                        margin-bottom:18px;
-                    "
-                >
-                    <img
-                        src="https://images.unsplash.com/photo-1739832208797-c79303b24257?auto=format&fit=crop&w=900&q=85"
-                        alt="Polar ocean and sea ice research"
-                        style="
-                            width:100%;
-                            height:100%;
-                            object-fit:cover;
-                            display:block;
-                        "
-                    >
-                </div>
-
-
                 <h3>
                     Polar Ocean Circulation
                 </h3>
-
 
                 <p>
                     Studying the relationship between polar
                     oceans and global climate systems.
                 </p>
 
-
                 <div class="research-card-footer">
 
                     <span>
@@ -1027,14 +1080,10 @@
             </article>
 
 
-            <!-- =================================================
-                 CARD 4
-            ================================================== -->
 
-            <article
-                class="research-card"
-                data-category="ecosystems"
-            >
+            <!-- ORIGINAL CARD 4 -->
+
+            <article class="research-card">
 
                 <div class="research-card-top">
 
@@ -1048,40 +1097,15 @@
 
                 </div>
 
-
-                <div
-                    style="
-                        width:100%;
-                        height:180px;
-                        overflow:hidden;
-                        border-radius:12px;
-                        margin-bottom:18px;
-                    "
-                >
-                    <img
-                        src="https://images.unsplash.com/photo-1778608256843-d69885cb17ca?auto=format&fit=crop&w=900&q=85"
-                        alt="Polar ecosystem research landscape"
-                        style="
-                            width:100%;
-                            height:100%;
-                            object-fit:cover;
-                            display:block;
-                        "
-                    >
-                </div>
-
-
                 <h3>
                     Polar Ecosystem Change
                 </h3>
-
 
                 <p>
                     Understanding how environmental changes
                     influence polar species and ecosystems.
                 </p>
 
-
                 <div class="research-card-footer">
 
                     <span>
@@ -1096,721 +1120,583 @@
 
             </article>
 
+        </div>
+
+
+
+        <!-- =====================================================
+             10 RESEARCH IMAGE CARDS
+        ===================================================== -->
+
+        <div
+            id="latest-research"
+            class="latest-research-grid">
+
+
 
             <!-- =================================================
-                 CARD 5
+                 1. ARCTIC FOX
             ================================================== -->
 
             <article
-                class="research-card"
-                data-category="climate"
-            >
+                class="latest-research-card"
+                data-category="ecosystems">
 
-                <div
-                    style="
-                        width:100%;
-                        height:180px;
-                        overflow:hidden;
-                        border-radius:12px;
-                        margin-bottom:18px;
-                    "
-                >
+                <div class="latest-research-image">
 
                     <img
-                        src="https://images.unsplash.com/photo-1786335091902-eb0166246cbe?auto=format&fit=crop&w=900&q=85"
-                        alt="Polar aurora and climate research"
-                        style="
-                            width:100%;
-                            height:100%;
-                            object-fit:cover;
-                            display:block;
-                        "
-                    >
+                        src="https://images.unsplash.com/photo-1488039263160-e183ebefb700?auto=format&fit=crop&w=1000&q=85"
+                        alt="Arctic fox in snow"
+                        loading="lazy">
 
                 </div>
 
+                <div class="latest-research-content">
 
-                <div class="research-card-top">
+                    <div class="latest-research-meta">
 
-                    <span class="research-category">
-                        CLIMATE
-                    </span>
+                        <span class="latest-research-category">
+                            WILDLIFE
+                        </span>
 
-                    <span class="research-year">
-                        2026
-                    </span>
+                        <span class="latest-research-year">
+                            2026
+                        </span>
 
-                </div>
+                    </div>
 
+                    <h3>
+                        Arctic Fox Adaptation
+                    </h3>
 
-                <h3>
-                    Arctic Winter Sea Ice
-                </h3>
+                    <p>
+                        Exploring how Arctic foxes survive,
+                        camouflage and adapt to extreme
+                        winter conditions.
+                    </p>
 
+                    <div class="latest-research-footer">
 
-                <p>
-                    Examining seasonal sea-ice conditions
-                    and changing Arctic climate signals.
-                </p>
+                        <span>
+                            Polar Wildlife
+                        </span>
 
+                        <a href="#">
+                            →
+                        </a>
 
-                <div class="research-card-footer">
-
-                    <span>
-                        Climate Science
-                    </span>
-
-                    <a href="#">
-                        →
-                    </a>
+                    </div>
 
                 </div>
 
             </article>
 
 
+
             <!-- =================================================
-                 CARD 6
-            ================================================== -->
+                
 
-            <article
-                class="research-card"
-                data-category="ice"
-            >
+                <div class="latest-research-content">
 
-                <div
-                    style="
-                        width:100%;
-                        height:180px;
-                        overflow:hidden;
-                        border-radius:12px;
-                        margin-bottom:18px;
-                    "
-                >
+                    <div class="latest-research-meta">
 
-                    <img
-                        src="https://images.unsplash.com/photo-1746310005142-21ca9368e70a?auto=format&fit=crop&w=900&q=85"
-                        alt="Arctic sea ice"
-                        style="
-                            width:100%;
-                            height:100%;
-                            object-fit:cover;
-                            display:block;
-                        "
-                    >
+                        <span class="latest-research-category">
+                            OCEANS
+                        </span>
 
-                </div>
+                        <span class="latest-research-year">
+                            2026
+                        </span>
 
+                    </div>
 
-                <div class="research-card-top">
+                    <h3>
+                        Beluga Whales of the Arctic
+                    </h3>
 
-                    <span class="research-category">
-                        ICE
-                    </span>
+                    <p>
+                        Studying beluga habitats, seasonal
+                        movement and life in changing Arctic
+                        waters.
+                    </p>
 
-                    <span class="research-year">
-                        2026
-                    </span>
+                    <div class="latest-research-footer">
 
-                </div>
+                        <span>
+                            Marine Science
+                        </span>
 
+                        <a href="#">
+                            →
+                        </a>
 
-                <h3>
-                    Arctic Sea Ice Change
-                </h3>
-
-
-                <p>
-                    Research into Arctic sea-ice extent,
-                    thickness and seasonal variability.
-                </p>
-
-
-                <div class="research-card-footer">
-
-                    <span>
-                        Cryosphere
-                    </span>
-
-                    <a href="#">
-                        →
-                    </a>
+                    </div>
 
                 </div>
 
             </article>
 
 
+
             <!-- =================================================
-                 CARD 7
+                 3. NARWHAL
             ================================================== -->
 
             <article
-                class="research-card"
-                data-category="ice"
-            >
+                class="latest-research-card"
+                data-category="oceans">
 
-                <div
-                    style="
-                        width:100%;
-                        height:180px;
-                        overflow:hidden;
-                        border-radius:12px;
-                        margin-bottom:18px;
-                    "
-                >
+                <div class="latest-research-image">
 
                     <img
-                        src="https://images.unsplash.com/photo-1695410864552-1beee4a65bf7?auto=format&fit=crop&w=900&q=85"
-                        alt="Large polar iceberg"
-                        style="
-                            width:100%;
-                            height:100%;
-                            object-fit:cover;
-                            display:block;
-                        "
-                    >
+                        src="https://wallpapers.com/images/high/narwhal-pictures-sxmh0iybsma1x1fp.jpg"
+                        alt="Narwhal in Arctic waters"
+                        loading="lazy">
 
                 </div>
 
+                <div class="latest-research-content">
 
-                <div class="research-card-top">
+                    <div class="latest-research-meta">
 
-                    <span class="research-category">
-                        ICE
-                    </span>
+                        <span class="latest-research-category">
+                            OCEANS
+                        </span>
 
-                    <span class="research-year">
-                        2026
-                    </span>
+                        <span class="latest-research-year">
+                            2026
+                        </span>
 
-                </div>
+                    </div>
 
+                    <h3>
+                        Narwhals Beneath the Ice
+                    </h3>
 
-                <h3>
-                    Antarctic Ice Sheet Dynamics
-                </h3>
+                    <p>
+                        Investigating unique adaptations
+                        and movements of narwhals in Arctic seas.
+                    </p>
 
+                    <div class="latest-research-footer">
 
-                <p>
-                    Investigating ice-sheet movement and
-                    long-term Antarctic changes.
-                </p>
+                        <span>
+                            Arctic Ocean
+                        </span>
 
+                        <a href="#">
+                            →
+                        </a>
 
-                <div class="research-card-footer">
-
-                    <span>
-                        Ice Science
-                    </span>
-
-                    <a href="#">
-                        →
-                    </a>
+                    </div>
 
                 </div>
 
             </article>
 
 
+
             <!-- =================================================
-                 CARD 8
+                 4. POLAR BEAR CUBS
             ================================================== -->
 
             <article
-                class="research-card"
-                data-category="ice"
-            >
+                class="latest-research-card"
+                data-category="ecosystems">
 
-                <div
-                    style="
-                        width:100%;
-                        height:180px;
-                        overflow:hidden;
-                        border-radius:12px;
-                        margin-bottom:18px;
-                    "
-                >
+                <div class="latest-research-image">
 
                     <img
-                        src="https://images.unsplash.com/photo-1783101276898-53cdd84174dc?auto=format&fit=crop&w=900&q=85"
-                        alt="Polar glacier landscape"
-                        style="
-                            width:100%;
-                            height:100%;
-                            object-fit:cover;
-                            display:block;
-                        "
-                    >
+                        src="https://commons.wikimedia.org/wiki/Special:FilePath/Polar_bear_cubs_in_the_snow.jpg"
+                        alt="Polar bear cubs in snow"
+                        loading="lazy">
 
                 </div>
 
+                <div class="latest-research-content">
 
-                <div class="research-card-top">
+                    <div class="latest-research-meta">
 
-                    <span class="research-category">
-                        ICE
-                    </span>
+                        <span class="latest-research-category">
+                            WILDLIFE
+                        </span>
 
-                    <span class="research-year">
-                        2026
-                    </span>
+                        <span class="latest-research-year">
+                            2026
+                        </span>
 
-                </div>
+                    </div>
 
+                    <h3>
+                        Polar Bear Families
+                    </h3>
 
-                <h3>
-                    Glacier Monitoring
-                </h3>
+                    <p>
+                        Research into polar bear behaviour,
+                        family groups and survival in Arctic
+                        environments.
+                    </p>
 
+                    <div class="latest-research-footer">
 
-                <p>
-                    Using observations and scientific measurements
-                    to understand glacier change.
-                </p>
+                        <span>
+                            Arctic Ecology
+                        </span>
 
+                        <a href="#">
+                            →
+                        </a>
 
-                <div class="research-card-footer">
-
-                    <span>
-                        Cryosphere
-                    </span>
-
-                    <a href="#">
-                        →
-                    </a>
+                    </div>
 
                 </div>
 
             </article>
 
 
+
             <!-- =================================================
-                 CARD 9
+                 5. SNOWY OWL
             ================================================== -->
 
             <article
-                class="research-card"
-                data-category="oceans"
-            >
+                class="latest-research-card"
+                data-category="ecosystems">
 
-                <div
-                    style="
-                        width:100%;
-                        height:180px;
-                        overflow:hidden;
-                        border-radius:12px;
-                        margin-bottom:18px;
-                    "
-                >
+                <div class="latest-research-image">
 
                     <img
-                        src="https://images.unsplash.com/photo-1722166151666-a1d0af6049ea?auto=format&fit=crop&w=900&q=85"
-                        alt="Polar ocean and ice"
-                        style="
-                            width:100%;
-                            height:100%;
-                            object-fit:cover;
-                            display:block;
-                        "
-                    >
+                        src="https://commons.wikimedia.org/wiki/Special:FilePath/Owl-snow.jpg"
+                        alt="Snowy owl in winter"
+                        loading="lazy">
 
                 </div>
 
+                <div class="latest-research-content">
 
-                <div class="research-card-top">
+                    <div class="latest-research-meta">
 
-                    <span class="research-category">
-                        OCEANS
-                    </span>
+                        <span class="latest-research-category">
+                            WILDLIFE
+                        </span>
 
-                    <span class="research-year">
-                        2026
-                    </span>
+                        <span class="latest-research-year">
+                            2025
+                        </span>
 
-                </div>
+                    </div>
 
+                    <h3>
+                        Snowy Owl Ecology
+                    </h3>
 
-                <h3>
-                    Polar Ocean Systems
-                </h3>
+                    <p>
+                        Discovering how snowy owls survive and
+                        hunt across northern winter landscapes.
+                    </p>
 
+                    <div class="latest-research-footer">
 
-                <p>
-                    Exploring ocean processes, circulation and
-                    their connection with polar climate.
-                </p>
+                        <span>
+                            Bird Ecology
+                        </span>
 
+                        <a href="#">
+                            →
+                        </a>
 
-                <div class="research-card-footer">
-
-                    <span>
-                        Ocean Science
-                    </span>
-
-                    <a href="#">
-                        →
-                    </a>
+                    </div>
 
                 </div>
 
             </article>
 
 
+
             <!-- =================================================
-                 CARD 10
+                 6. PUFFIN
             ================================================== -->
 
             <article
-                class="research-card"
-                data-category="oceans"
-            >
+                class="latest-research-card"
+                data-category="ecosystems">
 
-                <div
-                    style="
-                        width:100%;
-                        height:180px;
-                        overflow:hidden;
-                        border-radius:12px;
-                        margin-bottom:18px;
-                    "
-                >
+                <div class="latest-research-image">
 
                     <img
-                        src="https://images.unsplash.com/photo-1606592641984-c9a1506d0705?auto=format&fit=crop&w=900&q=85"
-                        alt="Polar ocean research"
-                        style="
-                            width:100%;
-                            height:100%;
-                            object-fit:cover;
-                            display:block;
-                        "
-                    >
+                        src="https://inaturalist-open-data.s3.amazonaws.com/photos/292608717/large.jpg"
+                        alt="Puffin in a polar environment"
+                        loading="lazy">
 
                 </div>
 
+                <div class="latest-research-content">
 
-                <div class="research-card-top">
+                    <div class="latest-research-meta">
 
-                    <span class="research-category">
-                        OCEANS
-                    </span>
+                        <span class="latest-research-category">
+                            BIODIVERSITY
+                        </span>
 
-                    <span class="research-year">
-                        2025
-                    </span>
+                        <span class="latest-research-year">
+                            2025
+                        </span>
 
-                </div>
+                    </div>
 
+                    <h3>
+                        Arctic Seabird Life
+                    </h3>
 
-                <h3>
-                    Ocean Observation
-                </h3>
+                    <p>
+                        Exploring seabird behaviour and their
+                        relationship with northern marine
+                        ecosystems.
+                    </p>
 
+                    <div class="latest-research-footer">
 
-                <p>
-                    Studying polar waters through field observations,
-                    sensors and scientific measurements.
-                </p>
+                        <span>
+                            Polar Birds
+                        </span>
 
+                        <a href="#">
+                            →
+                        </a>
 
-                <div class="research-card-footer">
-
-                    <span>
-                        Marine Science
-                    </span>
-
-                    <a href="#">
-                        →
-                    </a>
+                    </div>
 
                 </div>
 
             </article>
 
 
+
             <!-- =================================================
-                 CARD 11
+                 7. WALRUS
             ================================================== -->
 
             <article
-                class="research-card"
-                data-category="ecosystems"
-            >
+                class="latest-research-card"
+                data-category="oceans">
 
-                <div
-                    style="
-                        width:100%;
-                        height:180px;
-                        overflow:hidden;
-                        border-radius:12px;
-                        margin-bottom:18px;
-                    "
-                >
+                <div class="latest-research-image">
 
                     <img
-                        src="https://images.unsplash.com/photo-1654801530070-5702ed0089d6?auto=format&fit=crop&w=900&q=85"
-                        alt="Penguins in polar environment"
-                        style="
-                            width:100%;
-                            height:100%;
-                            object-fit:cover;
-                            display:block;
-                        "
-                    >
+                        src="https://cdn.oceanwide-expeditions.com/media-dynamic/cache/widen_1600/v2-gallery_media/media69380789b6062643156795.jpg"
+                        alt="Walrus in an Arctic environment"
+                        loading="lazy">
 
                 </div>
 
+                <div class="latest-research-content">
 
-                <div class="research-card-top">
+                    <div class="latest-research-meta">
 
-                    <span class="research-category">
-                        ECOLOGY
-                    </span>
+                        <span class="latest-research-category">
+                            MARINE LIFE
+                        </span>
 
-                    <span class="research-year">
-                        2026
-                    </span>
+                        <span class="latest-research-year">
+                            2025
+                        </span>
 
-                </div>
+                    </div>
 
+                    <h3>
+                        Walruses and Sea Ice
+                    </h3>
 
-                <h3>
-                    Penguin Population Research
-                </h3>
+                    <p>
+                        Understanding how walruses use Arctic
+                        coastal habitats and sea ice.
+                    </p>
 
+                    <div class="latest-research-footer">
 
-                <p>
-                    Examining penguin populations, habitat conditions
-                    and changing Antarctic ecosystems.
-                </p>
+                        <span>
+                            Marine Ecology
+                        </span>
 
+                        <a href="#">
+                            →
+                        </a>
 
-                <div class="research-card-footer">
-
-                    <span>
-                        Biodiversity
-                    </span>
-
-                    <a href="#">
-                        →
-                    </a>
+                    </div>
 
                 </div>
 
             </article>
 
 
+
             <!-- =================================================
-                 CARD 12
+                 8. ARCTIC HARE
             ================================================== -->
 
             <article
-                class="research-card"
-                data-category="ecosystems"
-            >
+                class="latest-research-card"
+                data-category="ecosystems">
 
-                <div
-                    style="
-                        width:100%;
-                        height:180px;
-                        overflow:hidden;
-                        border-radius:12px;
-                        margin-bottom:18px;
-                    "
-                >
+                <div class="latest-research-image">
 
                     <img
-                        src="https://images.unsplash.com/photo-1584268904283-8832048ef10c?auto=format&fit=crop&w=900&q=85"
-                        alt="Polar wildlife environment"
-                        style="
-                            width:100%;
-                            height:100%;
-                            object-fit:cover;
-                            display:block;
-                        "
-                    >
+                        src="https://commons.wikimedia.org/wiki/Special:FilePath/Arctic_hare_in_snow_and_bushes_lepus_arcticus.jpg"
+                        alt="Arctic hare in snow"
+                        loading="lazy">
 
                 </div>
 
+                <div class="latest-research-content">
 
-                <div class="research-card-top">
+                    <div class="latest-research-meta">
 
-                    <span class="research-category">
-                        ECOLOGY
-                    </span>
+                        <span class="latest-research-category">
+                            WILDLIFE
+                        </span>
 
-                    <span class="research-year">
-                        2025
-                    </span>
+                        <span class="latest-research-year">
+                            2025
+                        </span>
 
-                </div>
+                    </div>
 
+                    <h3>
+                        Arctic Hare Survival
+                    </h3>
 
-                <h3>
-                    Polar Wildlife Adaptation
-                </h3>
+                    <p>
+                        Exploring camouflage, seasonal changes
+                        and survival strategies of Arctic hares.
+                    </p>
 
+                    <div class="latest-research-footer">
 
-                <p>
-                    Understanding how polar animals adapt to
-                    extreme environmental conditions.
-                </p>
+                        <span>
+                            Tundra Ecology
+                        </span>
 
+                        <a href="#">
+                            →
+                        </a>
 
-                <div class="research-card-footer">
-
-                    <span>
-                        Wildlife Science
-                    </span>
-
-                    <a href="#">
-                        →
-                    </a>
+                    </div>
 
                 </div>
 
             </article>
 
 
+
             <!-- =================================================
-                 CARD 13
+                 9. PENGUIN ON ICEBERG
             ================================================== -->
 
             <article
-                class="research-card"
-                data-category="climate"
-            >
+                class="latest-research-card"
+                data-category="ecosystems">
 
-                <div
-                    style="
-                        width:100%;
-                        height:180px;
-                        overflow:hidden;
-                        border-radius:12px;
-                        margin-bottom:18px;
-                    "
-                >
+                <div class="latest-research-image">
 
                     <img
-                        src="https://images.unsplash.com/photo-1670174023730-966d23eb891a?auto=format&fit=crop&w=900&q=85"
-                        alt="Polar snow and climate"
-                        style="
-                            width:100%;
-                            height:100%;
-                            object-fit:cover;
-                            display:block;
-                        "
-                    >
+                        src="https://commons.wikimedia.org/wiki/Special:FilePath/Penguin_on_iceberg_Antarctica.png"
+                        alt="Penguin on Antarctic iceberg"
+                        loading="lazy">
 
                 </div>
 
+                <div class="latest-research-content">
 
-                <div class="research-card-top">
+                    <div class="latest-research-meta">
 
-                    <span class="research-category">
-                        CLIMATE
-                    </span>
+                        <span class="latest-research-category">
+                            ANTARCTICA
+                        </span>
 
-                    <span class="research-year">
-                        2025
-                    </span>
+                        <span class="latest-research-year">
+                            2025
+                        </span>
 
-                </div>
+                    </div>
 
+                    <h3>
+                        Penguins and Antarctic Ice
+                    </h3>
 
-                <h3>
-                    Polar Atmospheric Processes
-                </h3>
+                    <p>
+                        Studying the relationship between
+                        penguin habitats and Antarctic ice.
+                    </p>
 
+                    <div class="latest-research-footer">
 
-                <p>
-                    Investigating atmospheric conditions, clouds,
-                    winds and weather across polar regions.
-                </p>
+                        <span>
+                            Antarctic Ecology
+                        </span>
 
+                        <a href="#">
+                            →
+                        </a>
 
-                <div class="research-card-footer">
-
-                    <span>
-                        Atmospheric Science
-                    </span>
-
-                    <a href="#">
-                        →
-                    </a>
+                    </div>
 
                 </div>
 
             </article>
 
 
+
             <!-- =================================================
-                 CARD 14
+                 10. PENGUIN GROUP
             ================================================== -->
 
             <article
-                class="research-card"
-                data-category="ecosystems"
-            >
+                class="latest-research-card"
+                data-category="ecosystems">
 
-                <div
-                    style="
-                        width:100%;
-                        height:180px;
-                        overflow:hidden;
-                        border-radius:12px;
-                        margin-bottom:18px;
-                    "
-                >
+                <div class="latest-research-image">
 
                     <img
-                        src="https://images.unsplash.com/photo-1557238688-f13a1b5a8f4b?auto=format&fit=crop&w=900&q=85"
-                        alt="Polar biodiversity"
-                        style="
-                            width:100%;
-                            height:100%;
-                            object-fit:cover;
-                            display:block;
-                        "
-                    >
+                        src="https://commons.wikimedia.org/wiki/Special:FilePath/Penguins_Antarctica.jpg"
+                        alt="Penguin group in Antarctica"
+                        loading="lazy">
 
                 </div>
 
+                <div class="latest-research-content">
 
-                <div class="research-card-top">
+                    <div class="latest-research-meta">
 
-                    <span class="research-category">
-                        ECOLOGY
-                    </span>
+                        <span class="latest-research-category">
+                            ANTARCTIC LIFE
+                        </span>
 
-                    <span class="research-year">
-                        2025
-                    </span>
+                        <span class="latest-research-year">
+                            2025
+                        </span>
 
-                </div>
+                    </div>
 
+                    <h3>
+                        Antarctic Penguin Communities
+                    </h3>
 
-                <h3>
-                    Polar Biodiversity Change
-                </h3>
+                    <p>
+                        Exploring penguin communities and
+                        their behaviour in Antarctic habitats.
+                    </p>
 
+                    <div class="latest-research-footer">
 
-                <p>
-                    Studying biodiversity patterns and ecosystem
-                    responses to environmental change.
-                </p>
+                        <span>
+                            Wildlife Research
+                        </span>
 
+                        <a href="#">
+                            →
+                        </a>
 
-                <div class="research-card-footer">
-
-                    <span>
-                        Ecosystem Science
-                    </span>
-
-                    <a href="#">
-                        →
-                    </a>
+                    </div>
 
                 </div>
 
@@ -1824,22 +1710,20 @@
 </main>
 
 
+
 <!-- =====================================================
      FOOTER
-====================================================== -->
+===================================================== -->
 
 <footer class="site-footer">
 
-
     <div class="footer-container">
-
 
         <div class="footer-brand">
 
             <a
                 href="../index.html"
-                class="logo"
-            >
+                class="logo">
 
                 <span class="logo-dot"></span>
 
@@ -1849,12 +1733,9 @@
 
             </a>
 
-
             <p>
-
                 One integrated gateway to polar science,
                 research, knowledge and discovery.
-
             </p>
 
         </div>
@@ -1862,28 +1743,23 @@
 
         <div class="footer-links">
 
-
             <div>
 
                 <h4>
                     Explore
                 </h4>
 
-
                 <a href="../index.html">
                     Home
                 </a>
-
 
                 <a href="knowledge.html">
                     Knowledge
                 </a>
 
-
                 <a href="research.html">
                     Research
                 </a>
-
 
                 <a href="media.html">
                     Media
@@ -1898,11 +1774,9 @@
                     Portal
                 </h4>
 
-
                 <a href="map.html">
                     Polar Map
                 </a>
-
 
                 <a href="login.html">
                     Login
@@ -1921,7 +1795,6 @@
             © 2026 PolarConnect
         </span>
 
-
         <span>
             Polar Science • Research • Discovery
         </span>
@@ -1931,14 +1804,9 @@
 </footer>
 
 
-<!-- =====================================================
-     JAVASCRIPT
-====================================================== -->
 
 <script src="../js/api.js"></script>
-
 <script src="../js/research.js"></script>
-
 
 </body>
 

@@ -10,6 +10,91 @@
 
     <link rel="stylesheet" href="../css/style.css">
     <link rel="stylesheet" href="../css/responsive.css">
+
+    <style>
+        /* Climate-specific content only */
+        .climate-content-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+            margin-top: 42px;
+        }
+
+        .climate-content-card {
+            overflow: hidden;
+            border: 1px solid rgba(20, 75, 100, 0.12);
+            border-radius: 16px;
+            background: rgba(255, 255, 255, 0.97);
+            box-shadow: 0 12px 35px rgba(3, 30, 45, 0.08);
+            transition: transform 0.25s ease, box-shadow 0.25s ease;
+        }
+
+        .climate-content-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 18px 45px rgba(3, 30, 45, 0.14);
+        }
+
+        .climate-image {
+            width: 100%;
+            height: 190px;
+            overflow: hidden;
+        }
+
+        .climate-image img {
+            width: 100%;
+            height: 100%;
+            display: block;
+            object-fit: cover;
+            transition: transform 0.4s ease;
+        }
+
+        .climate-content-card:hover .climate-image img {
+            transform: scale(1.05);
+        }
+
+        .climate-card-body {
+            padding: 22px;
+        }
+
+        .climate-card-category {
+            display: inline-block;
+            margin-bottom: 10px;
+            color: #159bc0;
+            font-family: "DM Mono", monospace;
+            font-size: 0.68rem;
+            font-weight: 700;
+            letter-spacing: 0.12em;
+        }
+
+        .climate-card-body h3 {
+            margin: 0 0 10px;
+            color: #09243a;
+            font-size: 1.18rem;
+        }
+
+        .climate-card-body p {
+            margin: 0;
+            color: #60788a;
+            font-size: 0.92rem;
+            line-height: 1.65;
+        }
+
+        @media (max-width: 900px) {
+            .climate-content-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 600px) {
+            .climate-content-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .climate-image {
+                height: 210px;
+            }
+        }
+    </style>
 </head>
 
 <body>
@@ -27,9 +112,11 @@
                 <li>
                     <a href="../index.html">Home</a>
                 </li>
-                    <a href="media.html" >
-                Media
-            </a>
+
+                <li>
+                    <a href="media.html">Media</a>
+                </li>
+
                 <li>
                     <a href="climate.html" class="active">Climate</a>
                 </li>
@@ -66,6 +153,10 @@
 
 
 <main>
+
+    <!-- =====================================================
+         CLIMATE HERO
+    ====================================================== -->
 
     <section class="hero" id="top">
 
@@ -122,6 +213,8 @@
         </div>
 
 
+        <!-- POLAR GLOBE / BALL -->
+
         <div class="hero-visual" aria-hidden="true">
 
             <div class="orbital-line"></div>
@@ -166,6 +259,10 @@
     </section>
 
 
+    <!-- =====================================================
+         CLIMATE INFORMATION
+    ====================================================== -->
+
     <section class="regions-section" id="topic-information">
 
         <div class="section-heading">
@@ -175,27 +272,225 @@
             </p>
 
             <h2>
-                Climate
+                Polar Climate
             </h2>
 
             <span>
-                Understand Arctic and Antarctic climate processes,
-                climate change and the role of the polar regions
-                in Earth systems.
+                Explore Arctic and Antarctic climate systems,
+                warming signals, sea ice, atmosphere and the
+                connection between polar regions and global climate.
             </span>
 
         </div>
 
 
-        <div id="topic-status" class="section-label">
-            Loading verified portal information...
+        <div class="climate-content-grid">
+
+            <!-- 01 -->
+
+            <article class="climate-content-card">
+
+                <div class="climate-image">
+                    <img
+                        src="https://images.unsplash.com/photo-1786335091902-eb0166246cbe?auto=format&fit=crop&w=900&q=85"
+                        alt="Aurora over a polar landscape"
+                        loading="lazy"
+                    >
+                </div>
+
+                <div class="climate-card-body">
+
+                    <span class="climate-card-category">
+                        ARCTIC CLIMATE
+                    </span>
+
+                    <h3>
+                        Arctic Warming
+                    </h3>
+
+                    <p>
+                        Explore temperature changes in the Arctic and
+                        how warming affects snow, sea ice, permafrost
+                        and surrounding environments.
+                    </p>
+
+                </div>
+
+            </article>
+
+
+            <!-- 02 -->
+
+            <article class="climate-content-card">
+
+                <div class="climate-image">
+                    <img
+                        src="https://images.unsplash.com/photo-1746310005142-21ca9368e70a?auto=format&fit=crop&w=900&q=85"
+                        alt="Arctic sea ice"
+                        loading="lazy"
+                    >
+                </div>
+
+                <div class="climate-card-body">
+
+                    <span class="climate-card-category">
+                        SEA ICE
+                    </span>
+
+                    <h3>
+                        Sea Ice Change
+                    </h3>
+
+                    <p>
+                        Learn how seasonal sea-ice extent and thickness
+                        respond to changing temperatures and influence
+                        polar climate systems.
+                    </p>
+
+                </div>
+
+            </article>
+
+
+            <!-- 03 -->
+
+            <article class="climate-content-card">
+
+                <div class="climate-image">
+                    <img
+                        src="https://images.unsplash.com/photo-1695410864552-1beee4a65bf7?auto=format&fit=crop&w=900&q=85"
+                        alt="Antarctic ice sheet and iceberg"
+                        loading="lazy"
+                    >
+                </div>
+
+                <div class="climate-card-body">
+
+                    <span class="climate-card-category">
+                        ANTARCTIC CLIMATE
+                    </span>
+
+                    <h3>
+                        Antarctic Ice &amp; Climate
+                    </h3>
+
+                    <p>
+                        Understand the relationship between Antarctic
+                        ice, snowfall, temperature and long-term
+                        climate observations.
+                    </p>
+
+                </div>
+
+            </article>
+
+
+            <!-- 04 -->
+
+            <article class="climate-content-card">
+
+                <div class="climate-image">
+                    <img
+                        src="https://images.unsplash.com/photo-1783101276898-53cdd84174dc?auto=format&fit=crop&w=900&q=85"
+                        alt="Polar glacier landscape"
+                        loading="lazy"
+                    >
+                </div>
+
+                <div class="climate-card-body">
+
+                    <span class="climate-card-category">
+                        CRYOSPHERE
+                    </span>
+
+                    <h3>
+                        Glaciers &amp; Climate Signals
+                    </h3>
+
+                    <p>
+                        Examine how glacier conditions provide evidence
+                        of environmental change and changing climate
+                        conditions across polar regions.
+                    </p>
+
+                </div>
+
+            </article>
+
+
+            <!-- 05 -->
+
+            <article class="climate-content-card">
+
+                <div class="climate-image">
+                    <img
+                        src="https://images.unsplash.com/photo-1606592641984-c9a1506d0705?auto=format&fit=crop&w=900&q=85"
+                        alt="Polar ocean and ice environment"
+                        loading="lazy"
+                    >
+                </div>
+
+                <div class="climate-card-body">
+
+                    <span class="climate-card-category">
+                        ATMOSPHERE &amp; OCEAN
+                    </span>
+
+                    <h3>
+                        Polar Climate Connections
+                    </h3>
+
+                    <p>
+                        Discover how the atmosphere, ocean, sea ice
+                        and surface conditions interact to shape
+                        polar climate systems.
+                    </p>
+
+                </div>
+
+            </article>
+
+
+            <!-- 06 -->
+
+            <article class="climate-content-card">
+
+                <div class="climate-image">
+                    <img
+                        src="https://images.unsplash.com/photo-1529730705273-7f8ab24844e8?auto=format&fit=crop&w=900&q=85"
+                        alt="Snow-covered polar mountains"
+                        loading="lazy"
+                    >
+                </div>
+
+                <div class="climate-card-body">
+
+                    <span class="climate-card-category">
+                        CLIMATE MONITORING
+                    </span>
+
+                    <h3>
+                        Observing Polar Change
+                    </h3>
+
+                    <p>
+                        Explore how scientists use observations,
+                        measurements and long-term records to track
+                        changes across the polar environment.
+                    </p>
+
+                </div>
+
+            </article>
+
         </div>
-
-
-        <div id="topic-grid" class="regions-grid"></div>
 
     </section>
 
+
+    <!-- =====================================================
+         EXPLORE FURTHER
+    ====================================================== -->
 
     <section class="explore-section">
 
@@ -218,7 +513,6 @@
 
 
         <div class="feature-grid">
-
 
             <div class="feature-card">
 
@@ -288,7 +582,7 @@
 
                 <p>
                     Discover scientific studies and research
-                    connected to the polar regions.
+                    connected to polar climate.
                 </p>
 
                 <a href="research.html">
@@ -304,12 +598,11 @@
 </main>
 
 
-<script src="../js/api.js"></script>
-
 <script>
     window.POLAR_TOPIC = "climate";
 </script>
 
+<script src="../js/api.js"></script>
 <script src="../js/topic.js"></script>
 
 </body>

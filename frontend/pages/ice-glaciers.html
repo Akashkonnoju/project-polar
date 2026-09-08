@@ -4,12 +4,110 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Ice & Glaciers information and resources from PolarConnect.">
+    <meta name="description" content="Ice and glaciers information and resources from PolarConnect.">
 
-    <title>Ice & Glaciers | PolarConnect</title>
+    <title>Ice &amp; Glaciers | PolarConnect</title>
 
     <link rel="stylesheet" href="../css/style.css">
     <link rel="stylesheet" href="../css/responsive.css">
+
+    <style>
+        /* Ice & Glaciers content cards */
+        .ice-content-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+            margin-top: 42px;
+        }
+
+        .ice-content-card {
+            overflow: hidden;
+            border: 1px solid rgba(20, 75, 100, 0.12);
+            border-radius: 16px;
+            background: rgba(255, 255, 255, 0.97);
+            box-shadow: 0 12px 35px rgba(3, 30, 45, 0.08);
+            transition: transform 0.25s ease, box-shadow 0.25s ease;
+        }
+
+        .ice-content-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 18px 45px rgba(3, 30, 45, 0.14);
+        }
+
+        .ice-image {
+            width: 100%;
+            height: 190px;
+            overflow: hidden;
+        }
+
+        .ice-image img {
+            width: 100%;
+            height: 100%;
+            display: block;
+            object-fit: cover;
+            transition: transform 0.4s ease;
+        }
+
+        .ice-content-card:hover .ice-image img {
+            transform: scale(1.05);
+        }
+
+        .ice-card-body {
+            padding: 22px;
+        }
+
+        .ice-card-category {
+            display: inline-block;
+            margin-bottom: 10px;
+            color: #159bc0;
+            font-family: "DM Mono", monospace;
+            font-size: 0.68rem;
+            font-weight: 700;
+            letter-spacing: 0.12em;
+        }
+
+        .ice-card-body h3 {
+            margin: 0 0 10px;
+            color: #09243a;
+            font-size: 1.18rem;
+        }
+
+        .ice-card-body p {
+            margin: 0;
+            color: #60788a;
+            font-size: 0.92rem;
+            line-height: 1.65;
+        }
+
+        .ice-card-link {
+            display: inline-block;
+            margin-top: 17px;
+            color: #087fa4;
+            text-decoration: none;
+            font-size: 0.85rem;
+            font-weight: 700;
+        }
+
+        .ice-card-link:hover {
+            text-decoration: underline;
+        }
+
+        @media (max-width: 900px) {
+            .ice-content-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 600px) {
+            .ice-content-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .ice-image {
+                height: 210px;
+            }
+        }
+    </style>
 </head>
 
 <body>
@@ -27,9 +125,11 @@
                 <li>
                     <a href="../index.html">Home</a>
                 </li>
-                    <a href="media.html" >
-                Media
-            </a>
+
+                <li>
+                    <a href="media.html">Media</a>
+                </li>
+
                 <li>
                     <a href="climate.html">Climate</a>
                 </li>
@@ -78,6 +178,10 @@
 
 
 <main>
+
+    <!-- =====================================================
+         HERO
+    ====================================================== -->
 
     <section class="hero" id="top">
 
@@ -133,6 +237,8 @@
         </div>
 
 
+        <!-- POLAR GLOBE / BALL -->
+
         <div class="hero-visual" aria-hidden="true">
 
             <div class="orbital-line"></div>
@@ -177,6 +283,10 @@
     </section>
 
 
+    <!-- =====================================================
+         ICE & GLACIERS INFORMATION
+    ====================================================== -->
+
     <section class="regions-section" id="topic-information">
 
         <div class="section-heading">
@@ -190,22 +300,221 @@
             </h2>
 
             <span>
-                Explore glaciers, ice sheets, sea ice, ice dynamics
-                and the frozen systems that shape polar environments.
+                Discover the frozen systems of the polar regions,
+                from massive ice sheets and moving glaciers to
+                sea ice, ice shelves and meltwater.
             </span>
 
         </div>
 
 
-        <div id="topic-status" class="section-label">
-            Loading verified portal information...
+        <div class="ice-content-grid">
+
+            <!-- 01 -->
+
+            <article class="ice-content-card">
+
+                <div class="ice-image">
+                    <img
+                        src="https://images.unsplash.com/photo-1587125507792-f7180e1da2c8?auto=format&fit=crop&w=900&q=85"
+                        alt="Blue glacier ice"
+                        loading="lazy"
+                    >
+                </div>
+
+                <div class="ice-card-body">
+
+                    <span class="ice-card-category">
+                        GLACIERS
+                    </span>
+
+                    <h3>
+                        How Glaciers Move
+                    </h3>
+
+                    <p>
+                        Learn how enormous bodies of glacier ice slowly
+                        flow under gravity and respond to changes in
+                        temperature, snowfall and melt.
+                    </p>
+
+                </div>
+
+            </article>
+
+
+            <!-- 02 -->
+
+            <article class="ice-content-card">
+
+                <div class="ice-image">
+                    <img
+                        src="https://images.unsplash.com/photo-1672275763148-e3348b2c6cc7?auto=format&fit=crop&w=900&q=85"
+                        alt="Glacial ice formation"
+                        loading="lazy"
+                    >
+                </div>
+
+                <div class="ice-card-body">
+
+                    <span class="ice-card-category">
+                        ICE FORMATION
+                    </span>
+
+                    <h3>
+                        From Snow to Ice
+                    </h3>
+
+                    <p>
+                        Follow the transformation of accumulated snow
+                        into dense glacial ice through pressure,
+                        compaction and long-term freezing.
+                    </p>
+
+                </div>
+
+            </article>
+
+
+            <!-- 03 -->
+
+            <article class="ice-content-card">
+
+                <div class="ice-image">
+                    <img
+                        src="https://images.unsplash.com/photo-1670391845425-f43bc7463be1?auto=format&fit=crop&w=900&q=85"
+                        alt="Ice sheet landscape"
+                        loading="lazy"
+                    >
+                </div>
+
+                <div class="ice-card-body">
+
+                    <span class="ice-card-category">
+                        ICE SHEETS
+                    </span>
+
+                    <h3>
+                        Arctic &amp; Antarctic Ice Sheets
+                    </h3>
+
+                    <p>
+                        Explore the huge stores of land ice covering
+                        Greenland and Antarctica and their importance
+                        to Earth's frozen environment.
+                    </p>
+
+                </div>
+
+            </article>
+
+
+            <!-- 04 -->
+
+            <article class="ice-content-card">
+
+                <div class="ice-image">
+                    <img
+                        src="https://images.unsplash.com/photo-1737993705942-bff77b62b416?auto=format&fit=crop&w=900&q=85"
+                        alt="Ice shelf and floating ice"
+                        loading="lazy"
+                    >
+                </div>
+
+                <div class="ice-card-body">
+
+                    <span class="ice-card-category">
+                        ICE SHELVES
+                    </span>
+
+                    <h3>
+                        Floating Ice Shelves
+                    </h3>
+
+                    <p>
+                        Understand how ice shelves extend from glaciers
+                        and ice sheets over the ocean and interact with
+                        the surrounding polar environment.
+                    </p>
+
+                </div>
+
+            </article>
+
+
+            <!-- 05 -->
+
+            <article class="ice-content-card">
+
+                <div class="ice-image">
+                    <img
+                        src="https://images.unsplash.com/photo-1780589613719-5642667970ec?auto=format&fit=crop&w=900&q=85"
+                        alt="Detailed blue ice texture"
+                        loading="lazy"
+                    >
+                </div>
+
+                <div class="ice-card-body">
+
+                    <span class="ice-card-category">
+                        ICE DYNAMICS
+                    </span>
+
+                    <h3>
+                        Cracks, Crevasses &amp; Ice Flow
+                    </h3>
+
+                    <p>
+                        Discover the structures that appear as glacier
+                        ice deforms, stretches and moves across complex
+                        polar landscapes.
+                    </p>
+
+                </div>
+
+            </article>
+
+
+            <!-- 06 -->
+
+            <article class="ice-content-card">
+
+                <div class="ice-image">
+                    <img
+                        src="https://images.unsplash.com/photo-1739832208797-c79303b24257?auto=format&fit=crop&w=900&q=85"
+                        alt="Polar ice and meltwater landscape"
+                        loading="lazy"
+                    >
+                </div>
+
+                <div class="ice-card-body">
+
+                    <span class="ice-card-category">
+                        MELTWATER
+                    </span>
+
+                    <h3>
+                        Meltwater &amp; Frozen Landscapes
+                    </h3>
+
+                    <p>
+                        Explore how seasonal melting produces streams,
+                        pools and channels across glacier surfaces and
+                        changes the surrounding frozen landscape.
+                    </p>
+
+                </div>
+
+            </article>
+
         </div>
-
-
-        <div id="topic-grid" class="regions-grid"></div>
 
     </section>
 
+
+    <!-- =====================================================
+         EXPLORE FURTHER
+    ====================================================== -->
 
     <section class="explore-section">
 
@@ -228,7 +537,6 @@
 
 
         <div class="feature-grid">
-
 
             <div class="feature-card">
 
@@ -298,7 +606,7 @@
 
                 <p>
                     Discover scientific studies and research
-                    connected to the polar regions.
+                    connected to polar ice and glaciers.
                 </p>
 
                 <a href="research.html">

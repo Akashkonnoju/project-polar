@@ -13,21 +13,295 @@
     <link rel="stylesheet" href="../css/style.css">
     <link rel="stylesheet" href="../css/search.css">
     <link rel="stylesheet" href="../css/responsive.css">
+
+    <!-- =====================================================
+         POLAR GLOBE - ADDED ONLY FOR THE HERO
+    ====================================================== -->
+    <style>
+
+        /* Keep the existing hero and place the globe on the right */
+        .search-page .hero {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .search-page .hero-visual {
+            bottom: 6.5%;
+            height: min(490px, 49vw);
+            pointer-events: none;
+            position: absolute;
+            right: max(3vw, calc((100vw - 1240px) / 2));
+            width: min(520px, 47vw);
+            z-index: 1;
+        }
+
+        /* =========================
+           POLAR GLOBE
+        ========================== */
+
+        .search-page .polar-globe {
+            background:
+                radial-gradient(
+                    circle at 37% 33%,
+                    rgba(226, 253, 255, .6),
+                    rgba(96, 200, 228, .23) 25%,
+                    rgba(10, 77, 108, .68) 61%,
+                    rgba(5, 28, 47, .78) 100%
+                );
+
+            border: 1px solid rgba(168, 239, 255, .55);
+            border-radius: 50%;
+
+            box-shadow:
+                inset -34px -28px 46px rgba(1, 18, 30, .66),
+                inset 12px 12px 45px rgba(208, 250, 255, .24),
+                0 0 0 18px rgba(129, 227, 248, .045),
+                0 0 85px rgba(66, 185, 220, .35);
+
+            height: 75%;
+            overflow: hidden;
+            position: absolute;
+            right: 2%;
+            top: 2%;
+            width: 75%;
+        }
+
+        .search-page .polar-globe::before {
+            background-image:
+                repeating-linear-gradient(
+                    0deg,
+                    transparent 0 14%,
+                    rgba(208, 250, 255, .29) 14.5% 15%,
+                    transparent 15.5% 29%
+                ),
+                repeating-linear-gradient(
+                    90deg,
+                    transparent 0 15%,
+                    rgba(208, 250, 255, .2) 15.4% 16%,
+                    transparent 16.5% 31%
+                );
+
+            border-radius: inherit;
+            content: "";
+            inset: 0;
+            opacity: .6;
+            position: absolute;
+            transform: rotate(-14deg) scale(1.22);
+        }
+
+        .search-page .polar-globe::after {
+            border: 1px solid rgba(190, 247, 255, .35);
+            border-radius: 50%;
+            content: "";
+            inset: 15%;
+            position: absolute;
+        }
+
+        /* =========================
+           GLOBE PINS
+        ========================== */
+
+        .search-page .globe-pin {
+            background: var(--cyan, #83e6fb);
+            border: 3px solid rgba(7, 45, 64, .82);
+            border-radius: 50%;
+
+            box-shadow:
+                0 0 0 7px rgba(131, 230, 251, .14),
+                0 0 20px rgba(131, 230, 251, .95);
+
+            height: 11px;
+            position: absolute;
+            width: 11px;
+            z-index: 2;
+        }
+
+        .search-page .globe-pin-one {
+            left: 41%;
+            top: 35%;
+        }
+
+        .search-page .globe-pin-two {
+            right: 28%;
+            top: 56%;
+        }
+
+        .search-page .globe-marker {
+            bottom: 18%;
+            color: rgba(233, 253, 255, .7);
+
+            font-family: "DM Mono", monospace;
+            font-size: .55rem;
+            left: 24%;
+            letter-spacing: .18em;
+
+            position: absolute;
+            z-index: 2;
+        }
+
+        /* =========================
+           ORBITAL RING
+        ========================== */
+
+        .search-page .orbital-line {
+            border: 1px solid rgba(131, 230, 251, .38);
+            border-radius: 50%;
+
+            height: 47%;
+            left: 1%;
+            position: absolute;
+            top: 12%;
+
+            transform: rotate(-28deg);
+            width: 94%;
+        }
+
+        .search-page .orbital-line::before {
+            background: var(--cyan, #83e6fb);
+            border-radius: 50%;
+
+            box-shadow: 0 0 15px var(--cyan, #83e6fb);
+
+            content: "";
+            height: 8px;
+            left: 13%;
+            position: absolute;
+            top: 5%;
+            width: 8px;
+        }
+
+        /* =========================
+           SCIENCE CARD
+        ========================== */
+
+        .search-page .science-card {
+            backdrop-filter: blur(13px);
+
+            background:
+                linear-gradient(
+                    135deg,
+                    rgba(6, 31, 48, .82),
+                    rgba(13, 90, 120, .54)
+                );
+
+            border: 1px solid rgba(161, 236, 250, .32);
+            border-radius: 10px;
+
+            bottom: 3%;
+
+            box-shadow:
+                0 20px 45px rgba(0, 14, 25, .26);
+
+            color: var(--white, #fff);
+
+            left: 0;
+            padding: 1rem 1.05rem;
+
+            position: absolute;
+            width: min(278px, 72%);
+            z-index: 3;
+        }
+
+        .search-page .science-card-top {
+            align-items: center;
+            color: var(--cyan, #83e6fb);
+
+            display: flex;
+
+            font-family: "DM Mono", monospace;
+            font-size: .55rem;
+            gap: .45rem;
+            letter-spacing: .12em;
+        }
+
+        .search-page .status-pulse {
+            animation: resources-pulse 2s ease-in-out infinite;
+
+            background: #8cf8c4;
+            border-radius: 50%;
+
+            box-shadow:
+                0 0 0 4px rgba(140, 248, 196, .12);
+
+            height: 6px;
+            width: 6px;
+        }
+
+        .search-page .science-card strong {
+            display: block;
+
+            font-family: "Manrope", sans-serif;
+            font-size: .92rem;
+            letter-spacing: -.03em;
+            line-height: 1.25;
+
+            margin: .65rem 0 .35rem;
+        }
+
+        .search-page .science-card small {
+            color: rgba(232, 252, 255, .65);
+
+            display: block;
+
+            font-size: .65rem;
+            line-height: 1.45;
+        }
+
+        @keyframes resources-pulse {
+            50% {
+                box-shadow:
+                    0 0 0 8px rgba(140, 248, 196, 0);
+            }
+        }
+
+        /* =========================
+           RESPONSIVE
+        ========================== */
+
+        @media (max-width: 900px) {
+
+            .search-page .hero-visual {
+                opacity: .55;
+                right: -10%;
+                width: 55vw;
+            }
+
+        }
+
+        @media (max-width: 700px) {
+
+            .search-page .hero-visual {
+                bottom: 2%;
+                height: 330px;
+                opacity: .35;
+                right: -18%;
+                width: 430px;
+            }
+
+        }
+
+    </style>
+
 </head>
+
 
 <body class="search-page">
 
-    <!-- =========================
+
+    <!-- =====================================================
          NAVIGATION
-    ========================== -->
+    ====================================================== -->
 
     <header>
+
         <nav class="navbar">
+
             <div class="container">
 
                 <a href="../index.html" class="logo">
                     Polar<span>Connect</span>
                 </a>
+
 
                 <ul class="nav-links">
 
@@ -36,9 +310,13 @@
                             Home
                         </a>
                     </li>
+
+                    <li>
                         <a href="media.html">
-                Media
-            </a>
+                            Media
+                        </a>
+                    </li>
+
                     <li>
                         <a href="climate.html">
                             Climate
@@ -83,25 +361,33 @@
 
                 </ul>
 
+
                 <div class="nav-actions">
                 </div>
 
             </div>
+
         </nav>
+
     </header>
 
 
-    <!-- =========================
+
+    <!-- =====================================================
          MAIN
-    ========================== -->
+    ====================================================== -->
 
     <main>
 
-        <!-- =========================
+
+        <!-- =================================================
              HERO
-        ========================== -->
+        ================================================== -->
 
         <section class="hero" id="top">
+
+
+            <!-- HERO CONTENT -->
 
             <div class="hero-content">
 
@@ -109,10 +395,12 @@
                     POLAR SCIENCE • KNOWLEDGE • DISCOVERY
                 </p>
 
+
                 <h1>
                     Explore the<br>
                     <span>Resources</span>
                 </h1>
+
 
                 <p class="hero-description">
                     Search and explore trusted polar science
@@ -120,36 +408,123 @@
                     information from across the Arctic and Antarctic.
                 </p>
 
+
                 <div class="hero-buttons">
 
                     <a href="#resource-library" class="primary-btn">
+
                         Explore Resources
-                        <span aria-hidden="true">→</span>
+
+                        <span aria-hidden="true">
+                            →
+                        </span>
+
                     </a>
 
+
                     <a href="research.html" class="secondary-btn">
+
                         Explore Research
-                        <span aria-hidden="true">↗</span>
+
+                        <span aria-hidden="true">
+                            ↗
+                        </span>
+
                     </a>
 
                 </div>
 
+
                 <div class="hero-meta" aria-label="Resource highlights">
 
                     <div>
-                        <strong>01</strong>
-                        <span>Knowledge</span>
+
+                        <strong>
+                            01
+                        </strong>
+
+                        <span>
+                            Knowledge
+                        </span>
+
                     </div>
 
-                    <div>
-                        <strong>02</strong>
-                        <span>Research</span>
-                    </div>
 
                     <div>
-                        <strong>03</strong>
-                        <span>Polar Data</span>
+
+                        <strong>
+                            02
+                        </strong>
+
+                        <span>
+                            Research
+                        </span>
+
                     </div>
+
+
+                    <div>
+
+                        <strong>
+                            03
+                        </strong>
+
+                        <span>
+                            Polar Data
+                        </span>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- =================================================
+                 POLAR BALL / GLOBE LOGO
+                 SAME STYLE AS BIODIVERSITY PAGE
+            ================================================== -->
+
+            <div class="hero-visual" aria-hidden="true">
+
+                <div class="orbital-line"></div>
+
+
+                <div class="polar-globe">
+
+                    <span class="globe-pin globe-pin-one"></span>
+
+                    <span class="globe-pin globe-pin-two"></span>
+
+                    <span class="globe-marker">
+                        POLAR
+                    </span>
+
+                </div>
+
+
+                <div class="science-card">
+
+                    <div class="science-card-top">
+
+                        <span class="status-pulse"></span>
+
+                        <span>
+                            POLAR SCIENCE SIGNAL
+                        </span>
+
+                    </div>
+
+
+                    <strong>
+                        Resources
+                    </strong>
+
+
+                    <small>
+                        Connecting knowledge from Earth's polar extremes.
+                    </small>
 
                 </div>
 
@@ -158,11 +533,13 @@
         </section>
 
 
-        <!-- =========================
+
+        <!-- =================================================
              RESOURCE LIBRARY
-        ========================== -->
+        ================================================== -->
 
         <section class="search-main" id="resource-library">
+
 
             <!-- SECTION HEADING -->
 
@@ -173,9 +550,11 @@
                     POLAR SCIENCE
                 </p>
 
+
                 <h2 style="color: white !important;">
                     Resource Library
                 </h2>
+
 
                 <span style="color: #c5d3df !important;">
                     Search and filter knowledge, research,
@@ -185,9 +564,10 @@
             </div>
 
 
-            <!-- =========================
+
+            <!-- =================================================
                  SEARCH BOX
-            ========================== -->
+            ================================================== -->
 
             <div class="search-box">
 
@@ -197,6 +577,7 @@
                         ⌕
                     </span>
 
+
                     <input
                         id="resource-search"
                         type="text"
@@ -205,6 +586,7 @@
                     >
 
                 </div>
+
 
                 <button
                     id="resource-search-btn"
@@ -218,9 +600,10 @@
             </div>
 
 
-            <!-- =========================
+
+            <!-- =================================================
                  CATEGORY FILTER
-            ========================== -->
+            ================================================== -->
 
             <div class="feature-grid">
 
@@ -230,17 +613,21 @@
                         01
                     </span>
 
+
                     <div class="feature-icon" aria-hidden="true">
                         ◈
                     </div>
+
 
                     <h3>
                         Category
                     </h3>
 
+
                     <p>
                         Filter resources by polar science topic.
                     </p>
+
 
                     <select id="category-filter">
 
@@ -248,25 +635,31 @@
                             All
                         </option>
 
+
                         <option value="Polar Science">
                             Polar Science
                         </option>
+
 
                         <option value="Research">
                             Research
                         </option>
 
+
                         <option value="Climate">
                             Climate
                         </option>
+
 
                         <option value="Ice &amp; Glaciers">
                             Ice &amp; Glaciers
                         </option>
 
+
                         <option value="Polar Oceans">
                             Polar Oceans
                         </option>
+
 
                         <option value="Wildlife">
                             Wildlife
@@ -279,9 +672,10 @@
             </div>
 
 
-            <!-- =========================
+
+            <!-- =================================================
                  RESOURCE STATUS
-            ========================== -->
+            ================================================== -->
 
             <div
                 id="resource-status"
@@ -292,9 +686,10 @@
             </div>
 
 
-            <!-- =========================
+
+            <!-- =================================================
                  RESOURCE RESULTS
-            ========================== -->
+            ================================================== -->
 
             <div
                 id="resource-grid"
@@ -306,12 +701,15 @@
     </main>
 
 
-    <!-- =========================
+
+    <!-- =====================================================
          JAVASCRIPT
-    ========================== -->
+    ====================================================== -->
 
     <script src="../js/api.js"></script>
+
     <script src="../js/resources.js"></script>
+
 
 </body>
 
