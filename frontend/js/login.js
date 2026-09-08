@@ -42,27 +42,26 @@ document.addEventListener("DOMContentLoaded", () => {
             // ======================================
             // VALIDATION
             // ======================================
+if (!email || !password) {
 
-            if (!email || !password) {
+    alert(
+        "Please enter your email and password."
+    );
 
-                alert(
-                    "Please enter your email and password."
-                );
-
-                return;
-            }
+    return;
+}
 
 
-            if (!emailInput.checkValidity()) {
+if (!emailInput.checkValidity()) {
 
-                alert(
-                    "Please enter a valid email address."
-                );
+    alert(
+        "Please enter a valid email address."
+    );
 
-                emailInput.focus();
+    emailInput.focus();
 
-                return;
-            }
+    return;
+}
 
 
             // ======================================
@@ -88,7 +87,10 @@ document.addEventListener("DOMContentLoaded", () => {
 
                 // Backend expects username.
                 // Email is sent as username.
-
+console.log("Sending login:", {
+    username: email,
+    password: password
+});
                 const result =
                     await loginUser({
 
