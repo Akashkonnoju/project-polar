@@ -1,452 +1,287 @@
-// ==========================================
-// POLARCONNECT - MEDIA PAGE
-// ==========================================
+document.addEventListener("DOMContentLoaded", function () {
 
-let allMediaData = [];
-let currentMediaData = [];
+    /* =========================================================
+       GET MEDIA ELEMENTS
+    ========================================================= */
+
+    const mediaTabs = document.querySelectorAll(".media-tabs button");
+    const mediaCards = document.querySelectorAll(".media-card");
 
 
-// ==========================================
-// LOAD MEDIA
-// ==========================================
+    /* =========================================================
+       CHECK ELEMENTS
+    ========================================================= */
 
-async function loadMedia() {
-
-    const mediaGrid = document.querySelector(".media-grid");
-
-    if (!mediaGrid) {
-        console.error("Media grid not found.");
+    if (!mediaTabs.length || !mediaCards.length) {
+        console.warn("Media tabs or media cards were not found.");
         return;
     }
 
-    try {
 
-        const response = await getMedia();
+    /* =========================================================
+       GET MEDIA TYPE
+    ========================================================= */
 
-        // Support normal array and DRF paginated response
-        const mediaData = Array.isArray(response)
-            ? response
-            : response.results || [];
+    function getMediaType(card) {
+
+        const typeElement =
+            card.querySelector(".media-type");
+
+        if (!typeElement) {
+            return "";
+        }
+
+        return typeElement.textContent
+            .trim()
+            .toLowerCase();
+
+    }
 
 
-        // Remove duplicate media
-        const uniqueMedia = [];
-        const seenTitles = new Set();
+    /* =========================================================
+       FILTER MEDIA
+    ========================================================= */
 
-        mediaData.forEach(item => {
+    function filterMedia(selectedType) {
 
-            const title = (
-                item.title ||
-                "Untitled Media"
-            ).trim().toLowerCase();
+        mediaCards.forEach(function (card) {
 
-            if (!seenTitles.has(title)) {
+            const mediaType =
+                getMediaType(card);
 
-                seenTitles.add(title);
-                uniqueMedia.push(item);
+            let shouldShow = false;
+
+
+            /* ALL MEDIA */
+
+            if (selectedType === "all") {
+
+                shouldShow = true;
+
+            }
+
+
+            /* VIDEOS */
+
+            else if (selectedType === "videos") {
+
+                shouldShow =
+                    mediaType === "video";
+
+            }
+
+
+            /* PHOTOGRAPHY */
+
+            else if (selectedType === "photography") {
+
+                shouldShow =
+                    mediaType === "photography";
+
+            }
+
+
+            /* STORIES */
+
+            else if (selectedType === "stories") {
+
+                shouldShow =
+                    mediaType === "story";
+
+            }
+
+
+            /* SHOW / HIDE CARD */
+
+            if (shouldShow) {
+
+                card.style.display = "";
+
+                card.style.opacity = "0";
+
+                card.style.transform =
+                    "translateY(10px)";
+
+                requestAnimationFrame(function () {
+
+                    card.style.transition =
+                        "opacity 0.3s ease, transform 0.3s ease";
+
+                    card.style.opacity = "1";
+
+                    card.style.transform =
+                        "translateY(0)";
+
+                });
+
+            }
+
+            else {
+
+                card.style.display = "none";
 
             }
 
         });
 
-
-        allMediaData = uniqueMedia;
-        currentMediaData = uniqueMedia;
-
-
-        renderMedia(currentMediaData);
-
-        setupMediaFilters();
-
-        updateMediaCount(allMediaData.length);
-
-
-        console.log(
-            "Media loaded successfully:",
-            allMediaData
-        );
-
-
-    } catch (error) {
-
-        console.error(
-            "Media API error:",
-            error
-        );
-
-        mediaGrid.innerHTML = `
-            <div class="no-results">
-                <p>Unable to load media data.</p>
-                <small>Please try again later.</small>
-            </div>
-        `;
-
-    }
-}
-
-
-// ==========================================
-// RENDER MEDIA
-// ==========================================
-
-function renderMedia(mediaData) {
-
-    const mediaGrid = document.querySelector(".media-grid");
-
-    if (!mediaGrid) {
-        return;
     }
 
 
-    mediaGrid.innerHTML = "";
+    /* =========================================================
+       FILTER BUTTONS
+    ========================================================= */
 
+    mediaTabs.forEach(function (tab) {
 
-    if (mediaData.length === 0) {
+        tab.addEventListener("click", function () {
 
-        mediaGrid.innerHTML = `
-            <div class="no-results">
-                <p>No media resources available.</p>
-            </div>
-        `;
+            /* Remove active from every tab */
 
-        return;
-    }
+            mediaTabs.forEach(function (item) {
 
+                item.classList.remove("active");
 
-    mediaData.forEach(item => {
-
-        const card = document.createElement("article");
-
-        card.className = "media-card";
-
-
-        // ------------------------------------------
-        // MEDIA TYPE
-        // ------------------------------------------
-
-        const rawType =
-            item.media_type ||
-            item.type ||
-            "media";
-
-        const mediaType =
-            String(rawType).toUpperCase();
-
-
-        const typeLower =
-            String(rawType).toLowerCase();
-
-
-        // ------------------------------------------
-        // IMAGE
-        // ------------------------------------------
-
-        const imageUrl =
-            item.thumbnail ||
-            item.image_url ||
-            item.image ||
-            "../assets/images/polar-hero-v2.png";
-
-
-        // ------------------------------------------
-        // DESCRIPTION
-        // ------------------------------------------
-
-        const description =
-            item.description ||
-            item.abstract ||
-            "No description available.";
-
-
-        // ------------------------------------------
-        // DATE / LOCATION
-        // ------------------------------------------
-
-        const meta =
-            item.date ||
-            item.location ||
-            "POLAR MEDIA";
-
-
-        // ------------------------------------------
-        // MEDIA LINK
-        // ------------------------------------------
-
-        const mediaUrl =
-            item.media_url ||
-            item.url ||
-            item.external_link ||
-            item.video_url ||
-            "";
-
-
-        let mediaLink;
-
-
-        if (mediaUrl) {
-
-            let linkText = "View media →";
-
-
-            if (typeLower === "video") {
-                linkText = "Watch video →";
-            }
-
-            else if (
-                typeLower === "photography" ||
-                typeLower === "photo" ||
-                typeLower === "image"
-            ) {
-                linkText = "View gallery →";
-            }
-
-            else if (typeLower === "story") {
-                linkText = "Read story →";
-            }
-
-
-            mediaLink = `
-                <a
-                    href="${mediaUrl}"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                >
-                    ${linkText}
-                </a>
-            `;
-
-        }
-
-        else {
-
-            mediaLink = `
-                <span class="media-no-link">
-                    Media available
-                </span>
-            `;
-
-        }
-
-
-        // ------------------------------------------
-        // VIDEO ICON
-        // ------------------------------------------
-
-        const playIcon =
-            typeLower === "video"
-                ? `<span class="play-small">▶</span>`
-                : "";
-
-
-        // ------------------------------------------
-        // CARD
-        // ------------------------------------------
-
-        card.innerHTML = `
-
-            <div class="media-card-image">
-
-                <img
-                    src="${imageUrl}"
-                    alt="${item.title || "Polar media"}"
-                    loading="lazy"
-                >
-
-                <span class="media-type">
-                    ${mediaType}
-                </span>
-
-                ${playIcon}
-
-            </div>
-
-
-            <div class="media-card-body">
-
-                <div class="media-card-meta">
-                    ${meta}
-                </div>
-
-
-                <h3>
-                    ${item.title || "Untitled Media"}
-                </h3>
-
-
-                <p>
-                    ${description}
-                </p>
-
-
-                ${mediaLink}
-
-            </div>
-
-        `;
-
-
-        mediaGrid.appendChild(card);
-
-    });
-
-}
-
-
-// ==========================================
-// MEDIA FILTERS
-// ==========================================
-
-function setupMediaFilters() {
-
-    const filterButtons =
-        document.querySelectorAll(
-            ".media-tabs button"
-        );
-
-
-    if (!filterButtons.length) {
-        return;
-    }
-
-
-    filterButtons.forEach(button => {
-
-        button.addEventListener("click", () => {
-
-            // Remove active state
-            filterButtons.forEach(btn => {
-                btn.classList.remove("active");
             });
 
 
-            // Activate selected button
-            button.classList.add("active");
+            /* Activate clicked tab */
+
+            tab.classList.add("active");
 
 
-            const selectedFilter =
-                button.dataset.type ||
-                button.textContent
-                    .trim()
-                    .toLowerCase();
+            /* Get selected category */
+
+            const selectedType =
+                tab.getAttribute("data-type") || "all";
 
 
-            // ALL MEDIA
-            if (
-                selectedFilter === "all" ||
-                selectedFilter === "all media"
-            ) {
+            /* Filter cards */
 
-                currentMediaData =
-                    allMediaData;
-
-            }
-
-
-            // VIDEOS
-            else if (
-                selectedFilter === "video" ||
-                selectedFilter === "videos"
-            ) {
-
-                currentMediaData =
-                    allMediaData.filter(item => {
-
-                        const type = String(
-                            item.media_type ||
-                            item.type ||
-                            ""
-                        ).toLowerCase();
-
-                        return type === "video";
-
-                    });
-
-            }
-
-
-            // PHOTOGRAPHY
-            else if (
-                selectedFilter === "photography"
-            ) {
-
-                currentMediaData =
-                    allMediaData.filter(item => {
-
-                        const type = String(
-                            item.media_type ||
-                            item.type ||
-                            ""
-                        ).toLowerCase();
-
-                        return (
-                            type === "photography" ||
-                            type === "photo" ||
-                            type === "image"
-                        );
-
-                    });
-
-            }
-
-
-            // STORIES
-            else if (
-                selectedFilter === "stories" ||
-                selectedFilter === "story"
-            ) {
-
-                currentMediaData =
-                    allMediaData.filter(item => {
-
-                        const type = String(
-                            item.media_type ||
-                            item.type ||
-                            ""
-                        ).toLowerCase();
-
-                        return type === "story";
-
-                    });
-
-            }
-
-
-            renderMedia(currentMediaData);
+            filterMedia(selectedType);
 
         });
 
     });
 
-}
 
+    /* =========================================================
+       MEDIA ACTION LINKS
+       
+       IMPORTANT:
+       These links already contain real URLs in media.html.
+       We DO NOT use preventDefault().
+       
+       Therefore:
+       
+       Watch video  -> YouTube
+       View gallery -> Unsplash
+       Read story   -> Polar science website
+       
+    ========================================================= */
 
-// ==========================================
-// UPDATE MEDIA COUNT
-// ==========================================
-
-function updateMediaCount(count) {
-
-    const countElement =
-        document.querySelector(
-            ".media-count strong"
+    const mediaLinks =
+        document.querySelectorAll(
+            ".media-card-body a"
         );
 
 
-    if (!countElement) {
-        return;
+    mediaLinks.forEach(function (link) {
+
+        link.addEventListener("click", function () {
+
+            const card =
+                link.closest(".media-card");
+
+            if (!card) {
+                return;
+            }
+
+
+            const titleElement =
+                card.querySelector("h3");
+
+
+            const typeElement =
+                card.querySelector(".media-type");
+
+
+            const title =
+                titleElement
+                    ? titleElement.textContent.trim()
+                    : "Media resource";
+
+
+            const type =
+                typeElement
+                    ? typeElement.textContent.trim()
+                    : "MEDIA";
+
+
+            console.log(
+                "Opening:",
+                title,
+                "| Type:",
+                type
+            );
+
+            /*
+             * DO NOT prevent the default action.
+             *
+             * The href from media.html will open normally.
+             */
+
+        });
+
+    });
+
+
+    /* =========================================================
+       FEATURED STORY LINK
+    ========================================================= */
+
+    const featuredStoryLink =
+        document.querySelector(".story-link");
+
+
+    if (featuredStoryLink) {
+
+        featuredStoryLink.addEventListener(
+            "click",
+            function () {
+
+                console.log(
+                    "Opening featured story: Into the Frozen Frontier"
+                );
+
+                /*
+                 * Do not use preventDefault().
+                 * The YouTube URL in media.html opens normally.
+                 */
+
+            }
+        );
+
     }
 
 
-    countElement.textContent = count;
+    /* =========================================================
+       INITIAL STATE
+    ========================================================= */
 
-}
+    filterMedia("all");
 
 
-// ==========================================
-// INITIALIZE
-// ==========================================
+    /* =========================================================
+       DEBUG INFORMATION
+    ========================================================= */
 
-document.addEventListener(
-    "DOMContentLoaded",
-    loadMedia
-);
+    console.log(
+        "PolarConnect Media loaded successfully."
+    );
+
+    console.log(
+        "Total media cards:",
+        mediaCards.length
+    );
+
+});

@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -31,36 +32,39 @@
                 Home
             </a>
 
-            <a href="knowledge.html">
-                Knowledge
+            <a href="media.html" class="active">
+                Media
+            </a>
+
+            <a href="climate.html">
+                Climate
+            </a>
+
+            <a href="ice-glaciers.html">
+                Ice &amp; Glaciers
+            </a>
+
+            <a href="polar-oceans.html">
+                Polar Oceans
+            </a>
+
+            <a href="biodiversity.html">
+                Biodiversity
             </a>
 
             <a href="research.html">
                 Research
             </a>
 
-            <a href="media.html" class="active">
-                Media
+            <a href="resources.html">
+                All Resources
             </a>
 
-            <a href="map.html">
-                Polar Map
+            <a href="data-maps.html">
+                Data &amp; Maps
             </a>
-
-            <a href="climate.html">Climate</a>
-            <a href="ice-glaciers.html">Ice &amp; Glaciers</a>
-            <a href="polar-oceans.html">Polar Oceans</a>
-            <a href="biodiversity.html">Biodiversity</a>
-            <a href="resources.html">All Resources</a>
-            <a href="data-maps.html">Data &amp; Maps</a>
-            <a href="about.html">About</a>
-            <a href="assistant.html">Assistant</a>
 
         </div>
-
-        <a href="login.html" class="nav-login">
-            Login
-        </a>
 
     </div>
 
@@ -68,91 +72,110 @@
 
 
 <!-- =====================================================
-     MEDIA HERO
+     HERO
+     SAME STYLE AS BIODIVERSITY
 ===================================================== -->
 
-<header class="media-hero">
+<section class="hero" id="top">
 
-    <div class="media-hero-grid"></div>
+    <div class="hero-content">
 
-    <div class="media-hero-content">
-
-        <div class="media-eyebrow">
-            <span></span>
-            POLAR MEDIA NETWORK
-        </div>
-
-        <h1>
-            See the
-            <strong>polar world.</strong>
-        </h1>
-
-        <p>
-            Experience the Arctic and Antarctic through
-            photographs, documentaries, field stories and
-            scientific media.
+        <p class="hero-tag">
+            POLAR MEDIA • STORIES • DISCOVERY
         </p>
 
-        <div class="media-hero-actions">
+        <h1>
+            See the<br>
+            <span>polar world.</span>
+        </h1>
 
-            <a href="#media-library" class="media-primary">
+        <p class="hero-description">
+            Experience the Arctic and Antarctic through
+            photographs, documentaries, field stories and
+            scientific media from Earth's extreme regions.
+        </p>
+
+        <div class="hero-buttons">
+
+            <a href="#media-library" class="primary-btn">
                 Explore Media
-                <span>→</span>
+                <span aria-hidden="true">→</span>
             </a>
 
-            <a href="research.html" class="media-secondary">
+            <a href="research.html" class="secondary-btn">
                 View Research
-                <span>↗</span>
+                <span aria-hidden="true">↗</span>
             </a>
 
-            <a href="climate.html">Climate</a>
-            <a href="ice-glaciers.html">Ice &amp; Glaciers</a>
-            <a href="polar-oceans.html">Polar Oceans</a>
-            <a href="biodiversity.html">Biodiversity</a>
-            <a href="resources.html">All Resources</a>
-            <a href="data-maps.html">Data &amp; Maps</a>
-            <a href="about.html">About</a>
-            <a href="assistant.html">Assistant</a>
-
         </div>
 
-    </div>
-
-
-    <!-- HERO VISUAL -->
-
-    <div class="media-visual">
-
-        <div class="media-orbit orbit-a"></div>
-        <div class="media-orbit orbit-b"></div>
-
-        <div class="media-globe">
-
-            <div class="globe-line line-a"></div>
-            <div class="globe-line line-b"></div>
-            <div class="globe-line line-c"></div>
-
-            <div class="globe-core">
-                <small>MEDIA</small>
-                <strong>03</strong>
-            </div>
-
-        </div>
-
-        <div class="media-signal">
-
-            <span class="signal-dot"></span>
+        <div class="hero-meta" aria-label="Media highlights">
 
             <div>
-                <small>LIVE MEDIA SIGNAL</small>
-                <strong>Polar field stories</strong>
+                <strong>01</strong>
+                <span>Videos</span>
+            </div>
+
+            <div>
+                <strong>02</strong>
+                <span>Photography</span>
+            </div>
+
+            <div>
+                <strong>03</strong>
+                <span>Field Stories</span>
             </div>
 
         </div>
 
     </div>
 
-</header>
+
+    <!-- =================================================
+         SAME POLAR GLOBE DESIGN AS BIODIVERSITY
+    ================================================== -->
+
+    <div class="hero-visual" aria-hidden="true">
+
+        <div class="orbital-line"></div>
+
+        <div class="polar-globe">
+
+            <span class="globe-pin globe-pin-one"></span>
+
+            <span class="globe-pin globe-pin-two"></span>
+
+            <span class="globe-marker">
+                POLAR
+            </span>
+
+        </div>
+
+        <div class="science-card">
+
+            <div class="science-card-top">
+
+                <span class="status-pulse"></span>
+
+                <span>
+                    POLAR SCIENCE SIGNAL
+                </span>
+
+            </div>
+
+            <strong>
+                Media
+            </strong>
+
+            <small>
+                Stories, images and discoveries from Earth's extremes.
+            </small>
+
+        </div>
+
+    </div>
+
+</section>
 
 
 <!-- =====================================================
@@ -177,9 +200,9 @@
         </div>
 
         <p>
-            Discover the people, places and scientific
-            observations behind polar exploration through
-            a growing collection of visual stories.
+            Discover the people, places, wildlife and scientific
+            observations behind polar exploration through videos,
+            photography and field stories.
         </p>
 
     </div>
@@ -198,8 +221,8 @@
         <div class="story-image">
 
             <img
-                src="../assets/images/polar-hero-v2.png"
-                alt="Polar field expedition"
+                src="https://images.unsplash.com/photo-1695410864552-1beee4a65bf7?auto=format&fit=crop&w=1600&q=85"
+                alt="Antarctic frozen landscape"
             >
 
             <div class="story-overlay"></div>
@@ -242,7 +265,9 @@
                     Field Documentary
                 </span>
 
-                <span>•</span>
+                <span>
+                    •
+                </span>
 
                 <span>
                     2026
@@ -250,19 +275,16 @@
 
             </div>
 
-            <a href="#" class="story-link">
+            <a
+                href="https://www.youtube.com/results?search_query=Antarctica+polar+research+documentary"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="story-link">
+
                 Watch Story
                 <span>→</span>
-            </a>
 
-            <a href="climate.html">Climate</a>
-            <a href="ice-glaciers.html">Ice &amp; Glaciers</a>
-            <a href="polar-oceans.html">Polar Oceans</a>
-            <a href="biodiversity.html">Biodiversity</a>
-            <a href="resources.html">All Resources</a>
-            <a href="data-maps.html">Data &amp; Maps</a>
-            <a href="about.html">About</a>
-            <a href="assistant.html">Assistant</a>
+            </a>
 
         </div>
 
@@ -298,62 +320,72 @@
         </div>
 
         <div class="media-count">
-            <strong>150+</strong>
-            media resources
+
+            <strong>
+                150+
+            </strong>
+
+            <span>
+                media resources
+            </span>
+
         </div>
 
     </div>
 
 
-    <!-- FILTERS -->
+    <!-- =================================================
+         FILTERS
+    ================================================== -->
 
-<div class="media-tabs">
+    <div class="media-tabs">
 
-    <button
-        type="button"
-        class="active"
-        data-type="all"
-    >
-        All Media
-    </button>
+        <button
+            type="button"
+            class="active"
+            data-type="all">
+            All Media
+        </button>
 
-    <button
-        type="button"
-        data-type="videos"
-    >
-        Videos
-    </button>
+        <button
+            type="button"
+            data-type="videos">
+            Videos
+        </button>
 
-    <button
-        type="button"
-        data-type="photography"
-    >
-        Photography
-    </button>
+        <button
+            type="button"
+            data-type="photography">
+            Photography
+        </button>
 
-    <button
-        type="button"
-        data-type="stories"
-    >
-        Stories
-    </button>
+        <button
+            type="button"
+            data-type="stories">
+            Stories
+        </button>
 
-</div>
-    <!-- MEDIA CARDS -->
+    </div>
+
+
+    <!-- =================================================
+         MEDIA GRID
+    ================================================== -->
 
     <div class="media-grid">
 
 
-        <!-- CARD 1 -->
+        <!-- =================================================
+             01 VIDEO
+        ================================================== -->
 
         <article class="media-card">
 
             <div class="media-card-image">
 
                 <img
-                    src="../assets/images/polar-hero-v2.png"
-                    alt="Arctic landscape"
-                >
+                    src="https://images.unsplash.com/photo-1746310005142-21ca9368e70a?auto=format&fit=crop&w=1200&q=85"
+                    alt="Arctic sea ice">
 
                 <span class="media-type">
                     VIDEO
@@ -376,11 +408,14 @@
                 </h3>
 
                 <p>
-                    Exploring the hidden ecosystem beneath
-                    the frozen ocean.
+                    Explore the hidden ecosystem beneath
+                    the frozen Arctic ocean.
                 </p>
 
-                <a href="#">
+                <a
+                    href="https://www.youtube.com/results?search_query=life+beneath+Arctic+ice"
+                    target="_blank"
+                    rel="noopener noreferrer">
                     Watch video →
                 </a>
 
@@ -389,16 +424,17 @@
         </article>
 
 
-        <!-- CARD 2 -->
+        <!-- =================================================
+             02 PHOTOGRAPHY
+        ================================================== -->
 
         <article class="media-card">
 
             <div class="media-card-image">
 
                 <img
-                    src="../assets/images/polar-hero-v2.png"
-                    alt="Antarctic landscape"
-                >
+                    src="https://images.unsplash.com/photo-1695410864552-1beee4a65bf7?auto=format&fit=crop&w=1200&q=85"
+                    alt="Antarctic ice landscape">
 
                 <span class="media-type">
                     PHOTOGRAPHY
@@ -421,7 +457,10 @@
                     extreme Antarctic environment.
                 </p>
 
-                <a href="#">
+                <a
+                    href="https://unsplash.com/s/photos/antarctica"
+                    target="_blank"
+                    rel="noopener noreferrer">
                     View gallery →
                 </a>
 
@@ -430,16 +469,17 @@
         </article>
 
 
-        <!-- CARD 3 -->
+        <!-- =================================================
+             03 STORY
+        ================================================== -->
 
         <article class="media-card">
 
             <div class="media-card-image">
 
                 <img
-                    src="../assets/images/polar-hero-v2.png"
-                    alt="Polar research station"
-                >
+                    src="https://images.unsplash.com/photo-1557238687-f10be4e702ae?auto=format&fit=crop&w=1200&q=85"
+                    alt="Polar research environment">
 
                 <span class="media-type">
                     STORY
@@ -458,11 +498,14 @@
                 </h3>
 
                 <p>
-                    Meet the scientists working at the
-                    frontiers of polar research.
+                    Meet scientists working at the frontiers
+                    of polar research.
                 </p>
 
-                <a href="#">
+                <a
+                    href="https://www.bas.ac.uk/"
+                    target="_blank"
+                    rel="noopener noreferrer">
                     Read story →
                 </a>
 
@@ -471,16 +514,17 @@
         </article>
 
 
-        <!-- CARD 4 -->
+        <!-- =================================================
+             04 VIDEO
+        ================================================== -->
 
         <article class="media-card">
 
             <div class="media-card-image">
 
                 <img
-                    src="../assets/images/polar-hero-v2.png"
-                    alt="Sea ice"
-                >
+                    src="https://images.unsplash.com/photo-1780589613719-5642667970ec?auto=format&fit=crop&w=1200&q=85"
+                    alt="Frozen polar ocean">
 
                 <span class="media-type">
                     VIDEO
@@ -507,7 +551,10 @@
                     ice across polar regions.
                 </p>
 
-                <a href="#">
+                <a
+                    href="https://www.youtube.com/results?search_query=polar+sea+ice+research"
+                    target="_blank"
+                    rel="noopener noreferrer">
                     Watch video →
                 </a>
 
@@ -516,16 +563,17 @@
         </article>
 
 
-        <!-- CARD 5 -->
+        <!-- =================================================
+             05 PHOTOGRAPHY
+        ================================================== -->
 
         <article class="media-card">
 
             <div class="media-card-image">
 
                 <img
-                    src="../assets/images/polar-hero-v2.png"
-                    alt="Polar wildlife"
-                >
+                    src="https://images.unsplash.com/photo-1654801530070-5702ed0089d6?auto=format&fit=crop&w=1200&q=85"
+                    alt="Penguin in polar environment">
 
                 <span class="media-type">
                     PHOTOGRAPHY
@@ -548,7 +596,10 @@
                     polar ecosystems.
                 </p>
 
-                <a href="#">
+                <a
+                    href="https://unsplash.com/s/photos/polar-wildlife"
+                    target="_blank"
+                    rel="noopener noreferrer">
                     View gallery →
                 </a>
 
@@ -557,16 +608,17 @@
         </article>
 
 
-        <!-- CARD 6 -->
+        <!-- =================================================
+             06 STORY
+        ================================================== -->
 
         <article class="media-card">
 
             <div class="media-card-image">
 
                 <img
-                    src="../assets/images/polar-hero-v2.png"
-                    alt="Polar expedition"
-                >
+                    src="https://images.unsplash.com/photo-1529730705273-7f8ab24844e8?auto=format&fit=crop&w=1200&q=85"
+                    alt="Snowy polar expedition">
 
                 <span class="media-type">
                     STORY
@@ -589,13 +641,434 @@
                     modern polar expeditions.
                 </p>
 
-                <a href="#">
+                <a
+                    href="https://www.bas.ac.uk/"
+                    target="_blank"
+                    rel="noopener noreferrer">
                     Read story →
                 </a>
 
             </div>
 
         </article>
+
+
+        <!-- =================================================
+             07 VIDEO
+        ================================================== -->
+
+        <article class="media-card">
+
+            <div class="media-card-image">
+
+                <img
+                    src="https://images.unsplash.com/photo-1584268904283-8832048ef10c?auto=format&fit=crop&w=1200&q=85"
+                    alt="Polar whale">
+
+                <span class="media-type">
+                    VIDEO
+                </span>
+
+                <span class="play-small">
+                    ▶
+                </span>
+
+            </div>
+
+            <div class="media-card-body">
+
+                <div class="media-card-meta">
+                    POLAR OCEANS
+                </div>
+
+                <h3>
+                    Whales of the Polar Seas
+                </h3>
+
+                <p>
+                    Discover marine mammals living in
+                    icy polar waters.
+                </p>
+
+                <a
+                    href="https://www.youtube.com/results?search_query=whales+polar+seas+science"
+                    target="_blank"
+                    rel="noopener noreferrer">
+                    Watch video →
+                </a>
+
+            </div>
+
+        </article>
+
+
+        <!-- =================================================
+             08 PHOTOGRAPHY
+        ================================================== -->
+
+        <article class="media-card">
+
+            <div class="media-card-image">
+
+                <img
+                    src="https://images.unsplash.com/photo-1786335091902-eb0166246cbe?auto=format&fit=crop&w=1200&q=85"
+                    alt="Polar aurora">
+
+                <span class="media-type">
+                    PHOTOGRAPHY
+                </span>
+
+            </div>
+
+            <div class="media-card-body">
+
+                <div class="media-card-meta">
+                    ARCTIC SKY
+                </div>
+
+                <h3>
+                    Polar Night Skies
+                </h3>
+
+                <p>
+                    Breathtaking auroras and night photography
+                    from the northern polar regions.
+                </p>
+
+                <a
+                    href="https://unsplash.com/s/photos/aurora-arctic"
+                    target="_blank"
+                    rel="noopener noreferrer">
+                    View gallery →
+                </a>
+
+            </div>
+
+        </article>
+
+
+        <!-- =================================================
+             09 STORY
+        ================================================== -->
+
+        <article class="media-card">
+
+            <div class="media-card-image">
+
+                <img
+                    src="https://images.unsplash.com/photo-1739832208797-c79303b24257?auto=format&fit=crop&w=1200&q=85"
+                    alt="Snow and polar environment">
+
+                <span class="media-type">
+                    STORY
+                </span>
+
+            </div>
+
+            <div class="media-card-body">
+
+                <div class="media-card-meta">
+                    CLIMATE SCIENCE
+                </div>
+
+                <h3>
+                    The Science of Snow
+                </h3>
+
+                <p>
+                    Discover how snow influences the polar
+                    climate and frozen environment.
+                </p>
+
+                <a
+                    href="https://nsidc.org/"
+                    target="_blank"
+                    rel="noopener noreferrer">
+                    Read story →
+                </a>
+
+            </div>
+
+        </article>
+
+
+        <!-- =================================================
+             10 VIDEO
+        ================================================== -->
+
+        <article class="media-card">
+
+            <div class="media-card-image">
+
+                <img
+                    src="https://images.unsplash.com/photo-1606592641984-c9a1506d0705?auto=format&fit=crop&w=1200&q=85"
+                    alt="Large Antarctic iceberg">
+
+                <span class="media-type">
+                    VIDEO
+                </span>
+
+                <span class="play-small">
+                    ▶
+                </span>
+
+            </div>
+
+            <div class="media-card-body">
+
+                <div class="media-card-meta">
+                    GLACIERS
+                </div>
+
+                <h3>
+                    Melting Giants
+                </h3>
+
+                <p>
+                    A visual exploration of glaciers and
+                    changing Antarctic ice.
+                </p>
+
+                <a
+                    href="https://www.youtube.com/results?search_query=Antarctic+glaciers+climate+science"
+                    target="_blank"
+                    rel="noopener noreferrer">
+                    Watch video →
+                </a>
+
+            </div>
+
+        </article>
+
+
+        <!-- =================================================
+             11 PHOTOGRAPHY
+        ================================================== -->
+
+        <article class="media-card">
+
+            <div class="media-card-image">
+
+                <img
+                    src="https://images.unsplash.com/photo-1778608256843-d69885cb17ca?auto=format&fit=crop&w=1200&q=85"
+                    alt="Arctic wildlife">
+
+                <span class="media-type">
+                    PHOTOGRAPHY
+                </span>
+
+            </div>
+
+            <div class="media-card-body">
+
+                <div class="media-card-meta">
+                    ARCTIC WILDLIFE
+                </div>
+
+                <h3>
+                    Arctic Wildlife
+                </h3>
+
+                <p>
+                    Beautiful moments from wildlife living
+                    across northern polar ecosystems.
+                </p>
+
+                <a
+                    href="https://unsplash.com/s/photos/arctic-wildlife"
+                    target="_blank"
+                    rel="noopener noreferrer">
+                    View gallery →
+                </a>
+
+            </div>
+
+        </article>
+
+
+        <!-- =================================================
+             12 STORY
+        ================================================== -->
+
+        <article class="media-card">
+
+            <div class="media-card-image">
+
+                <img
+                    src="https://images.unsplash.com/photo-1777824256452-626a33fc7190?auto=format&fit=crop&w=1200&q=85"
+                    alt="Polar expedition team">
+
+                <span class="media-type">
+                    STORY
+                </span>
+
+            </div>
+
+            <div class="media-card-body">
+
+                <div class="media-card-meta">
+                    FIELD WORK
+                </div>
+
+                <h3>
+                    Voices from the Field
+                </h3>
+
+                <p>
+                    Personal experiences from scientists
+                    working in remote polar environments.
+                </p>
+
+                <a
+                    href="https://www.antarctica.gov.au/about-antarctica/"
+                    target="_blank"
+                    rel="noopener noreferrer">
+                    Read story →
+                </a>
+
+            </div>
+
+        </article>
+
+
+        <!-- =================================================
+             13 VIDEO
+        ================================================== -->
+
+        <article class="media-card">
+
+            <div class="media-card-image">
+
+                <img
+                    src="https://images.unsplash.com/photo-1780945009788-44907a755766?auto=format&fit=crop&w=1200&q=85"
+                    alt="Arctic glacier">
+
+                <span class="media-type">
+                    VIDEO
+                </span>
+
+                <span class="play-small">
+                    ▶
+                </span>
+
+            </div>
+
+            <div class="media-card-body">
+
+                <div class="media-card-meta">
+                    ICE • GLACIERS
+                </div>
+
+                <h3>
+                    Inside a Changing Glacier
+                </h3>
+
+                <p>
+                    See how scientists monitor glaciers and
+                    ice movement in polar regions.
+                </p>
+
+                <a
+                    href="https://www.youtube.com/results?search_query=glacier+research+Arctic+Antarctica"
+                    target="_blank"
+                    rel="noopener noreferrer">
+                    Watch video →
+                </a>
+
+            </div>
+
+        </article>
+
+
+        <!-- =================================================
+             14 PHOTOGRAPHY
+        ================================================== -->
+
+        <article class="media-card">
+
+            <div class="media-card-image">
+
+                <img
+                    src="https://images.unsplash.com/photo-1670174023730-966d23eb891a?auto=format&fit=crop&w=1200&q=85"
+                    alt="Polar ice formation">
+
+                <span class="media-type">
+                    PHOTOGRAPHY
+                </span>
+
+            </div>
+
+            <div class="media-card-body">
+
+                <div class="media-card-meta">
+                    ICE FORMS
+                </div>
+
+                <h3>
+                    Patterns in Polar Ice
+                </h3>
+
+                <p>
+                    A collection of natural patterns and
+                    structures created by freezing water.
+                </p>
+
+                <a
+                    href="https://unsplash.com/s/photos/polar-ice"
+                    target="_blank"
+                    rel="noopener noreferrer">
+                    View gallery →
+                </a>
+
+            </div>
+
+        </article>
+
+
+        <!-- =================================================
+             15 STORY
+        ================================================== -->
+
+        <article class="media-card">
+
+            <div class="media-card-image">
+
+                <img
+                    src="https://images.unsplash.com/photo-1739056656228-968d52c7e834?auto=format&fit=crop&w=1200&q=85"
+                    alt="Polar field expedition">
+
+                <span class="media-type">
+                    STORY
+                </span>
+
+            </div>
+
+            <div class="media-card-body">
+
+                <div class="media-card-meta">
+                    POLAR EXPEDITION
+                </div>
+
+                <h3>
+                    Beyond the Last Horizon
+                </h3>
+
+                <p>
+                    Exploring remote landscapes and the
+                    science behind polar expeditions.
+                </p>
+
+                <a
+                    href="https://www.npolar.no/en/"
+                    target="_blank"
+                    rel="noopener noreferrer">
+                    Read story →
+                </a>
+
+            </div>
+
+        </article>
+
 
     </div>
 
@@ -613,8 +1086,11 @@
         <div class="footer-brand">
 
             <a href="../index.html" class="logo">
+
                 <span class="logo-dot"></span>
+
                 Polar<span>Connect</span>
+
             </a>
 
             <p>
@@ -629,21 +1105,67 @@
 
             <div>
 
-                <h4>Explore</h4>
+                <h4>
+                    Explore
+                </h4>
 
-                <a href="../index.html">Home</a>
-                <a href="knowledge.html">Knowledge</a>
-                <a href="research.html">Research</a>
-                <a href="media.html">Media</a>
+                <a href="../index.html">
+                    Home
+                </a>
+
+                <a href="knowledge.html">
+                    Knowledge
+                </a>
+
+                <a href="research.html">
+                    Research
+                </a>
+
+                <a href="media.html">
+                    Media
+                </a>
 
             </div>
 
+
             <div>
 
-                <h4>Portal</h4>
+                <h4>
+                    Topics
+                </h4>
 
-                <a href="map.html">Polar Map</a>
-                <a href="login.html">Login</a>
+                <a href="climate.html">
+                    Climate
+                </a>
+
+                <a href="ice-glaciers.html">
+                    Ice &amp; Glaciers
+                </a>
+
+                <a href="polar-oceans.html">
+                    Polar Oceans
+                </a>
+
+                <a href="biodiversity.html">
+                    Biodiversity
+                </a>
+
+            </div>
+
+
+            <div>
+
+                <h4>
+                    Portal
+                </h4>
+
+                <a href="map.html">
+                    Polar Map
+                </a>
+
+                <a href="login.html">
+                    Login
+                </a>
 
             </div>
 
@@ -665,7 +1187,15 @@
     </div>
 
 </footer>
+
+
+<!-- =====================================================
+     JAVASCRIPT
+===================================================== -->
+
 <script src="../js/api.js"></script>
 <script src="../js/media.js"></script>
+
 </body>
+
 </html>

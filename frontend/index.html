@@ -40,6 +40,266 @@
         max-width: 100%;
         overflow-x: hidden;
     }
+
+
+    /* =====================================================
+       POLARCONNECT REPOSITORY - VISUAL CARDS
+       ===================================================== */
+    .repository-grid {
+        align-items: stretch;
+    }
+
+    .repository-card {
+        position: relative;
+        overflow: hidden;
+        min-height: 430px;
+        padding: 0 30px 30px !important;
+        display: flex;
+        flex-direction: column;
+        border-radius: 22px !important;
+        border: 1px solid rgba(16, 68, 91, 0.12) !important;
+        background: rgba(255,255,255,0.96) !important;
+        box-shadow: 0 16px 40px rgba(7, 42, 61, 0.08);
+        transition: transform .28s ease, box-shadow .28s ease, border-color .28s ease;
+    }
+
+    .repository-card:hover {
+        transform: translateY(-8px);
+        box-shadow: 0 24px 55px rgba(7, 42, 61, 0.14);
+        border-color: rgba(21, 155, 192, 0.28) !important;
+    }
+
+    .repository-image {
+        width: calc(100% + 60px);
+        height: 190px;
+        margin: 0 -30px 22px;
+        overflow: hidden;
+        position: relative;
+        background: #dcecf2;
+    }
+
+    .repository-image::after {
+        content: '';
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(180deg, rgba(4,28,43,0.02), rgba(4,28,43,0.18));
+        pointer-events: none;
+    }
+
+    .repository-image img {
+        width: 100%;
+        height: 100%;
+        display: block;
+        object-fit: cover;
+        transition: transform .45s ease;
+    }
+
+    .repository-card:hover .repository-image img {
+        transform: scale(1.07);
+    }
+
+    .repository-card .card-index {
+        position: absolute;
+        top: 207px;
+        right: 27px;
+        z-index: 2;
+        padding: 6px 9px;
+        border-radius: 999px;
+        background: rgba(255,255,255,.88);
+        color: #527486;
+        font-family: 'DM Mono', monospace;
+        font-size: .65rem;
+        backdrop-filter: blur(8px);
+    }
+
+    .repository-card .feature-icon {
+        width: 48px;
+        height: 48px;
+        min-height: 48px;
+        margin-bottom: 13px;
+        border-radius: 14px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: #e6f6fa;
+        color: #116a8b;
+    }
+
+    .repository-card .feature-icon svg {
+        width: 24px;
+        height: 24px;
+    }
+
+    .repository-type {
+        margin-bottom: 7px;
+        color: #159bc0;
+        font-family: 'DM Mono', monospace;
+        font-size: .62rem;
+        font-weight: 700;
+        letter-spacing: .15em;
+    }
+
+    .repository-card h3 {
+        margin: 0 0 10px !important;
+        color: #0b2940 !important;
+        font-size: 1.28rem !important;
+        line-height: 1.2;
+        letter-spacing: -.035em;
+    }
+
+    .repository-card p {
+        margin: 0 !important;
+        color: #688193 !important;
+        font-size: .9rem !important;
+        line-height: 1.65 !important;
+        max-width: 95%;
+    }
+
+    .repository-card > a {
+        margin-top: auto !important;
+        padding-top: 22px;
+        color: #116a8b !important;
+        font-weight: 800;
+        text-decoration: none;
+        font-size: .84rem;
+    }
+
+    .repository-card > a span {
+        display: inline-block;
+        margin-left: 5px;
+        transition: transform .2s ease;
+    }
+
+    .repository-card:hover > a span {
+        transform: translateX(4px);
+    }
+
+    /* Search area */
+    .polar-search {
+        position: relative;
+        padding: 110px max(5vw, 30px) 120px;
+        background: #edf8fb;
+    }
+
+    .polar-search .section-heading {
+        max-width: 900px;
+        margin: 0 auto 34px;
+    }
+
+    .polar-search .section-heading p {
+        color: #159bc0;
+        font-family: 'DM Mono', monospace;
+        font-size: .68rem;
+        font-weight: 700;
+        letter-spacing: .18em;
+    }
+
+    .polar-search .section-heading h2 {
+        margin: 10px 0 14px;
+        color: #0a2236;
+    }
+
+    .polar-search .section-heading span {
+        color: #668093;
+    }
+
+    .search-box {
+        width: min(900px, 100%);
+        margin: 0 auto;
+        padding: 8px;
+        display: flex;
+        gap: 8px;
+        border: 1px solid rgba(17,106,139,.16);
+        border-radius: 18px;
+        background: rgba(255,255,255,.92);
+        box-shadow: 0 18px 45px rgba(9,53,72,.10);
+    }
+
+    .search-box input {
+        flex: 1;
+        min-width: 0;
+        height: 54px;
+        padding: 0 18px;
+        border: 0;
+        outline: 0;
+        border-radius: 12px;
+        background: #f5fbfd;
+        color: #0a273c;
+        font-size: .95rem;
+    }
+
+    .search-box input::placeholder {
+        color: #8196a3;
+    }
+
+    .search-box button {
+        height: 54px;
+        padding: 0 24px;
+        border: 0;
+        border-radius: 12px;
+        background: #123d56;
+        color: white;
+        font-weight: 800;
+        cursor: pointer;
+        transition: transform .2s ease, background .2s ease;
+    }
+
+    .search-box button:hover {
+        transform: translateY(-1px);
+        background: #0c607f;
+    }
+
+    .search-results {
+        width: min(900px, 100%);
+        margin: 22px auto 0;
+    }
+
+    /* Region cards: use distinct, relevant imagery */
+    .regions-section .region-card.arctic {
+        background-image:
+            linear-gradient(180deg, rgba(4,24,40,.04), rgba(4,24,40,.72)),
+            url('https://images.unsplash.com/photo-1529730705273-7f8ab24844e8?auto=format&fit=crop&w=1200&q=88') !important;
+        background-size: cover !important;
+        background-position: center !important;
+    }
+
+    .regions-section .region-card.antarctic {
+        background-image:
+            linear-gradient(180deg, rgba(4,24,40,.03), rgba(4,24,40,.72)),
+            url('https://images.unsplash.com/photo-1654801530070-5702ed0089d6?auto=format&fit=crop&w=1200&q=88') !important;
+        background-size: cover !important;
+        background-position: center !important;
+    }
+
+    @media (max-width: 900px) {
+        .repository-card {
+            min-height: 410px;
+        }
+    }
+
+    @media (max-width: 600px) {
+        .repository-card {
+            min-height: 400px;
+            padding-left: 22px !important;
+            padding-right: 22px !important;
+        }
+
+        .repository-image {
+            width: calc(100% + 44px);
+            margin-left: -22px;
+            margin-right: -22px;
+            height: 175px;
+        }
+
+        .search-box {
+            flex-direction: column;
+        }
+
+        .search-box button {
+            width: 100%;
+        }
+    }
+
 </style>
 </head>
 
@@ -56,6 +316,7 @@
 
             <ul class="nav-links">
                 <li><a href="index.html" class="active">Home</a></li>
+                <li><a href="pages/media.html">Media</a></li>
                 <li><a href="pages/climate.html">Climate</a></li>
                 <li><a href="pages/ice-glaciers.html">Ice &amp; Glaciers</a></li>
                 <li><a href="pages/polar-oceans.html">Polar Oceans</a></li>
@@ -146,14 +407,17 @@
                 <p>EXPLORE</p>
                 <h2>Polar Science at Your Fingertips</h2>
                 <span>
-                    Discover knowledge, research and media from the polar regions.
+                    Explore trusted knowledge, scientific research, polar media and discovery resources — all in one place.
                 </span>
             </div>
 
 
-            <div class="feature-grid">
+            <div class="feature-grid repository-grid">
 
-                <div class="feature-card">
+                <div class="feature-card repository-card repository-card-knowledge">
+                    <div class="repository-image">
+                        <img src="https://images.unsplash.com/photo-1781454706956-02465c66c420?auto=format&fit=crop&w=900&q=88" alt="Polar ice landscape">
+                    </div>
                     <span class="card-index">01</span>
                     <div class="feature-icon" aria-hidden="true">
                         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
@@ -162,16 +426,16 @@
                             <path d="M9 7h7M9 10h5" />
                         </svg>
                     </div>
+                    <span class="repository-type">KNOWLEDGE</span>
                     <h3>Knowledge Repository</h3>
-                    <p>
-                        Explore educational resources and knowledge
-                        about the Arctic and Antarctic.
-                    </p>
-                    <a href="pages/knowledge.html">Explore →</a>
+                    <p>Explore educational resources and verified knowledge about the Arctic and Antarctic.</p>
+                    <a href="pages/knowledge.html">Explore Knowledge <span>→</span></a>
                 </div>
 
-
-                <div class="feature-card">
+                <div class="feature-card repository-card repository-card-research">
+                    <div class="repository-image">
+                        <img src="https://images.unsplash.com/photo-1739832208797-c79303b24257?auto=format&fit=crop&w=900&q=88" alt="Arctic research landscape">
+                    </div>
                     <span class="card-index">02</span>
                     <div class="feature-icon" aria-hidden="true">
                         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
@@ -182,16 +446,16 @@
                             <path d="M7 17h7" />
                         </svg>
                     </div>
+                    <span class="repository-type">RESEARCH</span>
                     <h3>Research Repository</h3>
-                    <p>
-                        Discover scientific research, publications
-                        and polar discoveries.
-                    </p>
-                    <a href="pages/research.html">Explore →</a>
+                    <p>Discover scientific studies, publications and new discoveries from polar research.</p>
+                    <a href="pages/research.html">Explore Research <span>→</span></a>
                 </div>
 
-
-                <div class="feature-card">
+                <div class="feature-card repository-card repository-card-media">
+                    <div class="repository-image">
+                        <img src="https://images.unsplash.com/photo-1672275763148-e3348b2c6cc7?auto=format&fit=crop&w=900&q=88" alt="Penguins in a polar environment">
+                    </div>
                     <span class="card-index">03</span>
                     <div class="feature-icon" aria-hidden="true">
                         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
@@ -200,60 +464,82 @@
                             <path d="m8 10 4 2-4 2v-4Z" />
                         </svg>
                     </div>
+                    <span class="repository-type">MEDIA</span>
                     <h3>Media Center</h3>
-                    <p>
-                        View polar photographs, videos, news
-                        and expedition stories.
-                    </p>
-                    <a href="pages/media.html">Explore →</a>
+                    <p>View polar photographs, videos, news and expedition stories from Earth's extremes.</p>
+                    <a href="pages/media.html">Explore Media <span>→</span></a>
                 </div>
 
-                <div class="feature-card">
+                <div class="feature-card repository-card">
+                    <div class="repository-image">
+                        <img src="https://images.unsplash.com/photo-1786335091902-eb0166246cbe?auto=format&fit=crop&w=900&q=88" alt="Aurora over a polar landscape">
+                    </div>
                     <span class="card-index">04</span>
                     <div class="feature-icon" aria-hidden="true">◈</div>
+                    <span class="repository-type">CLIMATE</span>
                     <h3>Climate</h3>
-                    <p>Explore polar climate, Arctic and Antarctic climate processes and climate resources.</p>
-                    <a href="pages/climate.html">Explore →</a>
+                    <p>Explore Arctic and Antarctic climate systems, observations and scientific resources.</p>
+                    <a href="pages/climate.html">Explore Climate <span>→</span></a>
                 </div>
 
-                <div class="feature-card">
+                <div class="feature-card repository-card">
+                    <div class="repository-image">
+                        <img src="https://images.unsplash.com/photo-1780589613719-5642667970ec?auto=format&fit=crop&w=900&q=88" alt="Polar glacier landscape">
+                    </div>
                     <span class="card-index">05</span>
                     <div class="feature-icon" aria-hidden="true">◇</div>
+                    <span class="repository-type">CRYOSPHERE</span>
                     <h3>Ice &amp; Glaciers</h3>
-                    <p>Learn about glaciers, ice sheets, sea ice and cryosphere research.</p>
-                    <a href="pages/ice-glaciers.html">Explore →</a>
+                    <p>Learn about glaciers, ice sheets, sea ice and the changing polar cryosphere.</p>
+                    <a href="pages/ice-glaciers.html">Explore Ice <span>→</span></a>
                 </div>
 
-                <div class="feature-card">
+                <div class="feature-card repository-card">
+                    <div class="repository-image">
+                        <img src="https://images.unsplash.com/photo-1722695313533-30013ce2f168?auto=format&fit=crop&w=900&q=88" alt="Polar ocean and ice">
+                    </div>
                     <span class="card-index">06</span>
                     <div class="feature-icon" aria-hidden="true">◎</div>
+                    <span class="repository-type">OCEANS</span>
                     <h3>Polar Oceans</h3>
-                    <p>Explore polar ocean systems, circulation and marine environments.</p>
-                    <a href="pages/polar-oceans.html">Explore →</a>
+                    <p>Explore ocean circulation, marine environments and the role of polar waters.</p>
+                    <a href="pages/polar-oceans.html">Explore Oceans <span>→</span></a>
                 </div>
 
-                <div class="feature-card">
+                <div class="feature-card repository-card">
+                    <div class="repository-image">
+                        <img src="https://images.unsplash.com/photo-1672275763148-e3348b2c6cc7?auto=format&fit=crop&w=900&q=88" alt="Polar biodiversity and wildlife">
+                    </div>
                     <span class="card-index">07</span>
                     <div class="feature-icon" aria-hidden="true">●</div>
+                    <span class="repository-type">BIODIVERSITY</span>
                     <h3>Biodiversity</h3>
-                    <p>Discover Arctic and Antarctic species and ecosystems.</p>
-                    <a href="pages/biodiversity.html">Explore →</a>
+                    <p>Discover Arctic and Antarctic species, habitats, adaptations and ecosystems.</p>
+                    <a href="pages/biodiversity.html">Explore Biodiversity <span>→</span></a>
                 </div>
 
-                <div class="feature-card">
+                <div class="feature-card repository-card">
+                    <div class="repository-image">
+                        <img src="https://images.unsplash.com/photo-1529730705273-7f8ab24844e8?auto=format&fit=crop&w=900&q=85" alt="Snow covered polar mountains">
+                    </div>
                     <span class="card-index">08</span>
                     <div class="feature-icon" aria-hidden="true">⌕</div>
+                    <span class="repository-type">RESOURCES</span>
                     <h3>All Resources</h3>
-                    <p>Search and filter knowledge, research, datasets, reports and maps.</p>
-                    <a href="pages/resources.html">Explore →</a>
+                    <p>Search and filter knowledge, research, datasets, reports and other resources.</p>
+                    <a href="pages/resources.html">Open Resources <span>→</span></a>
                 </div>
 
-                <div class="feature-card">
+                <div class="feature-card repository-card">
+                    <div class="repository-image">
+                        <img src="https://images.unsplash.com/photo-1690941257417-6c76af802809?auto=format&fit=crop&w=900&q=85" alt="Polar landscape for maps and locations">
+                    </div>
                     <span class="card-index">09</span>
                     <div class="feature-icon" aria-hidden="true">⌖</div>
+                    <span class="repository-type">DATA &amp; MAPS</span>
                     <h3>Data &amp; Maps</h3>
-                    <p>Explore polar locations and trusted scientific data gateways.</p>
-                    <a href="pages/data-maps.html">Explore →</a>
+                    <p>Explore polar locations, research stations and trusted scientific data gateways.</p>
+                    <a href="pages/data-maps.html">Explore Data <span>→</span></a>
                 </div>
 
             </div>
@@ -278,12 +564,14 @@
     <div class="search-box">
 
         <input
-            type="text"
+            type="search"
             id="global-search"
-            placeholder="Search Antarctica, climate, research..."
+            autocomplete="off"
+            placeholder="Search Antarctica, penguins, glaciers, climate..."
+            aria-label="Search PolarConnect"
         >
 
-        <button id="search-btn">
+        <button id="search-btn" type="button">
             Search →
         </button>
 
@@ -308,8 +596,8 @@
                         <span>01</span>
                         <h3>Arctic</h3>
                         <p>
-                            Explore the northern polar region,
-                            its climate, ecosystems and scientific research.
+                            Discover Arctic sea ice, tundra, wildlife,
+                            climate systems and ongoing polar research.
                         </p>
                         <a href="pages/map.html">Explore Region →</a>
                     </div>
@@ -321,8 +609,8 @@
                         <span>02</span>
                         <h3>Antarctic</h3>
                         <p>
-                            Discover Antarctica's environment,
-                            ice sheets, wildlife and research stations.
+                            Explore Antarctic ice sheets, penguin habitats,
+                            Southern Ocean life and research stations.
                         </p>
                         <a href="pages/map.html">Explore Region →</a>
                     </div>
@@ -580,6 +868,7 @@
             <div class="footer-links">
                 <h4>Platform</h4>
                 <a href="pages/login.html">Login</a>
+                
             </div>
 
         </div>
