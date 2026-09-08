@@ -1,586 +1,1054 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
+
     <meta charset="UTF-8">
+
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <title>Research Hub | PolarConnect</title>
 
     <link rel="stylesheet" href="../css/style.css">
     <link rel="stylesheet" href="../css/research.css">
+
+
+    <style>
+
+        /* =========================================
+           NAVBAR VISIBILITY
+        ========================================= */
+
+        header {
+            position: relative !important;
+            z-index: 9999 !important;
+        }
+
+        .navbar {
+            position: relative !important;
+            z-index: 10000 !important;
+
+            background: #071421 !important;
+
+            opacity: 1 !important;
+        }
+
+        .navbar .container {
+            position: relative !important;
+            z-index: 10001 !important;
+        }
+
+        .navbar .logo {
+            color: #ffffff !important;
+        }
+
+        .navbar .logo span {
+            color: #7dd3fc !important;
+        }
+
+        .navbar .nav-links {
+            position: relative !important;
+            z-index: 10002 !important;
+        }
+
+        .navbar .nav-links a {
+            color: #ffffff !important;
+        }
+
+        .navbar .nav-links a:hover {
+            color: #7dd3fc !important;
+        }
+
+        .navbar .nav-links a.active {
+            color: #7dd3fc !important;
+        }
+
+        .navbar .nav-links a.active::after {
+            background: #7dd3fc !important;
+        }
+
+
+        /* =========================================
+           RESEARCH HERO BACKGROUND
+        ========================================= */
+
+        .research-hero {
+            position: relative !important;
+            overflow: hidden !important;
+
+            background: #071421 !important;
+        }
+
+
+        /*
+         * IMPORTANT:
+         * Separate class for the hero background.
+         * Do NOT use .research-grid here because
+         * research.js uses .research-grid for cards.
+         */
+
+        .research-hero-grid {
+            position: absolute !important;
+
+            inset: 0 !important;
+
+            width: 100%;
+            height: 100%;
+
+            background-image:
+                linear-gradient(
+                    90deg,
+                    rgba(3, 15, 28, 0.92) 0%,
+                    rgba(5, 22, 39, 0.78) 40%,
+                    rgba(5, 25, 43, 0.55) 70%,
+                    rgba(5, 20, 35, 0.72) 100%
+                ),
+                url("../assets/images/polar-hero-v2.png");
+
+            background-size: cover !important;
+
+            background-position: center !important;
+
+            background-repeat: no-repeat !important;
+
+            z-index: 0 !important;
+        }
+
+
+        .research-hero-grid::after {
+
+            content: "";
+
+            position: absolute;
+
+            inset: 0;
+
+            background:
+                linear-gradient(
+                    180deg,
+                    rgba(4, 17, 31, 0.20) 0%,
+                    rgba(3, 14, 27, 0.05) 45%,
+                    rgba(2, 10, 20, 0.60) 100%
+                );
+
+            pointer-events: none;
+
+        }
+
+
+        .research-hero-content {
+
+            position: relative !important;
+
+            z-index: 5 !important;
+
+        }
+
+
+        .research-orbit {
+
+            position: relative !important;
+
+            z-index: 5 !important;
+
+        }
+
+
+        /* =========================================
+           RESEARCH CONTENT
+        ========================================= */
+
+        .research-library {
+
+            position: relative;
+
+            z-index: 2;
+
+        }
+
+
+        /* =========================================
+           API RESEARCH STATUS
+        ========================================= */
+
+        #research-status {
+
+            margin-top: 25px;
+
+            margin-bottom: 20px;
+
+        }
+
+
+        /* =========================================
+           API RESEARCH GRID
+        ========================================= */
+
+        .research-results .research-grid {
+
+            position: relative;
+
+            z-index: 2;
+
+        }
+
+
+        /* =========================================
+           EMPTY / ERROR MESSAGE
+        ========================================= */
+
+        .research-empty {
+
+            grid-column: 1 / -1;
+
+            padding: 60px 25px;
+
+            text-align: center;
+
+            border-radius: 20px;
+
+            background: #102437;
+
+            border: 1px solid #27465d;
+
+        }
+
+        .research-empty h3 {
+
+            color: #ffffff;
+
+            margin-bottom: 10px;
+
+        }
+
+        .research-empty p {
+
+            color: #a9bac9;
+
+        }
+
+    </style>
+
 </head>
+
 
 <body>
 
-<!-- =====================================================
-     NAVBAR
-===================================================== -->
 
-<header>
-    <nav class="navbar">
-        <div class="container">
+    <!-- =====================================================
+         NAVBAR
+    ===================================================== -->
 
-            <div class="logo">
-                Polar<span>Connect</span>
+    <header>
+
+        <nav class="navbar">
+
+            <div class="container">
+
+
+                <!-- LOGO -->
+
+                <div class="logo">
+
+                    Polar<span>Connect</span>
+
+                </div>
+
+
+                <!-- NAVIGATION -->
+
+                <ul class="nav-links">
+
+
+                    <li>
+
+                        <a href="../index.html">
+
+                            Home
+
+                        </a>
+
+                    </li>
+
+
+                    <li>
+
+                        <a href="climate.html">
+
+                            Climate
+
+                        </a>
+
+                    </li>
+
+
+                    <li>
+
+                        <a href="ice-glaciers.html">
+
+                            Ice &amp; Glaciers
+
+                        </a>
+
+                    </li>
+
+
+                    <li>
+
+                        <a href="polar-oceans.html">
+
+                            Polar Oceans
+
+                        </a>
+
+                    </li>
+
+
+                    <li>
+
+                        <a href="biodiversity.html">
+
+                            Biodiversity
+
+                        </a>
+
+                    </li>
+
+
+                    <!-- ACTIVE -->
+
+                    <li>
+
+                        <a
+                            href="research.html"
+                            class="active"
+                        >
+
+                            Research
+
+                        </a>
+
+                    </li>
+
+
+                    <li>
+
+                        <a href="resources.html">
+
+                            All Resources
+
+                        </a>
+
+                    </li>
+
+
+                    <li>
+
+                        <a href="data-maps.html">
+
+                            Data &amp; Maps
+
+                        </a>
+
+                    </li>
+
+
+                </ul>
+
+
+                <!-- LOGIN -->
+
+                <div class="nav-actions">
+
+                    <a
+                        href="login.html"
+                        class="nav-login"
+                    >
+
+                        Login
+
+                    </a>
+
+                </div>
+
+
             </div>
 
-            <ul class="nav-links">
-                <li><a href="index.html" class="active">Home</a></li>
-                <li><a href="pages/climate.html">Climate</a></li>
-                <li><a href="pages/ice-glaciers.html">Ice &amp; Glaciers</a></li>
-                <li><a href="pages/polar-oceans.html">Polar Oceans</a></li>
-                <li><a href="pages/biodiversity.html">Biodiversity</a></li>
-                <li><a href="pages/research.html">Research</a></li>
-                <li><a href="pages/resources.html">All Resources</a></li>
-                <li><a href="pages/data-maps.html">Data &amp; Maps</a></li>
-        </div>
-    </nav>
-</header>
+        </nav>
 
-<!-- =====================================================
-     RESEARCH HERO
-===================================================== -->
-
-<header class="research-hero">
-
-    <div class="research-grid"></div>
-
-    <div class="research-hero-content">
-
-        <div class="research-eyebrow">
-            <span></span>
-            POLAR RESEARCH NETWORK
-        </div>
-
-        <h1>
-            Science at the
-            <strong>edge of Earth.</strong>
-        </h1>
-
-        <p>
-            Explore scientific studies, field research and
-            discoveries helping us understand the Arctic,
-            Antarctic and our changing planet.
-        </p>
-
-        <div class="research-actions">
-
-            <a href="#research-library" class="research-primary">
-                Explore Research
-                <span>→</span>
-            </a>
-
-            <a href="map.html" class="research-secondary">
-                Explore Polar Map
-                <span>↗</span>
-            </a>
-          </div>
-
-    </div>
+    </header>
 
 
-    <!-- SCIENTIFIC ORBIT -->
 
-    <div class="research-orbit">
+    <!-- =====================================================
+         RESEARCH HERO
+    ===================================================== -->
 
-        <div class="research-ring ring-one"></div>
-        <div class="research-ring ring-two"></div>
-        <div class="research-ring ring-three"></div>
-
-        <div class="research-node node-one"></div>
-        <div class="research-node node-two"></div>
-        <div class="research-node node-three"></div>
-
-        <div class="research-core">
-            <small>RESEARCH</small>
-            <strong>02</strong>
-        </div>
-
-    </div>
-
-</header>
+    <section class="research-hero">
 
 
-<!-- =====================================================
-     RESEARCH STATS
-===================================================== -->
+        <!-- HERO BACKGROUND -->
 
-<section class="research-stats">
-
-    <div class="research-stat">
-
-        <span class="stat-label">
-            RESEARCH PAPERS
-        </span>
-
-        <strong>
-            150+
-        </strong>
-
-        <p>
-            Scientific publications
-        </p>
-
-    </div>
+        <div class="research-hero-grid"></div>
 
 
-    <div class="research-stat">
+        <!-- HERO CONTENT -->
 
-        <span class="stat-label">
-            FIELD STUDIES
-        </span>
-
-        <strong>
-            80+
-        </strong>
-
-        <p>
-            Polar observations
-        </p>
-
-    </div>
+        <div class="research-hero-content">
 
 
-    <div class="research-stat">
+            <div class="research-eyebrow">
 
-        <span class="stat-label">
-            RESEARCH AREAS
-        </span>
+                <span></span>
 
-        <strong>
-            24
-        </strong>
+                POLAR RESEARCH NETWORK
 
-        <p>
-            Active science domains
-        </p>
-
-    </div>
-
-
-    <div class="research-stat">
-
-        <span class="stat-label">
-            POLAR REGIONS
-        </span>
-
-        <strong>
-            02
-        </strong>
-
-        <p>
-            Arctic + Antarctic
-        </p>
-
-    </div>
-
-</section>
-
-
-<!-- =====================================================
-     RESEARCH LIBRARY
-===================================================== -->
-
-<main id="research-library" class="research-library">
-
-    <div class="research-heading">
-
-        <div>
-
-            <div class="section-label">
-                RESEARCH LIBRARY
             </div>
 
-            <h2>
-                Explore scientific
-                <span>discovery.</span>
-            </h2>
+
+            <h1>
+
+                Science at the
+
+                <strong>
+                    edge of Earth.
+                </strong>
+
+            </h1>
+
 
             <p>
-                Browse research covering climate systems,
-                ice dynamics, oceans, biodiversity and
-                polar environments.
+
+                Explore scientific studies, field research
+                and discoveries helping us understand the
+                Arctic, Antarctic and our changing planet.
+
             </p>
 
-        </div>
 
-        <div class="research-count">
-            <strong>150+</strong>
-            publications
-        </div>
-
-    </div>
+            <div class="research-actions">
 
 
-    <!-- FILTERS -->
-<div class="research-filters">
+                <a
+                    href="#research-library"
+                    class="research-primary"
+                >
 
-    <button type="button" class="active" data-category="all">
-        All Research
-    </button>
+                    Explore Research
 
-    <button type="button" data-category="climate">
-        Climate
-    </button>
+                    <span>
+                        →
+                    </span>
 
-    <button type="button" data-category="ice">
-        Ice & Glaciers
-    </button>
+                </a>
 
-    <button type="button" data-category="oceans">
-        Oceans
-    </button>
 
-    <button type="button" data-category="ecosystems">
-        Ecosystems
-    </button>
+                <a
+                    href="map.html"
+                    class="research-secondary"
+                >
 
-</div>
-    <!-- =================================================
-         FEATURED PAPER
-    ================================================== -->
+                    Explore Polar Map
 
-    <section class="featured-paper">
+                    <span>
+                        ↗
+                    </span>
 
-        <div class="paper-visual">
+                </a>
 
-            <img
-                src="../assets/images/polar-hero-v2.png"
-                alt="Polar research landscape"
-            >
 
-            <div class="paper-visual-overlay"></div>
-
-            <div class="paper-number">
-                01
             </div>
 
-            <div class="paper-status">
-                FEATURED STUDY
-            </div>
 
         </div>
 
 
-        <div class="paper-content">
 
-            <div class="paper-meta">
-                CLIMATE • ANTARCTICA • 2026
+        <!-- =================================================
+             SCIENTIFIC ORBIT
+        ================================================== -->
+
+        <div class="research-orbit">
+
+
+            <div
+                class="research-ring ring-one"
+            ></div>
+
+
+            <div
+                class="research-ring ring-two"
+            ></div>
+
+
+            <div
+                class="research-ring ring-three"
+            ></div>
+
+
+            <div
+                class="research-node node-one"
+            ></div>
+
+
+            <div
+                class="research-node node-two"
+            ></div>
+
+
+            <div
+                class="research-node node-three"
+            ></div>
+
+
+            <div class="research-core">
+
+                <small>
+                    RESEARCH
+                </small>
+
+                <strong>
+                    02
+                </strong>
+
             </div>
 
-            <h2>
-                Understanding Change
-                Across the Antarctic Ice Sheet
-            </h2>
 
-            <p>
-                A research overview examining ice-sheet
-                behaviour, climate signals and observations
-                across Antarctica.
-            </p>
-
-            <div class="paper-authors">
-
-                <span>
-                    Research Network
-                </span>
-
-                <span>•</span>
-
-                <span>
-                    Polar Science
-                </span>
-
-            </div>
-
-            <a href="#research-library" class="paper-link">
-                View Research
-                <span>→</span>
-            </a>
-
-            <a href="climate.html">Climate</a>
-            <a href="ice-glaciers.html">Ice &amp; Glaciers</a>
-            <a href="polar-oceans.html">Polar Oceans</a>
-            <a href="biodiversity.html">Biodiversity</a>
-            <a href="resources.html">All Resources</a>
-            <a href="data-maps.html">Data &amp; Maps</a>
-            <a href="about.html">About</a>
-           
         </div>
+
 
     </section>
 
 
-    <!-- =================================================
-         RESEARCH CARDS
-    ================================================== -->
 
-    <section class="research-results">
+    <!-- =====================================================
+         RESEARCH STATS
+    ===================================================== -->
 
-        <div class="results-heading">
+    <section class="research-stats">
 
-            <h3>
-                Latest research
-            </h3>
 
-            <span>
-                Scientific collection
+        <div class="research-stat">
+
+            <span class="stat-label">
+
+                RESEARCH PAPERS
+
             </span>
 
-        </div>
 
+            <strong>
+                150+
+            </strong>
 
-        <div class="research-grid">
-
-
-            <!-- CARD 1 -->
-
-            <article class="research-card">
-
-                <div class="research-card-top">
-
-                    <span class="research-category">
-                        CLIMATE
-                    </span>
-
-                    <span class="research-year">
-                        2026
-                    </span>
-
-                </div>
-
-                <h3>
-                    Polar Climate Signals
-                </h3>
-
-                <p>
-                    Investigating temperature trends and
-                    atmospheric changes across polar regions.
-                </p>
-
-                <div class="research-card-footer">
-
-                    <span>
-                        Climate Science
-                    </span>
-
-                    <a href="#">
-                        →
-                    </a>
-
-                </div>
-
-            </article>
-
-
-            <!-- CARD 2 -->
-
-            <article class="research-card">
-
-                <div class="research-card-top">
-
-                    <span class="research-category">
-                        ICE
-                    </span>
-
-                    <span class="research-year">
-                        2026
-                    </span>
-
-                </div>
-
-                <h3>
-                    Glacier Dynamics
-                </h3>
-
-                <p>
-                    Exploring glacier movement, ice loss and
-                    changing polar landscapes.
-                </p>
-
-                <div class="research-card-footer">
-
-                    <span>
-                        Cryosphere
-                    </span>
-
-                    <a href="#">
-                        →
-                    </a>
-
-                </div>
-
-            </article>
-
-
-            <!-- CARD 3 -->
-
-            <article class="research-card">
-
-                <div class="research-card-top">
-
-                    <span class="research-category">
-                        OCEANS
-                    </span>
-
-                    <span class="research-year">
-                        2025
-                    </span>
-
-                </div>
-
-                <h3>
-                    Polar Ocean Circulation
-                </h3>
-
-                <p>
-                    Studying the relationship between polar
-                    oceans and global climate systems.
-                </p>
-
-                <div class="research-card-footer">
-
-                    <span>
-                        Ocean Science
-                    </span>
-
-                    <a href="#">
-                        →
-                    </a>
-
-                </div>
-
-            </article>
-
-
-            <!-- CARD 4 -->
-
-            <article class="research-card">
-
-                <div class="research-card-top">
-
-                    <span class="research-category">
-                        ECOLOGY
-                    </span>
-
-                    <span class="research-year">
-                        2025
-                    </span>
-
-                </div>
-
-                <h3>
-                    Polar Ecosystem Change
-                </h3>
-
-                <p>
-                    Understanding how environmental changes
-                    influence polar species and ecosystems.
-                </p>
-
-                <div class="research-card-footer">
-
-                    <span>
-                        Biodiversity
-                    </span>
-
-                    <a href="#">
-                        →
-                    </a>
-
-                </div>
-
-            </article>
-
-        </div>
-
-    </section>
-
-</main>
-
-
-<!-- =====================================================
-     FOOTER
-===================================================== -->
-
-<footer class="site-footer">
-
-    <div class="footer-container">
-
-        <div class="footer-brand">
-
-            <a href="../index.html" class="logo">
-                <span class="logo-dot"></span>
-                Polar<span>Connect</span>
-            </a>
 
             <p>
-                One integrated gateway to polar science,
-                research, knowledge and discovery.
+                Scientific publications
             </p>
 
         </div>
 
 
-        <div class="footer-links">
 
-            <div>
+        <div class="research-stat">
 
-                <h4>Explore</h4>
+            <span class="stat-label">
 
-                <a href="../index.html">
-                    Home
-                </a>
+                FIELD STUDIES
 
-                <a href="knowledge.html">
-                    Knowledge
-                </a>
-
-                <a href="research.html">
-                    Research
-                </a>
-
-                <a href="media.html">
-                    Media
-                </a>
-
-            </div>
+            </span>
 
 
-            <div>
+            <strong>
+                80+
+            </strong>
 
-                <h4>Portal</h4>
 
-                <a href="map.html">
-                    Polar Map
-                </a>
-
-                <a href="login.html">
-                    Login
-                </a>
-
-            </div>
+            <p>
+                Polar observations
+            </p>
 
         </div>
 
-    </div>
 
 
-    <div class="footer-bottom">
+        <div class="research-stat">
 
-        <span>
-            © 2026 PolarConnect
-        </span>
+            <span class="stat-label">
 
-        <span>
-            Polar Science • Research • Discovery
-        </span>
+                RESEARCH AREAS
 
-    </div>
+            </span>
 
-</footer>
-<script src="../js/api.js"></script>
-<script src="../js/research.js"></script>
+
+            <strong>
+                24
+            </strong>
+
+
+            <p>
+                Active science domains
+            </p>
+
+        </div>
+
+
+
+        <div class="research-stat">
+
+            <span class="stat-label">
+
+                POLAR REGIONS
+
+            </span>
+
+
+            <strong>
+                02
+            </strong>
+
+
+            <p>
+                Arctic + Antarctic
+            </p>
+
+        </div>
+
+
+    </section>
+
+
+
+    <!-- =====================================================
+         RESEARCH LIBRARY
+    ===================================================== -->
+
+    <main
+        id="research-library"
+        class="research-library"
+    >
+
+
+        <!-- HEADING -->
+
+        <div class="research-heading">
+
+
+            <div>
+
+
+                <div class="section-label">
+
+                    RESEARCH LIBRARY
+
+                </div>
+
+
+                <h2>
+
+                    Explore scientific
+
+                    <span>
+                        discovery.
+                    </span>
+
+                </h2>
+
+
+                <p>
+
+                    Browse research covering climate systems,
+                    ice dynamics, oceans, biodiversity and
+                    polar environments.
+
+                </p>
+
+
+            </div>
+
+
+            <div class="research-count">
+
+                <strong>
+                    150+
+                </strong>
+
+                publications
+
+            </div>
+
+
+        </div>
+
+
+
+        <!-- =================================================
+             FILTERS
+        ================================================== -->
+
+        <div class="research-filters">
+
+
+            <button
+                type="button"
+                class="active"
+                data-category="all"
+            >
+
+                All Research
+
+            </button>
+
+
+            <button
+                type="button"
+                data-category="climate"
+            >
+
+                Climate
+
+            </button>
+
+
+            <button
+                type="button"
+                data-category="ice"
+            >
+
+                Ice &amp; Glaciers
+
+            </button>
+
+
+            <button
+                type="button"
+                data-category="oceans"
+            >
+
+                Oceans
+
+            </button>
+
+
+            <button
+                type="button"
+                data-category="ecosystems"
+            >
+
+                Ecosystems
+
+            </button>
+
+
+        </div>
+
+
+
+        <!-- =================================================
+             API STATUS
+        ================================================== -->
+
+        <div
+            id="research-status"
+            class="section-label"
+        >
+
+            Loading research...
+
+        </div>
+
+
+
+        <!-- =================================================
+             FEATURED PAPER
+        ================================================== -->
+
+        <section class="featured-paper">
+
+
+            <div class="paper-visual">
+
+
+                <img
+                    src="../assets/images/polar-hero-v2.png"
+                    alt="Polar research landscape"
+                >
+
+
+                <div
+                    class="paper-visual-overlay"
+                ></div>
+
+
+                <div class="paper-number">
+
+                    01
+
+                </div>
+
+
+                <div class="paper-status">
+
+                    FEATURED STUDY
+
+                </div>
+
+
+            </div>
+
+
+
+            <div class="paper-content">
+
+
+                <div class="paper-meta">
+
+                    CLIMATE • ANTARCTICA • 2026
+
+                </div>
+
+
+                <h2>
+
+                    Understanding Change
+                    Across the Antarctic Ice Sheet
+
+                </h2>
+
+
+                <p>
+
+                    A research overview examining ice-sheet
+                    behaviour, climate signals and observations
+                    across Antarctica.
+
+                </p>
+
+
+                <div class="paper-authors">
+
+
+                    <span>
+
+                        Research Network
+
+                    </span>
+
+
+                    <span>
+                        •
+                    </span>
+
+
+                    <span>
+
+                        Polar Science
+
+                    </span>
+
+
+                </div>
+
+
+                <a
+                    href="#research-library"
+                    class="paper-link"
+                >
+
+                    View Research
+
+                    <span>
+                        →
+                    </span>
+
+                </a>
+
+
+            </div>
+
+
+        </section>
+
+
+
+        <!-- =================================================
+             RESEARCH RESULTS
+        ================================================== -->
+
+        <section class="research-results">
+
+
+            <div class="results-heading">
+
+
+                <h3>
+
+                    Latest research
+
+                </h3>
+
+
+                <span>
+
+                    Scientific collection
+
+                </span>
+
+
+            </div>
+
+
+
+            <!-- IMPORTANT:
+                 research.js will populate this grid
+            -->
+
+            <div
+                class="research-grid"
+                id="research-grid"
+            ></div>
+
+
+        </section>
+
+
+    </main>
+
+
+
+    <!-- =====================================================
+         FOOTER
+    ===================================================== -->
+
+    <footer class="site-footer">
+
+
+        <div class="footer-container">
+
+
+            <div class="footer-brand">
+
+
+                <a
+                    href="../index.html"
+                    class="logo"
+                >
+
+                    <span class="logo-dot"></span>
+
+                    Polar<span>Connect</span>
+
+                </a>
+
+
+                <p>
+
+                    One integrated gateway to polar science,
+                    research, knowledge and discovery.
+
+                </p>
+
+
+            </div>
+
+
+
+            <div class="footer-links">
+
+
+                <div>
+
+
+                    <h4>
+                        Explore
+                    </h4>
+
+
+                    <a href="../index.html">
+                        Home
+                    </a>
+
+
+                    <a href="knowledge.html">
+                        Knowledge
+                    </a>
+
+
+                    <a href="research.html">
+                        Research
+                    </a>
+
+
+                    <a href="media.html">
+                        Media
+                    </a>
+
+
+                </div>
+
+
+
+                <div>
+
+
+                    <h4>
+                        Portal
+                    </h4>
+
+
+                    <a href="map.html">
+                        Polar Map
+                    </a>
+
+
+                    <a href="login.html">
+                        Login
+                    </a>
+
+
+                </div>
+
+
+            </div>
+
+
+        </div>
+
+
+
+        <div class="footer-bottom">
+
+
+            <span>
+
+                © 2026 PolarConnect
+
+            </span>
+
+
+            <span>
+
+                Polar Science • Research • Discovery
+
+            </span>
+
+
+        </div>
+
+
+    </footer>
+
+
+
+    <!-- =====================================================
+         JAVASCRIPT
+    ===================================================== -->
+
+    <script src="../js/api.js"></script>
+
+    <script src="../js/research.js"></script>
+
 
 </body>
+
 </html>

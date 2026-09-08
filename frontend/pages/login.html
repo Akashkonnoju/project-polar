@@ -1,284 +1,461 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
+
     <meta charset="UTF-8">
+
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <title>Login | PolarConnect</title>
 
     <link rel="stylesheet" href="../css/style.css">
     <link rel="stylesheet" href="../css/login.css">
+
 </head>
+
 
 <body class="login-page">
 
-    <!-- ================= NAVBAR ================= -->
-    <nav class="navbar">
-        <div class="nav-container">
 
-            <a href="../index.html" class="logo">
-                <span class="logo-dot"></span>
-                Polar<span>Connect</span>
-            </a>
+    <!-- =====================================================
+         LOGIN MAIN
+    ===================================================== -->
 
-            <div class="nav-links">
-                <a href="../index.html">Home</a>
-                <a href="knowledge.html">Knowledge</a>
-                <a href="research.html">Research</a>
-                <a href="media.html">Media</a>
-                <a href="map.html">Polar Map</a>
-            </div>
-
-            <a href="login.html" class="nav-login active-login">
-                Login
-            </a>
-
-        </div>
-    </nav>
-
-
-    <!-- ================= LOGIN MAIN ================= -->
     <main class="login-main">
 
-        <!-- LEFT VISUAL -->
+
+        <!-- =================================================
+             LEFT VISUAL
+        ================================================= -->
+
         <section class="login-visual">
+
 
             <div class="visual-overlay"></div>
 
+
             <div class="visual-content">
 
+
                 <span class="eyebrow">
+
                     POLAR SCIENCE PORTAL
+
                 </span>
 
+
                 <h1>
+
                     Explore the
-                    <span>Unknown.</span>
+
+                    <span>
+                        Unknown.
+                    </span>
+
                 </h1>
 
+
                 <p>
+
                     Access polar research, scientific knowledge,
                     expedition media and real-time discoveries
                     from the world's frozen frontiers.
+
                 </p>
+
 
                 <div class="visual-stats">
 
-                    <div class="visual-stat">
-                        <strong>250+</strong>
-                        <span>Knowledge</span>
-                    </div>
 
                     <div class="visual-stat">
-                        <strong>150+</strong>
-                        <span>Research</span>
+
+                        <strong>
+                            250+
+                        </strong>
+
+                        <span>
+                            Knowledge
+                        </span>
+
                     </div>
 
+
                     <div class="visual-stat">
-                        <strong>20+</strong>
-                        <span>Locations</span>
+
+                        <strong>
+                            150+
+                        </strong>
+
+                        <span>
+                            Research
+                        </span>
+
                     </div>
+
+
+                    <div class="visual-stat">
+
+                        <strong>
+                            20+
+                        </strong>
+
+                        <span>
+                            Locations
+                        </span>
+
+                    </div>
+
 
                 </div>
 
+
             </div>
 
+
+            <!-- SCIENCE DECORATION -->
+
             <div class="orbit orbit-one"></div>
+
             <div class="orbit orbit-two"></div>
 
             <div class="science-node node-one"></div>
+
             <div class="science-node node-two"></div>
+
             <div class="science-node node-three"></div>
+
 
         </section>
 
 
-        <!-- RIGHT LOGIN PANEL -->
+
+        <!-- =================================================
+             RIGHT LOGIN PANEL
+        ================================================= -->
+
         <section class="login-panel">
+
 
             <div class="login-box">
 
+
+                <!-- LOGIN HEADING -->
+
                 <div class="login-heading">
 
+
                     <span class="section-label">
+
                         SECURE ACCESS
+
                     </span>
 
+
                     <h2>
+
                         Welcome back
+
                     </h2>
 
+
                     <p>
+
                         Sign in to continue exploring
                         PolarConnect.
+
                     </p>
+
 
                 </div>
 
 
-                <!-- LOGIN FORM -->
+
+                <!-- =================================================
+                     LOGIN FORM
+                ================================================= -->
+
                 <form class="login-form">
+
+
+                    <!-- USERNAME -->
 
                     <div class="form-group">
 
-<<<<<<< HEAD
+
                         <label for="email">
-=======
-                        <label for="Username">
->>>>>>> 696f55a (Update frontend integration)
+
                             Username
+
                         </label>
+
 
                         <div class="input-wrapper">
 
+
                             <span class="input-icon">
+
                                 @
+
                             </span>
+
 
                             <input
                                 type="text"
                                 id="email"
                                 name="email"
-<<<<<<< HEAD
-                                placeholder = "Enter your Username"
-=======
                                 placeholder="Enter username"
->>>>>>> 696f55a (Update frontend integration)
+                                autocomplete="username"
                                 required
                             >
 
+
                         </div>
+
 
                     </div>
 
 
+
+                    <!-- PASSWORD -->
+
                     <div class="form-group">
+
 
                         <div class="password-header">
 
+
                             <label for="password">
+
                                 Password
+
                             </label>
 
-                            <a href="#">
+
+                            <!-- FORGOT PASSWORD -->
+
+                            <a
+                                href="forgot-password.html"
+                                class="forgot-password"
+                            >
+
                                 Forgot password?
+
                             </a>
+
 
                         </div>
 
+
                         <div class="input-wrapper">
 
+
                             <span class="input-icon">
+
                                 •
+
                             </span>
+
 
                             <input
                                 type="password"
                                 id="password"
                                 name="password"
                                 placeholder="Enter your password"
+                                autocomplete="current-password"
                                 required
                             >
 
+
                         </div>
+
 
                     </div>
 
 
+
+                    <!-- LOGIN OPTIONS -->
+
                     <div class="login-options">
 
+
                         <label class="remember">
+
 
                             <input
                                 type="checkbox"
                                 name="remember"
                             >
 
+
                             <span>
+
                                 Remember me
+
                             </span>
+
 
                         </label>
 
+
                         <span class="secure-status">
+
                             ● Secure
+
                         </span>
+
 
                     </div>
 
+
+
+                    <!-- SIGN IN -->
 
                     <button
                         type="submit"
                         class="login-button"
                     >
-                        <span>Sign In</span>
-                        <span class="button-arrow">→</span>
+
+                        <span>
+                            Sign In
+                        </span>
+
+                        <span class="button-arrow">
+                            →
+                        </span>
+
                     </button>
+
 
                 </form>
 
 
-                <!-- DIVIDER -->
+
+                <!-- =================================================
+                     DIVIDER
+                ================================================== -->
+
                 <div class="login-divider">
-                    <span>OR</span>
+
+                    <span>
+                        OR
+                    </span>
+
                 </div>
 
 
-                <!-- REGISTER -->
+
+                <!-- =================================================
+                     REGISTER
+                ================================================== -->
+
                 <div class="register-box">
 
+
                     <p>
+
                         Don't have an account?
+
                     </p>
 
-                    <a href="#">
+
+                    <a href="register.html">
+
                         Create an account
-                        <span>→</span>
+
+                        <span>
+                            →
+                        </span>
+
                     </a>
 
+
                 </div>
 
 
-                <!-- SECURITY NOTE -->
+
+                <!-- =================================================
+                     SECURITY NOTE
+                ================================================== -->
+
                 <div class="security-note">
 
+
                     <div class="security-icon">
+
                         ✓
+
                     </div>
+
 
                     <div>
+
+
                         <strong>
+
                             Protected access
+
                         </strong>
 
+
                         <p>
+
                             Your account information is securely
                             protected by PolarConnect.
+
                         </p>
+
+
                     </div>
 
+
                 </div>
+
 
             </div>
 
+
         </section>
+
 
     </main>
 
 
-    <!-- ================= FOOTER ================= -->
+
+    <!-- =====================================================
+         FOOTER
+    ===================================================== -->
+
     <footer class="login-footer">
 
-        <span>
-            © 2026 PolarConnect
-        </span>
 
         <span>
-            Integrated Polar Science Portal
+
+            © 2026 PolarConnect
+
         </span>
+
+
+        <span>
+
+            Integrated Polar Science Portal
+
+        </span>
+
 
     </footer>
-<script src="../js/api.js"></script>
-<script src="../js/login.js"></script>
+
+
+
+    <!-- =====================================================
+         JAVASCRIPT
+    ===================================================== -->
+
+    <script src="../js/api.js"></script>
+
+    <script src="../js/login.js"></script>
+
+
 </body>
+
 </html>
