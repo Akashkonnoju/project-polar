@@ -729,3 +729,33 @@ document.addEventListener(
 
     }
 );
+
+// MAP ZOOM CONTROLS
+let mapZoom = 1;
+
+function setupMapZoom() {
+    const map = document.querySelector(".polar-map");
+    const controls = document.querySelectorAll(".map-controls button");
+
+    if (!map || controls.length < 3) return;
+
+    // Zoom In
+    controls[0].addEventListener("click", () => {
+        mapZoom = Math.min(mapZoom + 0.2, 2);
+        map.style.transform = `scale(${mapZoom})`;
+    });
+
+    // Zoom Out
+    controls[1].addEventListener("click", () => {
+        mapZoom = Math.max(mapZoom - 0.2, 1);
+        map.style.transform = `scale(${mapZoom})`;
+    });
+
+    // Reset Map
+    controls[2].addEventListener("click", () => {
+        mapZoom = 1;
+        map.style.transform = "scale(1)";
+    });
+}
+
+document.addEventListener("DOMContentLoaded", setupMapZoom);
