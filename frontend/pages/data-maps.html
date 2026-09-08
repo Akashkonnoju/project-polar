@@ -3,112 +3,14 @@
 
 <head>
 
-<meta charset="UTF-8">
+    <meta charset="UTF-8">
 
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Data & Maps | PolarConnect</title>
+    <title>Data & Maps | PolarConnect</title>
 
-<link rel="stylesheet" href="../css/style.css">
-<link rel="stylesheet" href="../css/responsive.css">
-
-
-<style>
-
-    /* =========================================
-       NAVBAR
-    ========================================= */
-
-    header {
-        position: relative;
-        z-index: 9999;
-    }
-
-    .navbar {
-        position: relative;
-        z-index: 10000;
-        background: #071421 !important;
-        opacity: 1 !important;
-    }
-
-    .navbar .nav-links {
-        position: relative;
-        z-index: 10001;
-    }
-
-    .navbar .nav-links a {
-        color: #ffffff !important;
-    }
-
-    .navbar .nav-links a:hover {
-        color: #7dd3fc !important;
-    }
-
-    .navbar .nav-links a.active {
-        color: #7dd3fc !important;
-    }
-
-    .navbar .nav-links a.active::after {
-        background: #7dd3fc !important;
-    }
-
-    .navbar .logo {
-        color: #ffffff !important;
-    }
-
-    .navbar .logo span {
-        color: #7dd3fc !important;
-    }
-
-
-    /* =========================================
-       DATA & MAPS BACKGROUND
-    ========================================= */
-
-    .regions-section {
-        position: relative;
-
-        background-image:
-            linear-gradient(
-                90deg,
-                rgba(3, 15, 28, 0.96) 0%,
-                rgba(5, 22, 39, 0.84) 40%,
-                rgba(5, 25, 43, 0.65) 70%,
-                rgba(5, 20, 35, 0.78) 100%
-            ),
-            url("../assets/images/polar-hero-v2.png");
-
-        background-size: cover;
-
-        background-position: center;
-
-        background-repeat: no-repeat;
-    }
-
-    .regions-section::before {
-        content: "";
-
-        position: absolute;
-
-        inset: 0;
-
-        background:
-            linear-gradient(
-                180deg,
-                rgba(4, 17, 31, 0.25) 0%,
-                rgba(3, 14, 27, 0.10) 50%,
-                rgba(2, 10, 20, 0.45) 100%
-            );
-
-        pointer-events: none;
-    }
-
-    .regions-section > * {
-        position: relative;
-        z-index: 2;
-    }
-
-</style>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/responsive.css">
 
 </head>
 
@@ -117,7 +19,7 @@
 
 
 <!-- =========================================
-     NAVBAR
+     NAVIGATION
 ========================================= -->
 
 <header>
@@ -175,7 +77,6 @@
                     </a>
                 </li>
 
-                <!-- ACTIVE BAR -->
                 <li>
                     <a href="data-maps.html" class="active">
                         Data &amp; Maps
@@ -198,23 +99,233 @@
 <main>
 
 
+    <!-- =========================================
+         HERO
+    ========================================== -->
+
+    <section class="hero" id="top">
+
+
+        <!-- =====================================
+             HERO CONTENT
+        ====================================== -->
+
+        <div class="hero-content">
+
+
+            <p class="hero-tag">
+                POLAR DATA • MAPS • DISCOVERY
+            </p>
+
+
+            <h1>
+
+                Explore the<br>
+
+                <span>Polar Data</span>
+
+            </h1>
+
+
+            <p class="hero-description">
+
+                Explore polar locations, research stations,
+                satellite imagery and trusted scientific
+                data services across the Arctic and Antarctic.
+
+            </p>
+
+
+            <div class="hero-buttons">
+
+
+                <a
+                    href="map.html"
+                    class="primary-btn">
+
+                    Explore Polar Map
+
+                    <span aria-hidden="true">
+                        →
+                    </span>
+
+                </a>
+
+
+                <a
+                    href="resources.html"
+                    class="secondary-btn">
+
+                    Explore Resources
+
+                    <span aria-hidden="true">
+                        ↗
+                    </span>
+
+                </a>
+
+
+            </div>
+
+
+            <div
+                class="hero-meta"
+                aria-label="Data and Maps highlights">
+
+
+                <div>
+
+                    <strong>
+                        01
+                    </strong>
+
+                    <span>
+                        Polar Locations
+                    </span>
+
+                </div>
+
+
+                <div>
+
+                    <strong>
+                        02
+                    </strong>
+
+                    <span>
+                        Satellite Data
+                    </span>
+
+                </div>
+
+
+                <div>
+
+                    <strong>
+                        03
+                    </strong>
+
+                    <span>
+                        Scientific Sources
+                    </span>
+
+                </div>
+
+
+            </div>
+
+
+        </div>
+
+
+        <!-- =====================================
+             EXACT BIODIVERSITY GLOBE
+        ====================================== -->
+
+        <div
+            class="hero-visual"
+            aria-hidden="true">
+
+
+            <div class="orbital-line">
+            </div>
+
+
+            <div class="polar-globe">
+
+
+                <span
+                    class="globe-pin globe-pin-one">
+                </span>
+
+
+                <span
+                    class="globe-pin globe-pin-two">
+                </span>
+
+
+                <span class="globe-marker">
+
+                    POLAR
+
+                </span>
+
+
+            </div>
+
+
+            <div class="science-card">
+
+
+                <div class="science-card-top">
+
+
+                    <span class="status-pulse">
+                    </span>
+
+
+                    <span>
+
+                        POLAR SCIENCE SIGNAL
+
+                    </span>
+
+
+                </div>
+
+
+                <strong>
+
+                    Data &amp; Maps
+
+                </strong>
+
+
+                <small>
+
+                    Connecting locations,
+                    observations and scientific data.
+
+                </small>
+
+
+            </div>
+
+
+        </div>
+
+
+    </section>
+
+
+    <!-- =========================================
+         DATA & MAPS SECTION
+    ========================================== -->
+
     <section class="regions-section">
 
+
         <div class="section-heading">
+
 
             <p>
                 DATA &amp; MAPS
             </p>
 
+
             <h2>
                 Explore polar data.
             </h2>
 
+
             <span>
+
                 Use the portal map for locations and open
                 authoritative scientific visualization and
                 data services.
+
             </span>
+
 
         </div>
 
@@ -222,110 +333,163 @@
         <div class="feature-grid">
 
 
+            <!-- =================================
+                 CARD 01
+            ================================== -->
+
             <div class="feature-card">
+
 
                 <span class="card-index">
                     01
                 </span>
 
+
                 <div class="feature-icon">
                     ⌖
                 </div>
+
 
                 <h3>
                     Polar Locations
                 </h3>
 
+
                 <p>
+
                     Explore research stations and important
                     polar locations using the existing portal map.
+
                 </p>
 
+
                 <a href="map.html">
+
                     Open Polar Map →
+
                 </a>
+
 
             </div>
 
 
+            <!-- =================================
+                 CARD 02
+            ================================== -->
+
             <div class="feature-card">
+
 
                 <span class="card-index">
                     02
                 </span>
 
+
                 <div class="feature-icon">
                     ◈
                 </div>
+
 
                 <h3>
                     NASA Worldview
                 </h3>
 
+
                 <p>
+
                     Explore satellite imagery and Earth observation
                     layers for polar regions.
+
                 </p>
+
 
                 <a
                     href="https://worldview.earthdata.nasa.gov/"
                     target="_blank"
-                    rel="noopener noreferrer"
-                >
+                    rel="noopener noreferrer">
+
                     Open NASA Worldview ↗
+
                 </a>
+
 
             </div>
 
 
+            <!-- =================================
+                 CARD 03
+            ================================== -->
+
             <div class="feature-card">
+
 
                 <span class="card-index">
                     03
                 </span>
 
+
                 <div class="feature-icon">
                     ◇
                 </div>
+
 
                 <h3>
                     Dataset Library
                 </h3>
 
+
                 <p>
+
                     Find dataset metadata, formats, access status
                     and authoritative source links.
+
                 </p>
 
+
                 <a href="resources.html">
+
                     Explore Datasets →
+
                 </a>
+
 
             </div>
 
+
         </div>
+
 
     </section>
 
 
+    <!-- =========================================
+         SCIENTIFIC SOURCES
+    ========================================== -->
 
     <section class="explore-section">
 
+
         <div class="section-heading">
+
 
             <p>
                 SCIENTIFIC SOURCES
             </p>
 
+
             <h2>
                 Trusted data gateways.
             </h2>
 
+
             <span>
+
                 These services are linked as external scientific
                 sources; the portal does not claim ownership of
                 their datasets.
+
             </span>
+
 
         </div>
 
@@ -333,74 +497,110 @@
         <div class="feature-grid">
 
 
+            <!-- =================================
+                 NASA EARTHDATA
+            ================================== -->
+
             <div class="feature-card">
+
 
                 <h3>
                     NASA Earthdata
                 </h3>
 
+
                 <p>
+
                     Earth science data discovery across climate,
                     cryosphere, oceans and more.
+
                 </p>
+
 
                 <a
                     href="https://search.earthdata.nasa.gov/"
                     target="_blank"
-                    rel="noopener noreferrer"
-                >
+                    rel="noopener noreferrer">
+
                     Open Earthdata ↗
+
                 </a>
+
 
             </div>
 
 
+            <!-- =================================
+                 NSIDC
+            ================================== -->
+
             <div class="feature-card">
+
 
                 <h3>
                     NSIDC
                 </h3>
 
+
                 <p>
+
                     Polar datasets and cryosphere information
                     including sea-ice resources.
+
                 </p>
+
 
                 <a
                     href="https://nsidc.org/data"
                     target="_blank"
-                    rel="noopener noreferrer"
-                >
+                    rel="noopener noreferrer">
+
                     Open NSIDC ↗
+
                 </a>
+
 
             </div>
 
 
+            <!-- =================================
+                 NOAA
+            ================================== -->
+
             <div class="feature-card">
+
 
                 <h3>
                     NOAA
                 </h3>
 
+
                 <p>
+
                     Government scientific information and
                     environmental observations.
+
                 </p>
+
 
                 <a
                     href="https://www.noaa.gov/"
                     target="_blank"
-                    rel="noopener noreferrer"
-                >
+                    rel="noopener noreferrer">
+
                     Open NOAA ↗
+
                 </a>
+
 
             </div>
 
+
         </div>
 
+
     </section>
+
 
 </main>
 
