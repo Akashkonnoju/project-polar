@@ -11,6 +11,7 @@ from .views import (
     login,
     topics,
     resources,
+    forgot_password,
 )
 
 router = DefaultRouter()
@@ -28,4 +29,5 @@ urlpatterns = [
     path('login/', login, name='login'),
     path('topics/', topics, name='topics'),
     path('resources/', resources, name='resources'),
+    path('forgot-password/', forgot_password, name='forgot-password'),
 ]

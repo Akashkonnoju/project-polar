@@ -137,8 +137,37 @@ def topics(request):
     
 @api_view(['GET'])
 def resources(request):
+    category = request.GET.get('category', '').strip()
+
     knowledge = Knowledge.objects.all()
+
+    if category:
+        knowledge = knowledge.filter(category__iexact=category)
 
     return Response(
         KnowledgeSerializer(knowledge, many=True).data
     )
+    
+@api_view(['POST'])
+def forgot_password(request):
+    username = request.data.get('username')
+    new_password = request.data.get('new_password')
+
+    if not username or not new_password:
+        return Response({
+            'message': 'Username and new password are required'
+        }, status=status.HTTP_400_BAD_REQUEST)
+
+    try:
+        user = User.objects.get(username=username)
+    except User.DoesNotExist:
+        return Response({
+            'message': 'User not found'
+        }, status=status.HTTP_404_NOT_FOUND)
+
+    user.set_password(new_password)
+    user.save()
+
+    return Response({
+        'message': 'Password reset successfully'
+    }, status=status.HTTP_200_OK)

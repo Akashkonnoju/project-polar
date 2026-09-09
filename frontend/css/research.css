@@ -1151,3 +1151,65 @@ body {
         gap: 10px;
     }
 }
+
+/* Featured paper navigation links */
+.paper-content > a:not(.paper-link) {
+    display: inline-flex;
+    align-items: center;
+    margin: 10px 8px 0 0;
+    padding: 7px 13px;
+    border: 1px solid rgba(255, 255, 255, 0.16);
+    border-radius: 20px;
+    color: inherit;
+    text-decoration: none;
+    font-size: 0.78rem;
+    font-weight: 500;
+    transition: all 0.2s ease;
+}
+
+.paper-content > a:not(.paper-link):hover {
+    transform: translateY(-2px);
+    border-color: rgba(255, 255, 255, 0.4);
+    background: rgba(255, 255, 255, 0.08);
+}
+
+/* Featured paper navigation links */
+
+.paper-content > a:not(.paper-link) {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    margin: 10px 6px 0 0;
+    padding: 8px 14px;
+
+    border: 1px solid #d8e7ec;
+    border-radius: 20px;
+
+    background: #f7fbfd;
+    color: #28758a;
+
+    text-decoration: none;
+    font-size: 0.76rem;
+    font-weight: 600;
+
+    transition:
+        background .2s ease,
+        border-color .2s ease,
+        color .2s ease,
+        transform .2s ease;
+}
+
+.paper-content > a:not(.paper-link):hover {
+    background: #eaf8fc;
+    border-color: #78c9dc;
+    color: #056b82;
+    transform: translateY(-2px);
+}
+
+.paper-content > .paper-link {
+    display: inline-flex;
+    align-items: center;
+    width: fit-content;
+    margin-bottom: 8px;
+}
